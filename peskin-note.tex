@@ -1,0 +1,209 @@
+% !TEX program = xelatex
+\documentclass[10pt,b5paper,openany]{book} %openany: 新章节不强制从奇数页开始
+
+% 调整页边距
+\usepackage{geometry}
+\geometry{right=1.45cm,left=1.45cm,top=2.3cm,bottom=2cm}
+
+% 调整行距
+\usepackage{setspace}
+
+% 设置中文字体
+\usepackage[UTF8, fontset=none]{ctex}
+\usepackage{fontspec}
+\xeCJKDeclareCharClass{CJK}{%  %使Unicode带圈字符正确显示
+  "24EA,           %
+  "2460->"2473,    %
+  "3251->"32BF,    %
+  "24FF,           %
+  "2776->"277F,    %
+  "24EB->"24F4     %
+}
+\setCJKmainfont[BoldFont = 思源黑体, ItalicFont = 华文楷体]{冬青黑体简体中文}
+\setCJKmonofont{兰亭黑-简}
+
+% 设置英文字体
+\usepackage[T1]{fontenc}
+% \usepackage{tgpagella}
+\usepackage{charter}
+
+% 漂亮的数学字体
+\usepackage{mathpazo} % psnfss 字体宏集之一, Palatino 风格
+
+% ams大礼包
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% slashed letters
+\usepackage{cancel}
+
+% 删除线 波浪线 斜删除线 双下划线
+\usepackage{ulem}
+% \sout{文字} %删除线
+% \uwave{文字} %波浪线
+% \xout{文字} %斜删除线
+% \uuline{文字}  %双下划线
+
+% 输入数组矩阵
+\usepackage{array}
+
+% 输入正体希腊字母
+\usepackage{upgreek}
+
+% 调整参考文献引用格式
+\usepackage{cite}
+
+% 超链接
+\usepackage[colorlinks, linkcolor=black]{hyperref}
+
+% 插入图片等
+\usepackage{graphicx}
+\graphicspath{
+  {./image/}
+}
+
+% 浮动体标题的格式
+\usepackage{caption}
+
+% 给符号加粗用
+\usepackage{bm}
+
+
+
+% 命令
+% 长横线
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+
+% 评论使用的框
+\newcommand{\mybox}[1]{ 
+  \begin{center}
+    \framebox[1.15\width][s]{
+      \parbox[t]{32em}{
+
+        \mbox{}
+
+        #1
+
+        \mbox{} \\[-0.8cm]
+
+      }
+    }
+  \end{center}
+}
+
+% 着重号
+\usepackage{xeCJKfntef}
+\xeCJKsetup{underdot/symbol={\normalfont^^b7}}
+\newcommand{\cemph}[1]{\CJKunderdot{#1}}
+
+% 无标号chapter
+\newcommand{\nonumchap}[1]{
+\phantomsection % 加这个命令后, 目录中的超链接才指向正确的页码
+\chapter*{#1} %开始一段不带编号的章
+\addcontentsline{toc}{chapter}{#1} %使目录中以章级别显示
+}
+
+% 无标号section
+\newcommand{\nonumsec}[1]{
+\phantomsection 
+\section*{#1} 
+\addcontentsline{toc}{section}{#1}
+}
+
+% 无标号subsection
+\newcommand{\nonumssec}[1]{
+\phantomsection 
+\subsection*{#1} 
+\addcontentsline{toc}{subsection}{#1}
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+
+  \mbox{}
+
+  {\Huge \bfseries 量子场论笔记} \\[0.1cm]
+
+  (based on Peskin \& Schroeder's book) \\[0.8cm]
+
+  \HRule \\[0.9cm]
+
+  {\Large ReEFT} \\[0.3cm]
+
+  {\small 2021年10月29日\ \ 首次创建}
+
+  {\small \today \ \ 最后修改} \\[0.3cm]
+
+  \center{
+  \includegraphics[width=0.6\textwidth]{peskin-front.jpg}
+  }
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\include{ex_preface.tex}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{目录}
+\clearpage
+
+\begin{spacing}{1.2}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\part{Feynman Diagrams and Quantum Electrodynamics}
+
+\include{chap01.tex}
+
+\include{chap02.tex}
+
+\include{chap03.tex}
+
+\include{chap04.tex}
+
+\include{chap05.tex}
+
+\include{chap06.tex}
+
+\include{chap07.tex}
+
+\part{Renormalization}
+
+\include{chap08.tex}
+
+\include{chap09.tex}
+
+\include{chap10.tex}
+
+\include{chap11.tex}
+
+\include{chap12.tex}
+
+\include{chap13.tex}
+
+\part{Non-Abelian Gauge Theories}
+
+\include{chap14.tex}
+
+\include{chap15.tex}
+
+\include{chap16.tex}
+
+\include{chap17.tex}
+
+\include{chap18.tex}
+
+\include{chap19.tex}
+
+\include{chap20.tex}
+
+\include{chap21.tex}
+
+\include{ex_epilogue.tex}
+
+\include{ex_appendix.tex}
+
+\end{spacing}
+\end{document}

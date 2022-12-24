@@ -17,7 +17,7 @@ Peskin &amp; Schroeder QFT 中文笔记
 
 我的邮箱: reeft137@gmail.com
 
-## 自定义命令
+<!-- ## 自定义命令
 
 - `\HRule    \\长横线`
 - `\mybox{}  \\评论、注等使用的方框`
@@ -30,4 +30,4 @@ Peskin &amp; Schroeder QFT 中文笔记
 - 强调内容请使用`\textbf{}`或`\cemph{}`。
 
 [note1]: http://gamebm.shoutwiki.com/wiki/Lecture_Notes_of_An_Introduction_to_Quantum_Field_Theory_by_M._Peskin_and_D._Schroeder
-[note2]: https://zhuanlan.zhihu.com/p/391450897
+[note2]: https://zhuanlan.zhihu.com/p/391450897 -->

@@ -27,7 +27,7 @@ Peskin &amp; Schroeder QFT 中文笔记
 
 - 除双引号(“”)外，请使用英文标点。
 - 请在每句话之间换行。
-- 强调内容请使用`\textbf{}`或`\cemph{}`。
+- 强调内容请使用`\textbf{}`或`\cemph{}`。 -->
 
 [note1]: http://gamebm.shoutwiki.com/wiki/Lecture_Notes_of_An_Introduction_to_Quantum_Field_Theory_by_M._Peskin_and_D._Schroeder
-[note2]: https://zhuanlan.zhihu.com/p/391450897 -->
+[note2]: https://zhuanlan.zhihu.com/p/391450897

@@ -281,3 +281,6 @@ ex*.tex
 
 # macos desktop settings
 .DS_Store
+
+# shortcuts
+*.sh

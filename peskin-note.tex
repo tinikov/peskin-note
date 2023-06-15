@@ -69,6 +69,13 @@
 % 给符号加粗用
 \usepackage{bm}
 
+% 调整 pdf 大纲格式
+\usepackage{hyperref}
+\hypersetup{
+    bookmarksnumbered=true, 
+    % bookmarksdepth=section,
+}
+
 % 命令
 % 长横线
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
@@ -121,19 +128,19 @@
 \begin{titlepage}
   \centering
 
-  \mbox{}
+  \mbox{} \\[-0.3cm]
 
-  {\Huge \bfseries 量子场论笔记} \\[0.1cm]
+  {\bfseries \fontsize{32pt}{1pt} \xeCJKsetup{CJKglue=\hskip 2pt}量子场论笔记} \\[0.2cm]
 
-  (based on Peskin \& Schroeder's book) \\[0.8cm]
+  (\large based on Peskin \& Schroeder's book) \\[0.8cm]
 
-  \HRule \\[0.9cm]
+  \HRule \\[0.8cm]
 
-  {\Large ReEFT} \\[0.3cm]
+  {\Large Tenshin} \\[0.3cm]
 
-  {\small 2021年10月29日\ \ 首次创建}
-
-  {\small \today \ \ 最后修改} \\[0.3cm]
+  {\small 创建于2021年10月29日} \\[-0.1cm]
+  
+  {\small 最新修改于\today} \\[0.4cm]
 
   \center{
   \includegraphics[width=0.6\textwidth]{peskin-front.jpg}

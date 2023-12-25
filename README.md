@@ -13,9 +13,9 @@ Peskin &amp; Schroeder QFT 中文笔记
 
 本书参考了[这篇笔记][note1](谢谢你, 陌生人)。同时也感谢朋友 Starry 的增补及校对。如果学了一段时间场论以后感到一头雾水的话，不妨参考 Yuchen Wang (非常厉害的一个人！)的 [笔记][note2]。
 
-如发现任何错误或遗漏，或希望与我讨论书中的内容，欢迎通过[邮件](mailto:reeft137@gmail.com)与我联系。
+如发现任何错误或遗漏，或希望与我讨论书中的内容，欢迎通过[邮件](mailto:tinikov137@gmail.com)与我联系。
 
-我的邮箱: reeft137@gmail.com
+我的邮箱: tinikov137@gmail.com
 
 <!-- ## 自定义命令
 

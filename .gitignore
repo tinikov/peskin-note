@@ -285,3 +285,4 @@ ex*.tex
 # shortcuts
 *.sh
 image/
+*.code-workspace

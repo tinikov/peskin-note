@@ -1,5 +1,6 @@
+% !TEX encoding = UTF-8
 % !TEX program = xelatex
-\documentclass[10pt,b5paper,openany]{book} %openany: 新章节不强制从奇数页开始
+\documentclass[10pt,b5paper, openany]{book} %openany: 新章节不强制从奇数页开始
 
 % 调整页边距
 \usepackage{geometry}
@@ -22,13 +23,11 @@
 \setCJKmainfont[BoldFont = 思源黑体, ItalicFont = 华文楷体]{冬青黑体简体中文}
 \setCJKmonofont{兰亭黑-简}
 
-% 设置英文字体
-\usepackage[T1]{fontenc}
-% \usepackage{tgpagella}
-\usepackage{charter}
-
 % 漂亮的数学字体
 \usepackage{mathpazo} % psnfss 字体宏集之一, Palatino 风格
+% 设置英文字体
+\usepackage[T1]{fontenc}
+\usepackage{charter}
 
 % ams大礼包
 \usepackage{amsmath}
@@ -47,6 +46,9 @@
 
 % 输入数组矩阵
 \usepackage{array}
+
+% 费曼图
+% \usepackage[compat=1.1.0]{tikz-feynman}
 
 % 输入正体希腊字母
 \usepackage{upgreek}
@@ -76,6 +78,18 @@
     % bookmarksdepth=section,
 }
 
+% 调整页眉章节标题样式
+\usepackage{fancyhdr}
+\fancypagestyle{general}{
+  \fancyhf{} % 清空当前页眉和页脚的设置
+
+  % 设置页眉
+  \fancyhead[LE]{{\bfseries \thepage}\quad\quad\nouppercase{\leftmark}}
+  \fancyhead[RE]{}
+  \fancyhead[RO]{\nouppercase{\rightmark}\quad\quad{\bfseries \thepage}}
+  \fancyhead[LO]{}
+}
+
 % 命令
 % 长横线
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
@@ -83,6 +97,7 @@
 % 评论使用的框
 \newcommand{\mybox}[1]{ 
   \begin{center}
+    \setlength{\fboxrule}{1pt}
     \framebox[1.15\width][s]{
       \parbox[t]{32em}{
 
@@ -101,29 +116,53 @@
 \usepackage{xeCJKfntef}
 \xeCJKsetup{underdot/symbol={\normalfont^^b7}}
 \newcommand{\cemph}[1]{\CJKunderdot{#1}}
+% \newcommand{\cemph}[1]{#1}
 
-% 无标号chapter
+% 无标号 chapter (改变页眉页脚格式)
 \newcommand{\nonumchap}[1]{
-\phantomsection % 加这个命令后, 目录中的超链接才指向正确的页码
-\chapter*{#1} %开始一段不带编号的章
-\addcontentsline{toc}{chapter}{#1} %使目录中以章级别显示
+  \fancypagestyle{nonumchap}{
+    \fancyhead[LE]{{\bfseries \thepage}\quad\quad{#1}}
+  }
+  \pagestyle{nonumchap}
+  \phantomsection % 加这个命令后, 目录中的超链接才指向正确的页码
+  \chapter*{#1} %开始一段不带编号的章
+  \addcontentsline{toc}{chapter}{#1} %使目录中以章级别显示
 }
 
-% 无标号section
+% 无标号 chapter (保持页眉页脚格式)
+\newcommand{\nonumchapkphdr}[1]{
+  \phantomsection % 加这个命令后, 目录中的超链接才指向正确的页码
+  \chapter*{#1} %开始一段不带编号的章
+  \addcontentsline{toc}{chapter}{#1} %使目录中以章级别显示
+}
+
+% 无标号 section (改变页眉页脚格式)
 \newcommand{\nonumsec}[1]{
-\phantomsection 
-\section*{#1} 
-\addcontentsline{toc}{section}{#1}
+  \fancypagestyle{nonumsec}{
+    \fancyhead[RO]{{#1}\quad\quad{\bfseries \thepage}}
+  }
+  \pagestyle{nonumsec}
+  \phantomsection 
+  \section*{#1} 
+  \addcontentsline{toc}{section}{#1}
 }
 
-% 无标号subsection
+% 无标号 section (保持页眉页脚格式)
+\newcommand{\nonumseckphdr}[1]{
+  \phantomsection 
+  \section*{#1} 
+  \addcontentsline{toc}{section}{#1}
+}
+
+% 无标号 subsection
 \newcommand{\nonumssec}[1]{
-\phantomsection 
-\subsection*{#1} 
-\addcontentsline{toc}{subsection}{#1}
+  \phantomsection 
+  \subsection*{#1} 
+  \addcontentsline{toc}{subsection}{#1}
 }
 
 \begin{document}
+\pagestyle{fancy}
 
 \begin{titlepage}
   \centering
@@ -136,79 +175,107 @@
 
   \HRule \\[0.8cm]
 
-  {\Large H.T.19} \\[0.3cm]
+  {\Large Tinikov} \\[0.3cm]
 
   {\small 创建于2021年10月29日} \\[-0.1cm]
-  
+
   {\small 最新修改于\today} \\[0.4cm]
 
   \center{
-  \includegraphics[width=0.6\textwidth]{peskin-front.jpg}
+    \includegraphics[width=0.6\textwidth]{peskin-front.jpg}
   }
 \end{titlepage}
 
 \pagenumbering{roman}
 \setcounter{page}{1}
-\include{ex_preface.tex}
+\include{src/preface.tex}
+\clearpage
 
-\tableofcontents
+\phantomsection 
 \addcontentsline{toc}{chapter}{目录}
+\tableofcontents
 \clearpage
 
 \begin{spacing}{1.2}
-\pagenumbering{arabic}
-\setcounter{page}{1}
-\part{Feynman Diagrams and Quantum Electrodynamics}
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
+  \part{Feynman Diagrams and Quantum Electrodynamics}
 
-\include{chap01.tex}
+  \pagestyle{general}
+  \include{src/chap01.tex}
 
-\include{chap02.tex}
+  \pagestyle{general}
+  \include{src/chap02.tex}
 
-\include{chap03.tex}
+  \pagestyle{general}
+  \include{src/chap03.tex}
 
-\include{chap04.tex}
+  \pagestyle{general}
+  \include{src/chap04.tex}
 
-\include{chap05.tex}
+  \pagestyle{general}
+  \include{src/chap05.tex}
 
-\include{chap06.tex}
+  \pagestyle{general}
+  \include{src/chap06.tex}
 
-\include{chap07.tex}
+  \pagestyle{general}
+  \include{src/chap07.tex}
 
-\part{Renormalization}
+  \part{Renormalization}
 
-\include{chap08.tex}
+  \pagestyle{general}
+  \include{src/chap08.tex}
 
-\include{chap09.tex}
+  \pagestyle{general}
+  \include{src/chap09.tex}
 
-\include{chap10.tex}
+  \pagestyle{general}
+  \include{src/chap10.tex}
 
-\include{chap11.tex}
+  \pagestyle{general}
+  \include{src/chap11.tex}
 
-\include{chap12.tex}
+  \pagestyle{general}
+  \include{src/chap12.tex}
 
-\include{chap13.tex}
+  \pagestyle{general}
+  \include{src/chap13.tex}
 
-\part{Non-Abelian Gauge Theories}
+  \part{Non-Abelian Gauge Theories}
 
-\include{chap14.tex}
+  \pagestyle{general}
+  \include{src/chap14.tex}
 
-\include{chap15.tex}
+  \pagestyle{general}
+  \include{src/chap15.tex}
 
-\include{chap16.tex}
+  \pagestyle{general}
+  \include{src/chap16.tex}
 
-\include{chap17.tex}
+  \pagestyle{general}
+  \include{src/chap17.tex}
 
-\include{chap18.tex}
+  \pagestyle{general}
+  \include{src/chap18.tex}
 
-\include{chap19.tex}
+  \pagestyle{general}
+  \include{src/chap19.tex}
 
-\include{chap20.tex}
+  \pagestyle{general}
+  \include{src/chap20.tex}
 
-\include{chap21.tex}
+  \pagestyle{general}
+  \include{src/chap21.tex}
 
-\include{ex_epilogue.tex}
+  \pagestyle{general}
+  \include{src/epilogue.tex}
 
-\include{ex_appendix.tex}
+  \phantomsection
+  \part*{Appendix}
+  \addcontentsline{toc}{part}{Appendix}
+
+  \include{src/cheatsheet.tex}
 
 \end{spacing}
 \end{document}

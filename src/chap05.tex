@@ -1,0 +1,61 @@
+\chapter{Elementary Processes of Quantum Electrodynamics}
+
+\nonumsec{Summary}
+\begin{itemize}
+  \item 占位
+\end{itemize}
+
+\pagestyle{general}
+
+\section{\texorpdfstring{$e^+e^- \rightarrow \mu^+\mu^-$}:: Introduction}
+
+\subsection{P132 - (5.2)上面那个式子}
+
+由于$\mathcal{M}$只是个\textit{c-number}, 并非矩阵, 故$\mathcal{M}^\dagger = \mathcal{M}^*$
+
+\subsection{P132 - (5.3)上面那个求平均}
+
+考虑入射粒子流由$n$种不同的粒子组成, 发现每种粒子的概率为$p_n(\sum p_n = 1)$, 那么总截面即为每种粒子的分截面的总和, 即
+\begin{equation}
+  |\mathcal{M}|^2 = \sum p_n |\mathcal{M}_n|^2,
+\end{equation}
+书中的例子考虑自旋向上或向下的概率均为$1/2$, 即完全非极化的情况.
+
+由于入射流的粒子情况是已知的, 粒子总数目固定, 每种粒子所占的比例已知, 所以求总截面时计算各分截面的期望; 而对于出射流的粒子, 由于探测器忽略了自旋信息, 故需对所有携带有不同自旋信息的事件直接求和(否则结果中含有的自旋信息探测器探测不到).
+
+\subsection{P132 - (5.4)}
+\mybox{
+  (\textit{评论}) 题外话: 对矩阵的乘积取trace是一种常见的在由矩阵构成的线性空间中定义内积的方法.
+  简单算一下会发现这个内积就是对两个矩阵对应位置上的数字的乘积全部求和.
+}
+
+\subsection{P134 - (5.6)}
+
+由于只有当$\alpha\beta\gamma\delta$均不相同时$\epsilon^{\alpha\beta\gamma\delta}$才不为$0$, 故相乘时的4个度规必取$g^{00}g^{11}g^{22}g^{33}=-1$.
+这就是结果中负号的来源.
+
+\section{\texorpdfstring{$e^+e^- \rightarrow \mu^+\mu^-$}:: Helicity Structure}
+
+\subsection{P142 - (5.18)下面一段话}
+
+前面的\textit{right}-handed spinner $v(p')$指这个旋量$v(p')$是螺度算符的右手本征态$\psi_R$; 而后面的\textit{left}-handed positron指由$b^\dagger_{\mathbf{p}'}$算符产生的态(与此旋量$v(p')$相关)在自旋算符的作用下有本征值$-\frac{1}{2}$. (参考书中P61最下方那一大段话)
+
+\subsection{P144 - Figure 5.4}
+
+将粒子运动方向选为$z$轴的正方向, 考虑\textit{right}-handed旋量.
+由于无质量粒子的螺度本征值不改变, 则正粒子的自旋($J_z$)必定为$\frac{1}{2}$, 反粒子的自旋必定为$-\frac{1}{2}$.
+图中两电子的运动方向相反, 于是当选定电子$e^-$的运动方向为$z$轴的正方向时, 正电子的自旋自然也就变成了$\frac{1}{2}$.
+
+\subsection{P144 - (5.26)}
+
+参考笔记中的 \eqref{eq: spinor_explicit(ch.3)} 式或是Appendix中的 \nameref{appendix:spinor_field} 一节中旋量的具体表达式可以很简单地得到这个形式.
+
+\section{\texorpdfstring{$e^+e^- \rightarrow \mu^+\mu^-$}:: Nonrelativistic limit}
+
+\subsection{P146 - (5.33)}
+
+$E\rightarrow m_{\mu}$即$|\mathbf{k}|\rightarrow 0$时, 可将书中(5.12)式改写为
+\begin{equation}
+  \frac{d\sigma}{d\Omega}=\frac{\alpha^2}{4E^2_{\rm cm}}\frac{|\mathbf{k}|}{E}\biggl[2+ \frac{|\mathbf{k}|}{E}^2 \cos^2\theta\biggr],
+\end{equation}
+保留关于$|\mathbf{k}|$的一阶项, 即为书中的结果.

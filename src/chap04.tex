@@ -1,0 +1,196 @@
+\chapter{Interacting Fields and Feynman Diagrams}
+
+\nonumsec{Summary}
+\begin{itemize}
+  \item 整章内容都是基础, 需要掌握所有公式的推导
+  \item 几个理论的拉氏量:
+        \begin{align*}
+          \mathcal{L}_{\phi^4}        & = \mathcal{L}_{\text{Klein-Gordon}} + \mathcal{L}_{\text{int(}\phi^4\text{)}}                                                      \\
+                                      & = \tfrac{1}{2}(\partial_\mu \phi)^2 - \tfrac{1}{2}m^2\phi^2 - \tfrac{\lambda}{4!}\phi^4                                            \\[0.2cm]
+          \mathcal{L}_{\text{QED}}    & = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Maxwell}} + \mathcal{L}_{\text{int(QED)}}                                        \\
+                                      & = \overline{\psi}(i\cancel{\partial}-m)\psi - \tfrac{1}{4}(F_{\mu\nu})^2 - e\overline{\psi}\gamma^{\mu}\psi A_{\mu}                \\
+                                      & = \overline{\psi}(i\cancel{D}-m)\psi - \tfrac{1}{4}(F_{\mu\nu})^2                                                                  \\[0.2cm]
+          \mathcal{L}_{\text{Yukawa}} & = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Klein-Gordon}} + \mathcal{L}_{\text{int(Yukawa)}}                                \\
+                                      & = \overline{\psi}(i\cancel{\partial}-m)\psi + \tfrac{1}{2}(\partial_\mu \phi)^2 - \tfrac{1}{2}m^2\phi^2 - g\overline{\psi}\psi\phi
+        \end{align*}
+  \item 利用自由理论的关联函数计算相互作用理论的关联函数:
+        \begin{equation*}
+          \langle \Omega|T \bigl\{\phi(x)\phi(y)\bigr\}|\Omega \rangle = \lim_{T\rightarrow \infty(1-i\epsilon)}\frac{\langle 0|T \Bigl\{\phi_I(x)\phi_I(y)\exp\bigl[-i\int_{-T}^{T}dt\ H_I(t)\bigr]\Bigr\}|0 \rangle}{\langle 0|T \Bigl\{\exp\bigl[-i\int_{-T}^{T}dt\ H_I(t)\bigr]\Bigr\}|0 \rangle}
+        \end{equation*}
+  \item 关联函数的费曼图规则
+        \begin{equation*}
+          \langle \Omega|T \bigl[\phi(x)\cdots\phi(y)\bigr]|\Omega \rangle = \text{sum of all connected diagrams with}\ n\ \text{external points}
+        \end{equation*}
+  \item 散射截面的费曼图规则
+        \begin{equation*}
+          i\mathcal{M} = \text{sum of all connected, amputated diagrams}
+        \end{equation*}
+
+\end{itemize}
+\pagestyle{general}
+
+\section{Perturbation Theory --- Philosophy and Examples}
+
+学了后面的部分回来看这一节真是常看常新.
+
+\section{Perturbation Expansion of Correlation Functions}
+
+\subsection{P84 - (4.21)}
+
+Figure 4.1所表示的实际上是关于$T\{H_I(t_1) H_I(t_2)\}$的积分, 所以为了便于理解, 可以给等式左边的被积函数也加上编时记号$T$.
+
+图中上半三角上的积分可表示为
+\begin{equation}
+  \int_{t_0}^{t} dt_2 \int_{t_0}^{t_2} dt_1 T\{H_I(t_1) H_I(t_2)\},
+\end{equation}
+然后互换$t_1$, $t_2$, 由于编时记号的存在, 被积函数不变.
+由此, 上半三角和下半三角上的积分完全相等.
+
+\mybox{
+  (\textit{评论})也可以这么考虑: 由于编时记号的存在, 被积函数关于直线$t_1 = t_2$对称.
+}
+
+\subsection{P86 - (4.25)}
+
+我们当然可以直接把(4.25)带入(4.24)来验证它是正确的, 但也可以由如下方法得到这个解:
+\begin{enumerate}
+  \item 首先, (4.17)必然满足(4.24), 但它不满足边界条件($U = 1$ for $t = t'$);
+  \item 若采用(4.17)的形式, $U(t', t') = U(t', t_0) = e^{iH_0(t'-t_0)}e^{-iH(t'-t_0)}$为一\textbf{常数};
+  \item 给(4.17)左乘$U(t', t_0)^{-1} = e^{iH(t'-t_0)}e^{-iH_0(t'-t_0)}$, 那么此表达式必然满足(4.24)(只是乘了一个常数), 也必然满足边界条件($U(t', t_0)U(t', t_0)^{-1} = 1$).
+\end{enumerate}
+最后得到的表达式即(4.25).
+
+\subsection{P87 - (4.29)}
+
+这里是用$e^{-iHT}$从右侧作用到了$\langle 0|$上.
+
+\subsection{P87 - (4.31)}
+
+把前面的表达式里的$U$都拆开以后再加上编时记号, 就可以随意挪动位置消项, 最后可以得到这个结果.
+
+\section{Wick's Theorem}
+
+最后的证明展开后按正规序排好, 再反复使用$[A, BC] = B[A, C] + [A, B]C$即可.
+
+这里只给出了Bosonic field的Wick's Theorem, 对于Fermionic field, 还要根据场的对换次数确定符号(4.7节会讲).
+
+\section{Feynman Diagrams}
+
+\subsection{P95 - \textit{momentum-space Feynman rules}}
+
+其中第4条具体为: $(2\pi)^4 \delta(\sum\limits_i p_i)$.
+
+\subsection{P96 - (4.49)}
+
+$(2\pi)^4 \delta(0)$可以理解为$\int d^4x\ e^{ip\cdot 0}$, 即$\int d^4x$, 其值为全空间体积($2T\cdot V)$.
+
+\subsection{P96 - (4.51)下面的式子}
+
+\textit{The $1/n_i !$ is the symmetry factor coming from interchanging the $n_i$ copies of $V_i$.}
+
+\mybox{
+  (\textit{个人理解})这个对称系数来自于重复计算了“交换顶点”带来的系数, 即(4.45)下方的第一项所计算的\textit{interchange of vertices}.
+
+  \mbox{}
+
+  对于由$x-y$和两个$\mathbf{8}$字形的泡泡组成的费曼图来说, 交换两个泡泡的顶点是对称操作, 直接由Wick's theorem计算时并不会引入$2!$ (3个泡泡就是$3!$); 而若直接根据\textit{momentum-space Feynman rules}写出表达式时, 我们默认引入了这个系数并抵消掉了泰勒展开的系数, 因此这里需要给$V_i$乘$1/n_i !$.
+
+  \mbox{}
+
+  对于其他的泡泡, 只有交换部分顶点才是对称操作, 因此经过计算总会得到$1/n_i !$这个系数(可以试试算两个“糖葫芦形”的泡泡).
+  不过这也是合理的, 因为忽略内部的顶点交换的话, “交换顶点”在某种程度上和“交换两个图”是一样的.
+  因此最后效果就是书中所说的\textit{The $1/n_i !$ is the symmetry factor coming from interchanging the $n_i$ copies of $V_i$.}
+}
+
+\subsection{P97 - (4.52)}
+
+关于怎么由上面的式子得到本式的第一行: 注意这里的每一个$n_i$的取值范围都是0到$\infty$, 无论是先乘后加还是先加后乘, 展开后得到的结果都是一样的.
+可以试着算一个具体的有限的例子, 譬如$i = 1, 2, 3$, $n_i = 0, 1$.
+
+\section{Cross Sections and the \textit{S}-Matrix}
+
+这一节讲怎么由$S$-Matrix计算截面.
+最重要的公式是书中的(4.79)和(4.86).
+
+\subsection{P100 - (4.59) \& P101 - (4.62)}
+
+把这两个式子当作截面和衰变率的定义记下来就可以, QFT里的定义是最好的定义.
+
+\subsection{P102 - (4.65)}
+
+用$\langle \mathbf{x}|$同时作用在等式两边:
+\begin{equation}
+  \begin{aligned}
+    l.h.s. & = \langle \mathbf{x}|\phi \rangle = \phi(\mathbf{x})                                                                                                    \\
+    r.h.s. & = \int\frac{d^3 k}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf{k}}}}\phi(\mathbf{k})\langle \mathbf{x}|\mathbf{k} \rangle                                       \\
+           & = \int\frac{d^3 k}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf{k}}}}\phi(\mathbf{k})\sqrt{2E_{\mathbf{k}}}\langle \mathbf{x}|a^{\dagger}_{\mathbf{k}}|0 \rangle \\
+           & = \int\frac{d^3 k}{(2\pi)^3}\ e^{i\mathbf{k}\cdot\mathbf{x}}\phi(\mathbf{k})                                                                            \\
+           & = \phi(\mathbf{x}).
+  \end{aligned}
+\end{equation}
+
+\subsection{P102最下面的一大段话}
+
+\mybox{
+  (\textit{个人理解})中间的“Note that we use the Heisenberg picture:...”这一段是在说in state和out state是由含时算符的本征态建立的, 而这些算符本身会随着时间演化, 因此它们不共用同一组基, 所以它们之间会有nontrivial overlap.
+}
+
+\subsection{P103 - (4.68)}
+
+式中的$e^{-i\mathbf{b}\cdot\mathbf{k_{\mathcal{B}}}}$是\textbf{平移算符}(translation operator).
+可以参考J. J. Sakurai书中(1.6.32)式附近的说明.
+
+\subsection{P104 - (4.74)}
+
+因为考虑的是落在$d^3p_1\cdots d^3p_n$这个小区域里的概率, 所以这里的$\mathcal{P}$应该写为$d\mathcal{P}$.
+也因此, 等式右侧只有一个积分号, 利用书中(4.66)式可以将所有$|\phi(\mathbf{p}_n)|^2$归一化得到分子上那个$1$.
+
+\subsection{P105 - (4.77)}
+
+最后一行利用笔记中 \eqref{eq: delta_on_function} 式计算即可.
+
+关于$k_{\mathcal{A}}^{\bot}$:
+
+由
+\begin{gather}
+  \delta^{(4)}\Bigl(\sum k_i - \sum p_f\Bigr) \\
+  \delta^{(4)}\Bigl(\sum \bar{k}_i - \sum p_f\Bigr)
+\end{gather}
+可以得到
+\begin{equation}
+  k_\mathcal{A} + k_\mathcal{B} = \bar{k}_\mathcal{A} + \bar{k}_\mathcal{B},
+\end{equation}
+只考虑$\bot$分量:
+\begin{equation}
+  k_{\mathcal{A}}^{\bot} + k_{\mathcal{B}}^{\bot} = \bar{k}_{\mathcal{A}}^{\bot} + \bar{k}_{\mathcal{B}}^{\bot},
+\end{equation}
+再考虑$\delta^{(2)}(k_{\mathcal{B}}^{\bot} - \bar{k}_{\mathcal{B}}^{\bot})$, 则有
+\begin{equation}
+  k_{\mathcal{A}}^{\bot} = \bar{k}_{\mathcal{A}}^{\bot},
+\end{equation}
+即$\delta^{(2)}(k_{\mathcal{A}}^{\bot} - \bar{k}_{\mathcal{A}}^{\bot})$.
+
+\subsection{P106 - (4.78)}
+
+这里是把$\mathbf{k}_{\mathcal{A}}, \mathbf{k}_{\mathcal{B}}, \bar{\mathbf{k}}_{\mathcal{A}}, \bar{\mathbf{k}}_{\mathcal{B}}$全部用中心值$\mathbf{p}_{\mathcal{A}}, \mathbf{p}_{\mathcal{B}}$代替了.
+
+\section{Computing \textit{S}-Matrix Elements from Feynman Diagrams}
+
+\subsection{P109 - (4.89)}
+
+$e^{-iH(2t)}$可以写为$T(\exp[-i\int_{-T}^{T}dt\ H_I(t)])$的原因参考书中(4.28)和(4.29).
+
+\section{Feynman Rules for Fermions}
+
+\subsection{P119最上方的费曼图中的动量方向}
+
+前面一段话里提到了初态粒子对应入射(ingoing)动量, 而由于这种态总是与$\psi$或$\bar{\psi}$中的$a_{\mathbf{p}}$或$b_{\mathbf{p}}$形成contraction, 并且会乘上$e^{-ip\cdot x}$, 故$e^{-ip\cdot x}$总是对应着入射(ingoing)动量.
+反之, $e^{+ip\cdot x}$总是对应着出射(outgoing)动量.
+
+根据这个规则, 可以由书中费曼图底下式子中的$e^{-iq\cdot (x-y)}$一项确定费曼图中的动量方向.
+
+\section{Feynman Rules for Quantum Electrodynamics}
+
+\subsection{P123 - (4.131)}
+
+得到$A_\mu(x)$的过程和与K-G场下的过程基本一致, 只是需要添加一个矢量场$\epsilon_\mu$. 光子不同的极化对应不同的$\epsilon_\mu$, 于是需要用一组极化矢量来表示, 即书中的$\epsilon^r$(这里省略了狄拉克下标). 书中给出的就是考虑这些要求后的算符展开式.

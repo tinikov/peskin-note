@@ -1,0 +1,136 @@
+\chapter{Non-Abelian Gauge Invariance}
+
+% \nonumsec{Summary}
+% \begin{itemize}
+%   \item 占位
+% \end{itemize}
+% \pagestyle{general}
+
+\section{The Geometry of Gauge Invariance}
+
+\subsection{P483 - (15.5)}
+
+此处的展开为
+\begin{equation}\label{eq: expand_of_U(y,x)}
+  U(x+\epsilon n, x) = 1 + \epsilon n^{\mu} \partial'_{\mu}U(x', x)|_{x' = x} + \mathcal{O}(\epsilon^2),
+\end{equation}
+我们将$ie^{-1}\partial'_{\mu}U(x', x)|_{x' = x}$记为$A_{\mu}$, 即可得到书上的结果.
+
+\mybox{
+  \textit{注}:
+
+  此展开式也可以由$U(y, x)$更为一般的定义(参考15.3节)得到.
+  我们令其起点为$0$, 终点为$s$, 则可记$U(s, 0)$为$U(s)$, 且$U(0) = 1$, 其定义式为
+  \begin{equation}
+    \frac{d}{ds}U(s) = i\frac{dx^{\mu}(s)}{ds}A_{\mu}[x(s)]U(s).
+  \end{equation}
+
+  \begin{equation}
+    \begin{aligned}
+      U(s+\epsilon) & = U(s+\epsilon)U(s)^{-1}U(s)                                                                      \\
+                    & = \biggl[\biggl(U(s) + \epsilon\frac{d}{ds}U(s) \biggr)U^{-1}(s)\biggr]U(s)                       \\
+                    & = \biggl[U(s)\biggl(1 + i\epsilon \frac{dx^{\mu}(s)}{ds}A_{\mu}[x(s)]\biggr)U^{-1}(s) \biggr]U(s) \\
+                    & = \biggl(1 + i\epsilon \frac{dx^{\mu}(s)}{ds}A_{\mu}(x)\biggr)U(s),
+    \end{aligned}
+  \end{equation}
+  令$s=0$, 则
+  \begin{equation}
+    U(\epsilon) = 1 + i\epsilon n^{\mu} A_{\mu}(x).
+  \end{equation}
+
+  这里的$A_{\mu}$和书中的差一个系数$-\frac{1}{e}$.
+}
+
+\subsection{P484 - (15.9)}
+
+\begin{enumerate}
+  \item 这里要求$(U(x,y))^{\dagger} = U(y,x)$是自然的.
+        我们考虑对$(U(x,y))^{\dagger}$做书中(15.3)的变换, 有
+        \begin{equation}
+          (U(x,y))^{\dagger} \rightarrow (e^{i\alpha(x)}U(x,y)e^{-i\alpha(y)})^{\dagger} = e^{i\alpha(y)}(U(x,y))^{\dagger}e^{-i\alpha(x)},
+        \end{equation}
+        和$U(y,x)$的变换方式一致.
+
+  \item 关于如何得到这个式子:
+
+        首先我们将(\ref{eq: expand_of_U(y,x)})展开至$\epsilon^2$项(以下$\partial'_{\mu}U(x', x)|_{x' = x}$简写为$\partial_{\mu}U$)
+        \begin{equation}
+          \begin{aligned}
+            U(x+\epsilon n, x) & = 1 + \epsilon n^{\mu} \partial_{\mu}U + \tfrac{1}{2}\epsilon^2 n^{\mu} n^{\nu} \partial_{\mu} \partial_{\nu}U + \mathcal{O}(\epsilon^3) \\
+                               & = 1 - ie\epsilon n^{\mu}A_{\mu} - ie\epsilon n^{\mu} (\tfrac{1}{2} \epsilon n^{\nu} \partial_{\nu} A_{\mu}) + \mathcal{O}(\epsilon^3)    \\
+                               & = 1 - ie\epsilon n^{\mu}l(A_{\mu} + \tfrac{1}{2} \epsilon n^{\nu} \partial_{\nu} A_{\mu}) + \mathcal{O}(\epsilon^3)                      \\
+                               & = 1 - ie\epsilon n^{\mu}A_{\mu}(x+\tfrac{\epsilon}{2}n) + \mathcal{O}(\epsilon^3)                                                        \\
+                               & = \exp[-ie\epsilon n^{\mu}A_{\mu}(x+\tfrac{\epsilon}{2}n) + \mathcal{O}(\epsilon^3)].
+          \end{aligned}
+        \end{equation}
+
+  \item 检查这个式子满足$(U(x,y))^{\dagger} = U(y,x)$:
+        \begin{equation}
+          \begin{aligned}
+            (U(x+\epsilon n, x))^{\dagger} & = \exp[+ie\epsilon n^{\mu}A_{\mu}(x+\tfrac{\epsilon}{2}n)]                \\
+                                           & = \exp[+ie\epsilon n^{\mu}A_{\mu}((x+\epsilon n) - \tfrac{\epsilon}{2}n)] \\
+                                           & = U((x+\epsilon n)-\epsilon n, x+\epsilon n)                              \\
+                                           & = U(x, x+\epsilon n).
+          \end{aligned}
+        \end{equation}
+\end{enumerate}
+
+\subsection{P485 - (15.18)}
+
+这里提到的dimension 5 and 6指mass dimension, 下面一行就有写.
+
+\section{The Yang-Mills Lagrangian}
+
+\subsection{P487 - (15.26)}
+
+$V(x)V^{\dagger}(x) = 1$, 故$\partial_{\mu}(V(x)V^{\dagger}(x))=0$, 最后一行进行分部积分时用了这个性质.
+
+\subsection{P488 - (15.30)}
+
+对于有限变换, 证明如下:
+\begin{equation}
+  \begin{aligned}
+    D_{\mu}\phi & = \biggl(\partial_{\mu} - igA^{i}_{\mu}\frac{\sigma^i}{2}\biggr)\psi                                                                  \\
+                & \rightarrow \biggl(\partial_{\mu} - igV\biggl(A^{i}_{\mu}\frac{\sigma^i}{2} + \frac{i}{g}\partial_{\mu}\biggr)V^{\dagger}\biggr)V\psi \\
+                & = \partial_{\mu}(V\psi) - VigA^{i}_{\mu}\frac{\sigma^i}{2}\psi + V(\partial_{\mu}V^{\dagger})V\psi                                    \\
+                & = (\partial_{\mu}V)\psi + V\partial_{\mu}\psi - VigA^{i}_{\mu}\frac{\sigma^i}{2}\psi - (\partial_{\mu}V)V^{\dagger}V\psi              \\
+                & = V\biggl(\partial_{\mu} - igA^{i}_{\mu}\frac{\sigma^i}{2}\biggr)\psi                                                                 \\
+                & = VD_{\mu}\phi.
+  \end{aligned}
+\end{equation}
+
+\subsection{P489 - (15.38)}
+
+这里等式右端写成类似$-\frac{1}{4}\sum_{i}(F^i_{\mu\nu})^2$的形式会比较好理解.
+
+\subsection{P491 - (15.50)下面那一段话}
+
+\mybox{
+(\textit{个人理解})参照书中(15.46)和(15.50), $\psi$和$F^a_{\mu\nu}$以及它们的协变导数的变换中都不含有$\partial_{\mu}\alpha^a$项($D_{\lambda}F^a_{\mu\nu}$的变换需要稍微算一下), 故全局对称性就可以保证局域对称性.
+}
+
+\section{The Gauge-Invariant Wilson Loop}
+
+\subsection{P492 - (15.55)}
+
+这里用斯托克斯定理后调整一下形式即可(第三行调整了$\epsilon$上标的顺序):
+\begin{equation}
+  \begin{aligned}
+    U_P(y, y) & = \exp\Bigl[ -ie \oint_P dx^{\mu} A_{\mu}(x) \Bigr]                                                                                                                                                \\
+              & = \exp\Bigl[ -ie \int_{\Sigma} \epsilon^{\mu\nu\rho\sigma}\partial_{\rho} A_{\sigma} dx_{\mu}dx_{\nu}\Bigr]                                                                                        \\
+              & = \exp\Bigl[ -i\frac{e}{2} \int_{\Sigma} (\partial_{\rho} A_{\sigma} \epsilon^{\mu\nu\rho\sigma} dx_{\mu}dx_{\nu} - \partial_{\sigma} A_{\rho} \epsilon^{\mu\nu\rho\sigma} dx_{\mu}dx_{\nu})\Bigr] \\
+              & = \exp\Bigl[ -i\frac{e}{2} \int_{\Sigma} F_{\rho\sigma}\epsilon^{\mu\nu\rho\sigma} dx_{\mu}dx_{\nu}\Bigr]                                                                                          \\
+              & = \exp\Bigl[ -i\frac{e}{2} \int_{\Sigma} d\sigma^{\rho\sigma} F_{\rho\sigma} \Bigr].
+  \end{aligned}
+\end{equation}
+
+\section{Basic Facts about Lie Algebras}
+
+本节内容几乎是纯数学, 可以先只记结论.
+如对本节感到困惑, 建议参考Brian C. Hall的Lie Groups, Lie Algebras, and Representations (GTM 222).
+
+\mybox{
+  (\textit{评论})以后出门可以跟人吹高深莫测的牛: “我最近在看GTM 222”.
+}
+
+

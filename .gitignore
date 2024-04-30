@@ -275,14 +275,6 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 
-# source tex files
-chap*.tex
-ex*.tex
-
-# macos desktop settings
+# custom
 .DS_Store
-
-# shortcuts
-*.sh
-image/
 *.code-workspace

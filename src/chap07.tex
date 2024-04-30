@@ -1,0 +1,60 @@
+\chapter{Radiative Corrections: Some Formal Developments}
+
+\nonumsec{Summary}
+\begin{itemize}
+  \item Källén-Lehmann谱(标量场):
+        \begin{gather*}
+          \int d^4x\ e^{ip\cdot x}\langle \Omega |T\phi(x)\phi(0)|\Omega \rangle = \int_0^\infty \frac{dM_{\rm ph}^2}{2\pi}\rho(M_{\rm ph}^2)\frac{i}{p^2-M_{\rm ph}^2+i\epsilon} \\
+          = \frac{iZ}{p^2-m^2+i\epsilon} + \sum_{\rm bound\ state}\frac{i|\langle {\rm BS}|\phi(0)|0\rangle|^2}{p^2-m_{\rm bound}^2+i\epsilon} + \int_{4m^2}^\infty \frac{dM_{\rm ph}^2}{2\pi}\rho(M_{\rm ph}^2)\frac{i}{p^2-M_{\rm ph}^2+i\epsilon}
+        \end{gather*}
+
+
+\end{itemize}
+\pagestyle{general}
+
+\section{Field-Strength Renormalization}
+
+\subsection{P213 - Figure 7.1}
+
+因为多粒子态的静止能量和粒子间的相对速度有关, 所以在$H$-$\mathbf{P}$平面($E$-$\mathbf{p}$平面)上它们应该用一个连续的区域表示.
+
+\subsection{P213 - (7.4)}
+
+这里的变换可参考书中(2.49)式.
+
+\subsection{P213 - (7.5)}
+
+这里的计算可参考书中(2.54)式.
+但这里采用了Feynman propagator, 故应参考书中(2.59)式上面的图(只有一个极点).
+
+\subsection{P216 - (7.12)}
+\begin{equation}
+  \begin{aligned}
+    \langle \Omega|\psi(0)|p,s\rangle & = \langle \Omega|\int \frac{d^3 q}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf{q}}}} \sum_{r}\biggl(a^r_\mathbf{q}u^r(q) + b^{r\dagger}_\mathbf{q}v^r(q) \biggr) \sqrt{2E_{\mathbf{p}}} a^{s\dagger}_\mathbf{p}|0\rangle \\
+                                      & = \int \frac{d^3 q}{(2\pi)^3}\frac{\sqrt{2E_{\mathbf{p}}}}{\sqrt{2E_{\mathbf{q}}}} \langle \Omega|0\rangle \sum_{r}u^r(q) (2\pi)^3 \delta^{(3)}(\mathbf{p} - \mathbf{q}) \delta^{rs}                             \\
+                                      & = \sqrt{Z_2} u^s(p),
+  \end{aligned}
+\end{equation}
+其中$\sqrt{Z_2}$为重整化系数, 即$\langle \Omega|0\rangle$.
+
+\section{The LSZ Reduction Formula}
+
+\subsection{P226最上面的式子}
+
+可以认为由$|\lambda_{\mathbf{K}}\rangle$张成的空间为由$|\lambda_{\mathbf{q}_1}\rangle$张成的空间与由$|\lambda_{\mathbf{q}_1}\rangle$张成的空间的直和, 于是这里可以看作在不同的子空间上分别插入了两个不同的完备性关系(completeness relation):
+\begin{gather}
+  \mathbf{1} = |\Omega \rangle\langle \Omega| + \sum_{\lambda} \int \frac{d^3 q_1}{(2\pi)^3} \frac{1}{2E_{\mathbf{q}_1}(\lambda)}|\lambda_{\mathbf{q}_1}\rangle \langle \lambda_{\mathbf{q}_1}|, \\
+  \mathbf{1} = |\Omega \rangle\langle \Omega| + \sum_{\lambda} \int \frac{d^3 q_2}{(2\pi)^3} \frac{1}{2E_{\mathbf{q}_2}(\lambda)}|\lambda_{\mathbf{q}_2}\rangle \langle \lambda_{\mathbf{q}_2}|.
+\end{gather}
+
+书中式中第二行中的两个$\langle \Omega|$可以理解为不同子空间中的真空态.
+
+\subsection{P227 - (7.42)}
+
+将等式右侧的$\frac{\sqrt{Z}i}{p^2-m^2+i\epsilon}$项全部移至左侧, 注意到$p^2e^{ip\cdot x} = -\partial^2 e^{ip\cdot x}$, 再做两次分部积分, 就可以得到LSZ reduction formula的另一种形式(忽略$i\epsilon$):
+\begin{equation}
+  \begin{aligned}
+    \langle \mathbf{p}_1 \cdots \mathbf{p}_n|S|\mathbf{k}_1 \cdots \mathbf{k}_m \rangle & = (iZ^{-1/2})^{n+m}\prod_1^n \int d^4x_i\ e^{ip_i\cdot x_i}(\partial_{x_i}^2 + m^2)                                                                                    \\
+                                                                                        & \times \prod_1^m \int d^4y_i\ e^{ik_i\cdot y_i}(\partial_{y_i}^2 + m^2)\langle \Omega|T\bigl\{\phi(x_1)\cdots \phi(x_n)\phi(y_1)\cdots \phi(y_m)\bigr\}|\Omega \rangle
+  \end{aligned}
+\end{equation}

@@ -1,0 +1,145 @@
+\nonumchapkphdr{QFT Cheat Sheet}
+\fancypagestyle{cheatsheet}{
+  \fancyhead[RO]{{QFT Cheat Sheet}\quad\quad{\bfseries \thepage}}
+  \fancyhead[LE]{{\bfseries \thepage}\quad\quad{QFT Cheat Sheet}}
+}
+\pagestyle{cheatsheet}
+
+\nonumseckphdr{1. The Euler-Lagrange equation of motion}
+\begin{equation*}
+  \partial_\mu\biggl(\frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)}\biggr)-\frac{\partial \mathcal{L}}{\partial \phi} = 0
+\end{equation*}
+
+\nonumseckphdr{2. The stress-energy tensor}
+\begin{equation*}
+  T^{\mu}_{\phantom{\mu}\nu} \equiv \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \partial_\nu \phi - \mathcal{L}\delta^{\mu}_{\phantom{\mu}\nu}
+\end{equation*}
+
+\nonumseckphdr{3. The Pauli sigma matrices}
+\begin{equation*}
+  \sigma^i \sigma^j = \delta^{ij} + i\epsilon^{ijk}\sigma^k
+\end{equation*}
+\begin{equation*}
+  \sigma^1=\begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+  \end{pmatrix} \qquad
+  \sigma^2=\begin{pmatrix}
+    0 & -i \\
+    i & 0
+  \end{pmatrix} \qquad
+  \sigma^3=\begin{pmatrix}
+    1 & 0  \\
+    0 & -1
+  \end{pmatrix}
+\end{equation*}
+
+\nonumseckphdr{4. Fourier transform and Dirac delta function}
+\begin{gather*}
+  f(x) = \int\frac{d^4 k}{(2\pi)^4}\ e^{-ik\cdot x}\tilde{f}(k); \\
+  \tilde{f}(k) = \int d^4 x\ e^{ik\cdot x} f(x).
+\end{gather*}
+
+\begin{equation*}
+  \int d^4 x\ e^{ik\cdot x} = (2\pi)^4 \delta^{(4)}(k)
+\end{equation*}
+
+\nonumseckphdr{5. The Lorentz-invariant 3-momentum integral}
+\begin{equation*}
+  \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2E_{\mathbf{p}}}
+\end{equation*}
+
+\nonumseckphdr{6. The Dirac \texorpdfstring{$\gamma$}. matrices}
+\begin{equation*}
+  \{\gamma^\mu, \gamma^\nu\} = 2g^{\mu\nu} \times \mathbf{1}_{n\times n}.
+\end{equation*}
+In the \textit{Weyl} representation (\textit{chiral} representation),
+\begin{equation*}
+  \gamma^\mu=\begin{pmatrix}
+    0                & \sigma^\mu \\
+    \bar{\sigma}^\mu & 0
+  \end{pmatrix},
+\end{equation*}
+where
+\begin{equation*}
+  \sigma^\mu \equiv (1, \bm{\sigma}), \quad \bar{\sigma}^\mu \equiv (1, -\bm{\sigma}).
+\end{equation*}
+For $\gamma^5$,
+\begin{gather*}
+  (\gamma^5)^\dagger = \gamma^5; \\
+  (\gamma^5)^2 = 1; \\
+  \{\gamma^5, \gamma^\mu\} = 0,
+\end{gather*}
+specifically,
+\begin{equation*}
+  \gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3=-\frac{i}{4!}\epsilon^{\mu\nu\rho\sigma}\gamma_\mu\gamma_\nu\gamma_\rho\gamma_\sigma\doteq \begin{pmatrix}
+    -1 & 0 \\
+    0  & 1
+  \end{pmatrix}.
+\end{equation*}
+
+\nonumseckphdr{7. The \texorpdfstring{$\Gamma$}. in the \texorpdfstring{$\bar{\psi}\Gamma\psi$}.}
+\begin{equation*}
+  \begin{array}{cc}
+    1                                                     & \qquad\textrm{scalar}                      \\
+    \gamma^\mu                                            & \qquad\textrm{vector}                      \\
+    \sigma^{\mu\nu} = \frac{i}{2}[\gamma^\mu, \gamma^\nu] & \qquad\textrm{tensor}                      \\
+    \gamma^\mu\gamma^5                                    & \qquad\textrm{pseudo-vector(axial vector)} \\
+    \gamma^5                                              & \qquad\textrm{pseudo-scalar}
+  \end{array}
+\end{equation*}
+
+\clearpage
+\nonumseckphdr{8. The spinor field}\label{appendix:spinor_field}
+Positive frequency:
+\begin{equation*}
+  \psi(x) = u(p)e^{-ip\cdot x},\qquad p^2 = m^2,\qquad p^0 > 0
+\end{equation*}
+
+\begin{equation*}
+  u^s(p)=\begin{pmatrix}
+    \frac{p\cdot \sigma + m}{\sqrt{2(E+m)}}\xi^s \\
+    \frac{p\cdot \bar{\sigma} + m}{\sqrt{2(E+m)}}\xi^s
+  \end{pmatrix},\qquad s = 1,2
+\end{equation*}
+
+\begin{gather*}
+  \bar{u}^r(p)u^s(p) = 2m\delta^{rs}\\
+  u^{r\dagger}(p)u^s(p) = 2E_{\mathbf{p}}\delta^{rs}
+\end{gather*}
+
+Negative frequency:
+\begin{equation*}
+  \psi(x) = v(p)e^{+ip\cdot x},\qquad p^2 = m^2,\qquad p^0 > 0.
+\end{equation*}
+
+\begin{equation*}
+  v^s(p)=\begin{pmatrix}
+    \frac{p\cdot \sigma + m}{\sqrt{2(E+m)}}\eta^s \\
+    -\frac{p\cdot \bar{\sigma} + m}{\sqrt{2(E+m)}}\eta^s
+  \end{pmatrix},\qquad s = 1,2
+\end{equation*}
+
+\begin{gather*}
+  \bar{v}^r(p)v^s(p) = -2m\delta^{rs}\\
+  v^{r\dagger}(p)v^s(p) = +2E_{\mathbf{p}}\delta^{rs}
+\end{gather*}
+
+Orthogonality:
+\begin{gather*}
+  \bar{u}^r(p)v^s(p) = \bar{v}^r(p)u^s(p) = 0\\
+  u^{r\dagger}(\mathbf{p})v^s(-\mathbf{p}) = v^{r\dagger}(-\mathbf{p})u^s(\mathbf{p}) = 0
+\end{gather*}
+
+Spin sums:
+\begin{gather*}
+  \sum_s u^s(p)\bar{u}^s(p) = \cancel{p} + m\\
+  \sum_s v^s(p)\bar{v}^s(p) = \cancel{p} - m
+\end{gather*}
+\clearpage
+
+\nonumseckphdr{?. Peskin A.3}
+
+\nonumseckphdr{?. Basic process for calculating the cross section}
+
+\nonumseckphdr{?. Way of calculating the correlation function in different formalism (canonical/path integral)}

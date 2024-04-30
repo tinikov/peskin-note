@@ -1,0 +1,357 @@
+\chapter{Functional Methods}
+
+\nonumsec{Summary}
+\begin{itemize}
+  \item 关联函数、传播子以及费曼规则
+
+        不管是用哪种方法来对场进行量子化, 我们最关心的总是关联函数(Correlation function)这个基本量. 由于关联函数是用算符定义的, 所以即使是在路径积分的formalism中, 要计算关联函数也还是绕不开算符.
+
+        在路径积分formalism中, 我们其实是通过书中(9.14)式(从右向左)定义了(含有算符的)哈密顿力学. Transition function (含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)是被某种相位(与\cemph{理论相应的作用量}有关)的和(位形空间中从一点到另一点的所有路径)定义的. 于是, 我们可以继续用书中(9.15)找到关联函数在路径积分formalism下的表示方法(其中薛定谔绘景下的算符也是定义出来的).
+
+        得到书中(9.18)后, 具体计算其实不需要从“自由场”得到费曼传播子(也就是费曼规则中的内线), 再将“有相互作用的场”用传播子表示(因为路径积分不需要建立算符spectrum). 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果. 于是一切都完美对应上了(本来就可以证明是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
+
+        剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场的量子化). 至此量子场论的大框架就搭好了, 之后需要解决的就是各种各样理论中有趣的问题了.
+
+        \clearpage
+
+  \item K-G场:
+
+        \textbf{Generating functional}
+
+        一般形式:
+        \begin{equation*}
+          Z[J]\equiv\int \mathcal{D}\phi\ \exp\Bigl[i\int d^4x[\mathcal{L}+J(x)\phi(x)]\Bigr]
+        \end{equation*}
+
+        自由场理论中的具体形式:
+        \begin{equation*}
+          Z[J] = Z_0\ \exp\Bigl[-\tfrac{1}{2}\int d^4x\ d^4y\ J(x)D_F(x-y)J(y)\Bigr]
+        \end{equation*}
+
+        \textbf{Correlation function}
+
+        路径积分formalism中, 两点关联函数被定义为:
+        \begin{equation*}
+          \langle \Omega|T\hat{\phi}(x_1)\hat{\phi}(x_2)|\Omega \rangle = \lim_{T\rightarrow \infty(1-i\epsilon)}\frac{\int \mathcal{D}\phi\ \phi(x_1)\phi(x_2)\exp\Bigl[i\int_{-T}^{T}d^4x\ \mathcal{L}\Bigr]}{\int \mathcal{D}\phi\ \exp\Bigl[i\int_{-T}^{T}d^4x\ \mathcal{L}\Bigr]}
+        \end{equation*}
+        其中, $\hat{\phi}(x)$为Heisenberg绘景下的\cemph{场算符}, $\phi(x)$为普通的数. 它可由generating functional计算得到:
+        \begin{equation*}
+          \langle \Omega|T\hat{\phi}(x_1)\hat{\phi}(x_2)|\Omega \rangle = \frac{1}{Z_0}\biggl(-i\frac{\delta}{\delta J(x_1)}\biggr)(-i\frac{\delta}{\delta J(x_2)}\biggr)Z[J]\Bigl| _{J=0}
+        \end{equation*}
+  \item 电磁场:
+
+        \textbf{Correlation function}
+        \begin{equation*}
+          \langle \Omega|T \mathcal{O}(\hat{A})|\Omega \rangle = \lim_{T\rightarrow \infty(1-i\epsilon)}\frac{\int \mathcal{D}A\ \mathcal{O}(A)\exp\Bigl[i\int_{-T}^{T}d^4x \bigl[\mathcal{L} - \frac{1}{2\xi}(\partial^{\mu}A_\mu)^2\bigr]\Bigr]}{\int \mathcal{D}A\ \exp\Bigl[i\int_{-T}^{T}d^4x \bigl[\mathcal{L} - \frac{1}{2\xi}(\partial^{\mu}A_\mu)^2\bigr]\Bigr]}
+        \end{equation*}
+
+        \textbf{Photon propagator}
+        \begin{equation*}
+          D^{\mu\nu}_F(x-y) = \int \frac{d^4k}{(2\pi)^4} \frac{-i\ e^{-ik\cdot(x-y)}}{k^2+i\epsilon}\biggl(g^{\mu\nu}-(1-\xi)\frac{k^\mu k^\nu}{k^2}\biggr)
+        \end{equation*}
+        \begin{align*}
+          \xi & = 0\qquad\quad\text{Landau gauge};  \\
+          \xi & = 1\qquad\quad\text{Feynman gauge}.
+        \end{align*}
+        此书采用Feynamn gauge, 于是动量空间中光子传播子为:
+        \begin{equation*}
+          = \frac{-ig_{\mu\nu}}{k^2 + i\epsilon}
+        \end{equation*}
+  \item Dirac场:
+
+        \textbf{Correlation function}
+        \begin{equation*}
+          \langle 0|T\hat{\psi}(x_1)\hat{\overline{\psi}}(x_2)|0 \rangle = \lim_{T\rightarrow \infty(1-i\epsilon)}\frac{\int \mathcal{D}\overline{\psi} \mathcal{D}\psi\ \psi(x_1)\overline{\psi}(x_2) \exp\Bigl[i\int d^4x\ \overline{\psi}(i\cancel{\partial}-m)\psi\Bigr]}{\int \mathcal{D}\overline{\psi} \mathcal{D}\psi\ \exp\Bigl[i\int d^4x\ \overline{\psi}(i\cancel{\partial}-m)\psi\Bigr]}
+        \end{equation*}
+
+        \textbf{Generating functional}
+        \begin{gather*}
+          Z[\bar{\eta}, \eta] = \int \mathcal{D}\overline{\psi} \mathcal{D}\psi\ \exp\Bigl[i\int d^4x\ \bigl[\overline{\psi}(i\cancel{\partial}-m)\psi + \bar{\eta}\psi + \overline{\psi}\eta\bigr]\Bigr] \\
+          Z[\bar{\eta}, \eta] = Z_0\ \exp\Bigl[-\int d^4x\ d^4y\ \bar{\eta}(x)S_F(x-y)\eta(y)\Bigr]
+        \end{gather*}
+  \item Schwinger-Dyson equations
+        \begin{equation*}
+          \biggl\langle\Bigl(\frac{\delta}{\delta\varphi(x)}\int d^4x'\ \mathcal{L}\Bigr) \varphi(x_1)\cdots \varphi(x_n)\biggr\rangle = \sum_{i=1}^{n}\langle\varphi(x_1)\cdots \bigl(i\delta(x-x_i)\bigr)\cdots\varphi(x_n) \rangle
+        \end{equation*}
+  \item Schwinger-Dyson equations associated with the classical Noether theorem
+
+        ($j^\mu$为Noether守恒流)
+        \begin{equation*}
+          \partial_\mu \langle j^\mu(x) \varphi(x_1)\cdots\varphi(x_n)\rangle = \sum_{i=1}^{n}\delta(x-x_i)\langle\varphi(x_1)\cdots\varphi(x_n)\rangle
+        \end{equation*}
+
+\end{itemize}
+\pagestyle{general}
+
+\section{Path Integrals in Quantum Mechanics}
+
+这一节最重要的是书中的(9.2)式. 结合(9.3), 此式可以写为
+\begin{equation}\label{eq: path_nonfield}
+  U(x_a,x_b;T)=\langle x_b|e^{-iHT/\hbar}|x_a \rangle = \sum_{\rm all\ paths} e^{iS[x(t)]/\hbar} = \int \mathcal{D}x(t)e^{iS[x(t)]/\hbar},
+\end{equation}
+它给出了路径积分的核心思想: \textbf{从$x_a$到$x_b$的\cemph{每一条路径的传播振幅}都会对总的传播振幅有一个相因子的贡献}. 这一形式可以方便地推广到多自由度的情况, 此时的路径指\cemph{位形空间中的路径}.
+
+当我们考虑无限自由度, 并且将自由度下标写为连续变量$\mathbf{x}$时, 我们就得到了量子场论下的“路径积分”形式. 在量子场论中我们有: 系统从\textbf{$x^0=0$时刻的某一分布$\phi_a(\mathbf{x})$演化到$x^0=T$时刻的另一分布$\phi_b(\mathbf{x})$时, 可能出现的\cemph{每一种场分布}都会对传播振幅有一个相因子的贡献}, 即
+\begin{equation*}
+  U\bigl[\phi_a(\mathbf{x}),\phi_b(\mathbf{x});T\bigr]=\langle \phi_b(\mathbf{x})|e^{-iHT/\hbar}|\phi_a(\mathbf{x}) \rangle = \int \mathcal{D}\phi \exp\biggl[i\int_{0}^{T} d^4x\mathcal{L}\biggr]
+\end{equation*}
+
+剩下的随便看看就行了, 可以去看Sakurai或者Srednicki相关的部分.
+下一节开始才是重要的部分.
+
+\subsection{P276 - (9.2)}
+
+参考书中(9.1), $U(x_a, x_b; T)$实际上有着$e^{i \cdot (\text{phase})}$的形式.
+
+\subsection{P278 - (9.4)}
+
+\mybox{
+  (\textit{评论})简单的理解: 把一条路径看成有无限个自变量($x_n, n \rightarrow \infty$)的多元函数, 那么在这个由$x_n$张成的希尔伯特空间里积分的形式即为本式等号右边的形式.
+}
+
+\subsection{P279 - (9.5)}
+
+第一行的$[1-\frac{i\epsilon}{\hbar}V(x_b)+\cdots]$是展开两次后的结果: 先做近似$\exp(f(x)) = 1 + f(x) + \cdots$, 再对$V(\frac{x_b + x'}{2})$在$x_b$附近做泰勒展开.
+
+\subsection{P281 - Weyl order}
+
+第一项中的$q$向左作用在bra上, 第二项中左右各一个, 第三项向右作用在ket上, 这种排序下左侧的结果和右侧的一致.
+
+\section{Functional Quantization of Scalar Fields}
+
+\subsection{P282 - (9.14)}
+
+\mybox{
+  (\textit{个人理解})考虑离散形式(9.11)的话, 利用高斯积分积掉$\pi$的相关项就很自然了(不用考虑指数上那个对时间$t$的积分).
+
+  (\textit{评论})书的这一部分讲得有点复杂了, 这个形式实际上就是笔记中 \eqref{eq: path_nonfield} 式在场论情况下的推广.
+}
+
+\subsection{P285 - (9.21)及下面的一段话}
+
+离散化的傅立叶展开的推导(参考\href{https://physics.stackexchange.com/questions/533991/the-discrete-fourier-series-in-peskin-and-schroeder-page-285}{这个讨论}):
+
+考虑$dk = \Delta k = 2\pi/L$, 从连续形式出发, 有
+\begin{equation}
+  \begin{aligned}
+    \phi(x_i) & = \int \frac{d^4 k}{(2\pi)^4} \ e^{-ik\cdot x_i}\phi(k)                                   \\
+              & = \lim_{n\rightarrow\infty}\sum_n \frac{(\Delta k)^4}{(2\pi)^4} \ e^{-ik\cdot x_i}\phi(k) \\
+              & \approx \sum_n \frac{1}{(2\pi)^4} \frac{(2\pi)^4}{L^4}\ e^{-ik\cdot x_i}\phi(k)           \\
+              & = \frac{1}{V} \sum_n \ e^{-ik\cdot x_i}\phi(k).
+  \end{aligned}
+\end{equation}
+
+这里要求$|k^{\mu}| < \pi/\epsilon$的原因是在离散化的格点上函数的周期不能小于$2\epsilon$.
+(若周期为$\epsilon$, 则此函数在所有格点上取同一值, 与常数函数没有区别)
+
+令$\phi^*(k) = \phi(-k)$可以保证$Im\ \phi(-k_n) = -Im\ \phi(k_n)$, 这样在求和的时候虚部就会全部抵消.
+($k_n$求和范围: $[-\frac{\pi}{\epsilon}, -\frac{2\pi}{L}]\cup [\frac{2\pi}{L}, \frac{\pi}{\epsilon}]$)
+
+\subsection{P287 - (9.26)}
+
+计算形如$\int dx x^2 \exp(-bx^2)$的积分时, 可以对高斯积分内指数项中的系数求导:
+\begin{equation}
+  \begin{aligned}
+    \int dx x^2 \exp(-bx^2) & = -\int dx \frac{d}{db}\exp(-bx^2)      \\
+                            & = -\frac{d}{db} \int dx \exp(-bx^2)     \\
+                            & = -\frac{d}{db} \sqrt{\frac{\pi}{b}}    \\
+                            & = \frac{\sqrt{\pi}}{2}b^{-\frac{3}{2}}.
+  \end{aligned}
+\end{equation}
+
+在对书中(9.26)积分时, 仅对$m=n$的一项使用此式.
+
+\subsection{P289最上面讲有相互作用的场}
+这一小段把路径积分方法中和之前的正则量子化方法中计算费曼图的方法对应起来了. 因为比较重要, 所以相关的评论我写在本章开头的总结里了. 针对这里的计算的话, 我们只需要对书中(9.18)式中的分子分母同时除以$\int \mathcal{D}\phi\ e^{iS_0}$(注意将$\mathcal{L}$展开):
+\begin{equation}
+  \langle | \Omega T \hat{\phi}(x) \hat{\phi}(y) | \Omega \rangle = \frac{\frac{\int \mathcal{D}\phi\ e^{iS_0} \phi(x)\phi(y)}{\int \mathcal{D}\phi\ e^{iS_0}} - \frac{i\lambda}{4!}\int d^4x \frac{\int \mathcal{D}\phi\ e^{iS_0} \phi(x)\phi(y)\phi^4(z)}{\int \mathcal{D}\phi\ e^{iS_0}}+\cdots}{1 - \frac{i\lambda}{4!}\int d^4x \frac{\int \mathcal{D}\phi\ e^{iS_0} \phi^4(z)}{\int \mathcal{D}\phi\ e^{iS_0}}+\cdots}.
+\end{equation}
+再考虑书中(9.28)、(9.29)式(或(9.40)、(9.41)式), 上式就和正则量子化中的计算完全对应起来了. (比如分母上也是真空泡泡)
+
+\subsection{P290最下方一式的推导}\label{subsec: P290-derivation}
+\begin{equation}
+  \begin{aligned}
+    l.h.s & = \int d^4 x \biggl[\frac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
+          & \qquad \times \Bigl(-\partial^2 - m^2 + i\epsilon\Bigr)\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                 \\
+          & \qquad + J(x)\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)\biggr]                                                    \\
+          & = \int d^4 x \biggl[\frac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
+          & \qquad \times \Bigl((-\partial^2 - m^2 + i\epsilon)\phi'(x) - J(x)\Bigr)                                               \\
+          & \qquad + J(x)\phi'(x) + i\int d^4y\ J(x)D_F(x-y)J(y)\biggr]                                                            \\
+          & = \int d^4 x \biggl[\frac{1}{2}\phi'(x)(-\partial^2 - m^2 + i\epsilon)\phi'(x) - \frac{1}{2}J(x)\phi'(x)               \\
+          & \qquad - \frac{i}{2}\int d^4y D_F(x-y)J(y)(-\partial^2 - m^2 + i\epsilon)\phi'(x)                                      \\
+          & \qquad - \frac{i}{2}\int d^4y J(x)D_F(x-y)J(y)                                                                         \\
+          & \qquad + J(x)\phi'(x) + i\int d^4y\ J(x)D_F(x-y)J(y)\biggr]                                                            \\
+          & = \int d^4x [\tfrac{1}{2}\phi'(-\partial^2 - m^2 + i\epsilon)\phi'] - \int d^4x d^4y \tfrac{1}{2}J(x)[-iD_F(x-y)]J(y).
+  \end{aligned}
+\end{equation}
+
+其中用到了$(\partial^2 + m^2)D_F(x-y) = -i\delta^4(x-y)$.
+对倒数第4行分部积分后可以将其简化为$-\frac{1}{2}J(x)\phi'(x)$.
+
+\mybox{
+  \textit{函数空间}
+
+  \mbox{}
+
+  更好的方法是书中(9.37)的符号化方法. 为了便于理解, 可将路径积分离散化: 把$\phi(x)$中的连续下标$x$换为离散下标$i$; 将偏导看作函数空间上的一个算子, 则可将$(-\partial^2-m^2+i\epsilon)$表示为$M_{ij}$, 那么
+  \begin{equation}
+    \begin{aligned}
+      Z[J] & = \int d\phi_1 \cdots d\phi_N \ \exp\Bigl[i \bigl[\tfrac{1}{2}\phi_i M_{ij}\phi_j + J_i\phi_i\bigr] \Bigr]                                                               \\
+           & = \int d\phi_1 \cdots d\phi_N \ \exp\Bigl[i \bigl[\tfrac{1}{2}(\phi_i+J_{i'}M^{-1}_{i'i}) M_{ij} (\phi_j+M^{-1}_{jj'}J_{j'}) - \tfrac{1}{2}J_iM_{ij}^{-1}J_j\bigr]\Bigr] \\
+           & = Z_0\ \exp\Bigl[- \tfrac{i}{2}J_iM_{ij}^{-1}J_j\Bigr]                                                                                                                   \\
+           & = Z_0\ \exp\Bigl[- \tfrac{i}{2}J(-\partial^2-m^2+i\epsilon)^{-1}J\Bigr].
+    \end{aligned}
+  \end{equation}
+
+  第二行展开就是第一行(凑了一下形式), 然后利用平移操作下测度不变(做变换$\phi \rightarrow \phi+JM^{-1}$后, $d\phi_1 \cdots d\phi_N$保持不变)就可以得到$Z_0$.
+
+  \mbox{}
+
+  \textit{算符的逆}
+
+  \mbox{}
+
+  上式中还有一个需要计算的量: $(-\partial^2-m^2+i\epsilon)^{-1}$. 对于离散情况, 我们有
+  \begin{equation}
+    (-\partial^2-m^2+i\epsilon)^{-1}\phi \doteq M^{-1}_{ij}\phi_j,
+  \end{equation}
+  那么类比到连续情况, 有
+  \begin{equation}
+    (-\partial^2-m^2+i\epsilon)^{-1}\phi(x) \doteq \int d^4y\ M^{-1}_{(x,y)}\phi(y).
+  \end{equation}
+  考虑$(MM^{-1})$作用到某个向量$\phi(x)$上时, 有
+  \begin{equation}
+    \begin{aligned}
+      (-\partial^2-m^2+i\epsilon)(-\partial^2-m^2+i\epsilon)^{-1}\phi(x) & = \phi(x)                              \\
+      (-\partial^2-m^2+i\epsilon) \int d^4y\ M^{-1}_{(x,y)}\phi(y)       & = \phi(x)                              \\
+      \int d^4y \int d^4z\ M_{(x,z)}M^{-1}_{(z,y)}\phi(y)                & = \int d^4y\ \delta^{(4)}(x-y)\phi(y),
+    \end{aligned}
+  \end{equation}
+  于是我们得到了
+  \begin{equation}
+    \int d^4z\ M_{(x,z)}M^{-1}_{(z,y)} = \delta^{(4)} (x-y),
+  \end{equation}
+  即
+  \begin{equation}
+    (-\partial^2-m^2+i\epsilon)M^{-1}_{(x,y)} = \delta^{(4)} (x-y).
+  \end{equation}
+  到这里结果应该很显然了, $M^{-1}_{(x,y)}$就是$-iD_F(x-y)$. 于是
+  \begin{equation}
+    -\tfrac{i}{2}J(-\partial^2-m^2+i\epsilon)^{-1}J = \int d^4x d^4y J(x)[-iD_F(x-y)] J(y).
+  \end{equation}
+}
+
+\setcounter{section}{3}
+
+\section{Quantization of the Electromagnetic Field}
+
+\subsection{P294 - (9.52)}
+
+此式为自由电磁场Feynman propagator的定义的原因: 对上面的书中(9.51)式第二行应用Euler-Lagrangian equation, 即可得到自由电磁场的运动方程: $(\partial^2 g^{\mu\nu} - \partial^\mu \partial^\nu)A_\mu  = 0$. 后面推导带有规范固定项的自由电磁场Feynman propagator时做法也是类似的.
+
+(自由电磁场的运动方程也可以参考书中(4.8)式推导: $(\partial^2 g^{\mu\nu} - \partial^\mu \partial^\nu)A_\mu  = 0$$\partial_\mu F^{\mu\nu} = 0$, 即$\partial_\mu (\partial^\mu A^\nu - \partial^\nu A^\mu) = (\partial^2 g^{\mu\nu} - \partial^\mu \partial^\nu)A_\mu  = 0$.)
+
+  Singular的原因或许是$\det{(g^{\mu\nu})}\cdot \det{(-k^2g_{\mu\nu}+k_\mu k_\nu)} = \det{\bigl(g^{\mu\nu}(-k^2g_{\mu\nu}+k_\mu k_\nu)\bigr)} = 0$?
+
+  \subsection{P295 - (9.53)及下面一式(离散情况)}
+
+  首先考虑恒等式
+  \begin{equation}
+    \prod_{i} \int dg_i\ \delta^{(n)}(g) = 1,
+  \end{equation}
+  然后利用多重积分的换元法, 将积分变量从$g(a)$换为$a$, 即可得到离散情况下的恒等式.
+
+  \mybox{
+    \textit{注: 二重积分的换元法}
+    \begin{equation}
+      \int f(x, y)\ dxdy = \int f[x(u, v), y(u, v)]|J(u, v)|\ dudv,
+    \end{equation}
+    其中
+    \begin{equation}
+      J(u, v)=\begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+      \end{vmatrix}.
+    \end{equation}
+  }
+
+  \subsection{P297 - (9.58)}
+
+  将此式直接带入上面一行式子中即可验证. (注意指标)
+
+  \section{Functional Quantization of Spinor Fields}
+
+  \subsection{P299 - 倒数第二个式子下面一段}
+  这里是说
+  \begin{equation}
+    \int d\theta\bigl(A+B\theta\bigr) = aA + bB,
+  \end{equation}
+  其中$a$, $b$是系数.
+
+  可以记这个规则(定义):
+  \begin{equation}
+    \left\{\begin{array}{c}
+      \int d\theta\ 1 = 0 \\
+      \int d\theta\ \theta = 1
+    \end{array}\right.,
+  \end{equation}
+  第一行是因为积分在平移下不变, 第二行是归一化定义.
+
+  \subsection{P301 - (9.69)}
+  因为只有$\theta_i \theta^*_i$项有贡献, 所以在第一个等号处取了$B_{ij}$的迹.
+
+\subsection{P302 - (9.72)}
+\begin{itemize}
+  \item 高斯积分
+        \mybox{
+          (\textit{个人理解})在$\int d^4x\ \overline{\psi}(i\cancel{\partial}-m)\psi$中, $\psi$和$\overline{\psi}$是两个向量, $(i\cancel{\partial}-m)$是线性算子, $\int d^4x$是定义在此空间上的内积. 所以这个积分就是两个向量的内积, 可以用前面的高斯积分来计算.
+        }
+
+  \item 算符的逆
+        \mybox{
+          (\textit{参考网上别人讲的以后个人粗浅的理解})关于$-i(i\cancel{\partial}-m)$的逆, 考虑由于$[-i(i\cancel{\partial}-m)]S_F(x-y)=\delta^4(x-y)$, 费曼传播子$S_F(x-y)$就是$[-i(i\cancel{\partial}-m)]^{-1}$(但是需要在动量空间中计算).
+
+          (\textit{补记})书中(9.37)式就已经有类似的写法了.
+
+          \mbox{}
+
+          算符的逆问题可以参考:
+
+          \href{https://physics.stackexchange.com/questions/737484/ps-qft-derivation-of-9-72-correlation-function-of-spinor}{P\&S QFT derivation of (9.72) (correlation function of spinor)}
+
+          \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{In which sense is the linear operator the inverse of a Green function?}
+
+          (页面均来自\href{https://physics.stackexchange.com/}{Physics Stack Exchange})
+        }
+\end{itemize}
+
+\subsection{P302 - (9.74)}
+参考书中P290 - (9.36)下面的一段以及笔记中 \ref{subsec: P290-derivation} 一节的推导, 做如下平移:
+\begin{equation}
+  \begin{gathered}
+    \psi'(x) = \psi(x) - i\int d^4y\ S_F(x-y) \eta(y) \\
+    \overline{\psi}'(x) = \overline{\psi}(x) + i\int d^4y\ S_F(x-y) \overline{\eta}(y)
+  \end{gathered}\quad,
+\end{equation}
+
+\section{Symmetries in the Functional Formalism}
+
+\subsection{P308 - (9.87)}
+举个小例子:
+\begin{equation}
+  \begin{aligned}
+    \frac{\delta}{\delta \phi(x)}\int d^4x'\ \tfrac{1}{2} (\partial_\mu \phi)^2 & = \frac{1}{2} \int d^4x' \biggl[\frac{\delta}{\delta \phi(x)} \partial_\mu \phi \partial^\mu \phi + \partial_\mu \phi \frac{\delta}{\delta \phi(x)} \partial^\mu \phi\biggr] \\
+                                                                                & = \frac{1}{2} \int d^4 x' (-2)\cdot \partial^2\phi \cdot \delta(x'-x)                                                                                                        \\
+                                                                                & = -\partial^2\phi(x)
+  \end{aligned}
+\end{equation}
+
+\subsection{P310最上面的式子}
+\mybox{
+  (\textit{个人理解})当我们考虑一个局域变换$\epsilon(x)$时, 所有不包括$\partial_\mu\epsilon(x)$的项都可以被视为全局变换而用前面的(9.94)来处理; 于是我们只需要关心正比于$\partial_\mu\epsilon(x)$的项.(这或许就是书中(9.91)式前面那段话的意思)
+
+  \mbox{}
+
+  具体计算的话, 参考书中(2.11)式第一行等号右边的第二项(把$\alpha$换成$\epsilon$), 计算$\bigl(\frac{\partial
+      \mathcal{L}}{\partial(\partial_\mu\phi)}\bigr)\partial_\mu(\epsilon\Delta\phi)$的时候对$\epsilon$也求一下导, 很简单.
+}

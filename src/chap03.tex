@@ -1,0 +1,662 @@
+\chapter{The Dirac Field}
+
+\nonumsec{Summary}
+\begin{itemize}
+  \item \textbf{}整章内容都是基础, 需要掌握所有公式的推导
+  \item \textbf{}书中第47页定义了螺度(helicity)算符
+  \item \textbf{}书中第51页提到了轴矢量流和手征变换
+  \item \textbf{}书中第48页写了旋量的具体表达式
+  \item \textbf{}书中第72页关于\textbf{离散对称变换}的表可以帮助我们构建真实的粒子在场论中具体算符的形式(根据宇称等量子数)
+  \item \textbf{}费曼传播子(\textbf{旋量场}):
+        \begin{equation*}
+          \langle 0|T\psi(x)\overline{\psi}(y)|0 \rangle = S_F(x-y)\equiv \int \frac{d^4 p}{(2\pi)^4} \frac{i(\cancel{p} + m)}{p^2 - m^2 +i\epsilon} e^{-ip\cdot (x-y)}
+        \end{equation*}
+        \mybox{
+          \textit{注}: 常常会看见这样的形式($i\epsilon$有时也会被省略)
+          \begin{equation*}
+            \tilde{S}_F(p) = \frac{i}{\cancel{p} - m +i\epsilon}
+          \end{equation*}
+        }
+\end{itemize}
+\pagestyle{general}
+
+\section{Lorentz Invariance in Wave Equations}
+
+注意: 本书中的变换都是对场本身进行操作. (\textit{active} point of view)
+
+\subsection{P36 - (3.3)}
+
+这里只要把$(\Lambda^{-1}x)$看作是$x$的某个函数$y(x) = \Lambda^{-1}x$, 做复合函数的求导即可.
+等式右端最后那个括号的意思是前面的函数$\partial_{\nu}\phi$在$\Lambda^{-1}x$处取值.
+
+\subsection{P39 - (3.15) (3.16)}
+
+$J^3 = J^{12}$中, 3是(3.15)中的的上标, 12是中间没有序号的式子中的上标.
+
+从这里开始会用全反对称的张量来表示矢量.
+它们所带有的信息是一样的, 只是形式上对称的量会更方便使用.
+而同时, 后面的参数也被全反对称化了, 也因此多了个$1/2$的系数.
+
+\mybox{
+  (\textit{评论})一开始学到这里的时候我很迷惑, 不过习惯了就好了.
+  对这些含有张量的表达式或运算感到疑惑的时候, 把分量具体写出来算一遍总是个好办法.
+}
+
+\subsection{P39 - (3.17)}
+
+我们在书中(3.16)这一具体表示下计算得到了Lorentz Algebra生成元之间的对易关系, 而由于代数本身与表示无关, 故书中(3.17)就是Lorentz Algebra的定义.
+随后我们将使用此定义来计算Lorentz Algebra在其他空间中的具体表示.
+
+\subsection{P39 - (3.18)}
+
+这是洛伦兹群在矢量空间的具体表示, 相当重要, 后面也要用到.
+$\mu\nu$指标代表着6个洛伦兹变换(3个boost和3个rotation), $\alpha$和$\beta$代表矢量的4个分量.
+
+\mybox{
+  (\textit{评论})注意区分矢量空间和其他表示空间 (这一章基本是旋量空间) 的指标. 一般后者会被省略.
+}
+
+关于它是怎么来的: 可以尝试在Minkowski时空中写出(3.16)的具体表示(把它作用到某个具体的时空$4$-vector上), 会得到一些和这个形式很像的东西! (正确的计算方法不是这样的, 但总之这个式子不完全是被\textit{pulled out of a hat} !)
+
+\mybox{
+  (\textit{个人理解}) 可以尝试计算
+  \begin{equation}
+    \begin{aligned}
+      x_\alpha & \rightarrow i(x^\mu\partial^\nu-x^\nu\partial^\mu)x_\beta                                                                                         \\
+               & = i(x^\mu\delta^\nu_{\phantom{\nu}\beta} - x^\nu\delta^\mu_{\phantom{\mu}\beta})                                                                  \\
+               & = i(\delta^\mu_{\phantom{\mu}\alpha} \delta^\nu_{\phantom{\nu}\beta} - \delta^\nu_{\phantom{\nu}\alpha} \delta^\mu_{\phantom{\mu}\beta})x^\alpha.
+    \end{aligned}
+  \end{equation}
+}
+
+\subsection{P40 - (3.19)}
+
+写成有限形式就是$V' = \exp{(-\frac{i}{2}\omega_{\mu\nu}\mathcal{J}^{\mu\nu})}V$. (对比书中(3.13))
+
+\section{The Dirac Equation}
+
+狄拉克旋量具体可写为:
+\begin{equation}
+  \psi = \begin{pmatrix}
+    \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4
+  \end{pmatrix},
+\end{equation}
+其狄拉克共轭为:
+\begin{equation}
+  \overline{\psi} = \psi^\dagger \gamma^0 = \Bigl(\psi^\dagger_1, \psi^\dagger_2, \psi^\dagger_3, \psi^\dagger_4\Bigr)\gamma^0.
+\end{equation}
+
+\subsection{P40 - (3.23)}
+
+\begin{equation}
+  \begin{aligned}
+    \relax
+    [S^{\mu\nu}, S^{\rho\sigma}] & = \biggl[\frac{i}{4}(\gamma^\mu \gamma^\nu - \gamma^\nu \gamma^\mu), \ \frac{i}{4}(\gamma^\rho \gamma^\sigma - \gamma^\sigma \gamma^\rho)\biggr]                                                                                           \\
+                                 & = \biggl(\frac{i}{4}\biggr)^2 \Bigl\{\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma - \gamma^\mu \gamma^\nu \gamma^\sigma \gamma^\rho - \gamma^\nu \gamma^\mu \gamma^\rho \gamma^\sigma + \gamma^\nu \gamma^\mu \gamma^\sigma \gamma^\rho \\
+                                 & \qquad \quad \ \ - \gamma^\rho \gamma^\sigma \gamma^\mu \gamma^\nu + \gamma^\rho \gamma^\sigma \gamma^\nu \gamma^\mu + \gamma^\sigma \gamma^\rho \gamma^\mu \gamma^\nu - \gamma^\sigma \gamma^\rho \gamma^\nu \gamma^\mu \Bigr\}.
+  \end{aligned}
+\end{equation}
+
+注意到下面一行中上标的顺序恰好与上面一行的相反.
+以第一项和最后一项为例子, 反复使用对易关系(3.22), 我们可以得到:
+\begin{equation}
+  \begin{aligned}
+      & \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma - \gamma^\sigma \gamma^\rho \gamma^\nu \gamma^\mu                                                                                                                                          \\
+    = & - 2g^{\mu\nu}\gamma^\sigma \gamma^\rho + 2g^{\mu\rho}\gamma^\sigma \gamma^\nu - 2g^{\mu\sigma}\gamma^\rho \gamma^\nu + 2g^{\nu\rho}\gamma^\mu \gamma^\sigma - 2g^{\nu\sigma}\gamma^\mu \gamma^\rho + 2g^{\rho\sigma}\gamma^\mu \gamma^\nu.
+  \end{aligned}
+\end{equation}
+计算其余三项时调整上标即可(善用文本编辑器的\textbf{查找和替换}功能).
+
+大括号内结果:
+\begin{equation}
+  \begin{aligned}
+     & - 2g^{\mu\nu}\gamma^\sigma \gamma^\rho + 2g^{\mu\rho}\gamma^\sigma \gamma^\nu - 2g^{\mu\sigma}\gamma^\rho \gamma^\nu + 2g^{\nu\rho}\gamma^\mu \gamma^\sigma - 2g^{\nu\sigma}\gamma^\mu \gamma^\rho + 2g^{\rho\sigma}\gamma^\mu \gamma^\nu  \\
+     & + 2g^{\mu\nu}\gamma^\rho \gamma^\sigma - 2g^{\mu\sigma}\gamma^\rho \gamma^\nu + 2g^{\mu\rho}\gamma^\sigma \gamma^\nu - 2g^{\nu\sigma}\gamma^\mu \gamma^\rho + 2g^{\nu\rho}\gamma^\mu \gamma^\sigma - 2g^{\sigma\rho}\gamma^\mu \gamma^\nu  \\
+     & + 2g^{\nu\mu}\gamma^\sigma \gamma^\rho - 2g^{\nu\rho}\gamma^\sigma \gamma^\mu + 2g^{\nu\sigma}\gamma^\rho \gamma^\mu - 2g^{\mu\rho}\gamma^\nu \gamma^\sigma + 2g^{\mu\sigma}\gamma^\nu \gamma^\rho - 2g^{\rho\sigma}\gamma^\nu \gamma^\mu  \\
+     & - 2g^{\nu\mu}\gamma^\rho \gamma^\sigma + 2g^{\nu\sigma}\gamma^\rho \gamma^\mu - 2g^{\nu\rho}\gamma^\sigma \gamma^\mu + 2g^{\mu\sigma}\gamma^\nu \gamma^\rho - 2g^{\mu\rho}\gamma^\nu \gamma^\sigma + 2g^{\sigma\rho}\gamma^\nu \gamma^\mu,
+  \end{aligned}
+\end{equation}
+消项合并后可以得到:
+\begin{equation}
+  -4g^{\mu\rho}[\gamma^\nu, \gamma^\sigma] + 4g^{\mu\sigma}[\gamma^\nu, \gamma^\rho] + 4g^{\nu\rho}[\gamma^\mu, \gamma^\sigma] - 4g^{\nu\sigma}[\gamma^\mu, \gamma^\rho],
+\end{equation}
+考虑系数$(\frac{i}{4})^2$, 即可证明(3.23)满足(3.17).
+
+\subsection{P42 - (3.28)下面的两个式子}
+
+第一个式子的证明:
+\begin{equation}
+  \begin{aligned}
+    l.h.s & = \frac{i}{4}\bigl[\gamma^\mu, [\gamma^\rho, \gamma^\sigma]\bigr]                                                                                                                                  \\
+          & = \frac{i}{4}[\gamma^\mu, \gamma^\rho \gamma^\sigma] - \frac{i}{4}[\gamma^\mu, \gamma^\sigma \gamma^\rho]                                                                                          \\
+          & = \frac{i}{4}\Bigl(\{\gamma^\mu, \gamma^\rho\}\gamma^\sigma - \gamma^\rho\{\gamma^\mu, \gamma^\sigma\} - \{\gamma^\mu, \gamma^\sigma\}\gamma^\rho + \gamma^\sigma\{\gamma^\mu, \gamma^\rho\}\Bigr) \\
+          & = \frac{i}{4}\Bigl(2g^{\mu\rho}\gamma^\sigma - 2g^{\mu\sigma}\gamma^\rho - 2g^{\mu\sigma}\gamma^\rho + 2g^{\mu\rho}\gamma^\sigma \Bigr)                                                            \\
+          & = i(g^{\mu\rho}\gamma^\sigma - g^{\mu\sigma}\gamma^\rho),                                                                                                                                          \\
+    \                                                                                                                                                                                                          \\
+    r.h.s & = g^{\mu\lambda}(\mathcal{J}^{\rho\sigma})_{\lambda\nu} \gamma^\nu                                                                                                                                 \\
+          & = g^{\mu\lambda}\cdot i(\delta^\rho_{\phantom{1}\lambda} \delta^\sigma_{\phantom{1}\nu} - \delta^\rho_{\phantom{1}\nu} \delta^\sigma_{\phantom{1}\lambda}) \gamma^\nu                              \\
+          & = i(g^{\mu\rho}\gamma^\sigma - g^{\mu\sigma}\gamma^\rho),
+  \end{aligned}
+\end{equation}
+$l.h.s = r.h.s$, 即证.
+
+第二个式子中, 把左边展开后忽略二阶小量即可.
+
+\subsection{P42 - (3.31)下方验证洛伦兹协变的式子}
+
+对第一行的$\gamma^\mu \partial_\mu$做变换后会多出来一个$\Lambda^{-1}$的原因参考书中式(3.3).
+
+\subsection{P43 - (3.35)}
+
+小技巧:
+\begin{equation}
+  \frac{\partial (\partial_\mu \phi)}{\partial (\partial_\nu \phi)} = \delta_\mu^{\phantom{1}\nu},
+\end{equation}
+相似地,
+\begin{equation}
+  \frac{\partial (\partial_\mu A_\nu)}{\partial (\partial_\rho A_\sigma)} = \delta_\mu^{\phantom{1}\rho}\delta_\nu^{\phantom{1}\sigma}.
+\end{equation}
+
+\subsection{P44 - (3.38)}
+
+注意这里的$\sigma^2$指$\sigma^i, i=2$.
+(我第一次遇见的时候以为是$\bm{\sigma}$的平方, $\bm{\sigma}^2$, 想了好半天)
+
+\section{Free-Particle Solutions of the Dirac Equation}
+
+\subsection{P46 - (3.49)}\label{subsubsec: Boost_u_p}
+
+\begin{enumerate}
+  \item \textbf{}最后一步要用到(3.48)的结果, 即$\sqrt{m}\ e^{\eta/2} = \sqrt{E + p^3}$, 以及$\sqrt{m}\ e^{-\eta/2} = \sqrt{E - p^3}$.
+  \item \textbf{}若只考虑3-direction, 最终结果可以写为
+        \begin{equation}
+          \begin{pmatrix}
+            \biggl(\begin{smallmatrix}
+                     \sqrt{E-p^3} & 0 \\ 0 & \sqrt{E+p^3}
+                   \end{smallmatrix}\biggr)\xi \\
+            \biggl(\begin{smallmatrix}
+                     \sqrt{E+p^3} & 0 \\ 0 & \sqrt{E-p^3}
+                   \end{smallmatrix}\biggr)\xi
+          \end{pmatrix},
+        \end{equation}
+  \item \textbf{}这里对$u(p_0)$进行boost后得到了$u(p)$, 完整形式实际上是$u'(\Lambda p_0) = \Lambda_{\frac{1}{2}}u(p_0)$ (boost后应有prime), 即$u'(p) = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p)$, 与书中(3.8)式形式一致.
+        (在推导(3.110)时会用到)
+        \mybox{
+          \textit{注}:
+
+          书中(3.8)是坐标空间下的变换规则, 但按照书中(3.2)式的思想, 动量空间中的变换规则也应该是一致的.
+          最直接的验证方法是将书中(3.46)式($u(p)$为满足此方程的解)写为$(\gamma^\mu(\Lambda p)_\mu - m)u(\Lambda p) = 0$, 利用书中(3.29)式得到含有$\Lambda_{1/2}$的形式后, 再和原式做比较.
+
+          \mbox{}
+
+          附另外一个直接推导:
+
+          由于$\psi(x) = u(p)e^{-ip\cdot x}$, 所以进行变换$\psi(x) \rightarrow \psi'(x) = \Lambda_{\frac{1}{2}}\psi(\Lambda^{-1}x)$后, 对$u(p)$有
+          \begin{equation}
+            \begin{aligned}
+              u'(p)e^{-ip\cdot x} & = \Lambda_{\frac{1}{2}}u(p)e^{-ip\cdot \Lambda^{-1}x}                           \\
+              u'(p)e^{-ip\cdot x} & = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p')e^{-i\Lambda^{-1}p'\cdot \Lambda^{-1}x} \\
+              u'(p)e^{-ip\cdot x} & = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p')e^{-ip'\cdot x},
+            \end{aligned}
+          \end{equation}
+          所以对$\psi(x)$的做的变换实际上使得
+          \begin{equation}
+            u(p) \rightarrow u'(p) = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p).
+          \end{equation}
+        }
+\end{enumerate}
+
+\subsection{P46 - (3.50)}
+
+\begin{enumerate}
+  \item \textbf{}关于$\sqrt{p\cdot \sigma}$的含义:
+
+        在只考虑3-direction时, $p\cdot \sigma = p^0 + p^3\sigma^3$, 已经是对角化的形式, 取正根即可.
+
+        若考虑更一般的形式, 对(3.49)式的结果做替换$\sigma^3 \rightarrow \bm{\sigma}\cdot\hat{n},\ p^3 \rightarrow \mathbf{p}\cdot\hat{n}$, 其中$\hat{n} = \hat{p}$.
+        考虑第一个分量的平方
+        \begin{equation}
+          \begin{aligned}
+              & \biggl(\sqrt{E+\mathbf{p}\cdot\hat{n}} \frac{1-\bm{\sigma}\cdot\hat{n}}{2} + \sqrt{E-\mathbf{p}\cdot\hat{n}} \frac{1+\bm{\sigma}\cdot\hat{n}}{2} \biggr)^2                        \\
+            = & (E+\mathbf{p}\cdot\hat{n}) \frac{1-\bm{\sigma}\cdot\hat{n}}{2} + (E-\mathbf{p}\cdot\hat{n}) \frac{1+\bm{\sigma}\cdot\hat{n}}{2} + \sqrt{E^2 - (\mathbf{p}\cdot\hat{n})^2} \cdot 0 \\
+            = & E - (\mathbf{p}\cdot\hat{n})(\bm{\sigma}\cdot\hat{n})                                                                                                                             \\
+            = & E - \mathbf{p} \cdot \bm{\sigma}                                                                                                                                                  \\
+            = & p \cdot \sigma .
+          \end{aligned}
+        \end{equation}
+  \item \textbf{}本书的\href{https://www.slac.stanford.edu/~mpeskin/QFT.html}{纠错网页}提到旋量$u(p)$还可以被表示为:
+        \begin{equation}\label{eq: spinor_explicit(ch.3)}
+          u(p)=\begin{pmatrix}
+            \frac{p\cdot \sigma + m}{\sqrt{2(E+m)}}\xi \\
+            \frac{p\cdot \bar{\sigma} + m}{\sqrt{2(E+m)}}\xi
+          \end{pmatrix}
+        \end{equation}
+
+        证明:
+        \begin{equation}
+          \begin{aligned}
+            \biggl(\frac{p\cdot \sigma + m}{\sqrt{2(E+m)}}\biggr)^2 & = \frac{1}{2(E+m)}(E-\mathbf{p}\cdot \bm{\sigma}+m)^2                                                                                                    \\
+                                                                    & = \frac{1}{2(E+m)}(E^2 - 2E\ \mathbf{p}\cdot \bm{\sigma} + (\mathbf{p}\cdot \bm{\sigma})^2 + 2mE - 2m\ \mathbf{p}\cdot \bm{\sigma} + E^2 - \mathbf{p}^2) \\
+                                                                    & = \frac{1}{2(E+m)} (2E(E + m) - 2\mathbf{p}\cdot \bm{\sigma}(E + m))                                                                                     \\
+                                                                    & = (E - \mathbf{p}\cdot \bm{\sigma}) = p\cdot \sigma.
+          \end{aligned}
+        \end{equation}
+        注意其中$(\mathbf{p}\cdot \bm{\sigma})^2 = \mathbf{p}^2$.
+        $(p\cdot \bar{\sigma} + m)$一项的证明也是类似的.
+
+        又注意到
+        \begin{equation}
+          u(p)=\begin{pmatrix}
+            \frac{p\cdot \sigma + m}{\sqrt{2(E+m)}}\xi \\
+            \frac{p\cdot \bar{\sigma} + m}{\sqrt{2(E+m)}}\xi
+          \end{pmatrix}
+          =\frac{1}{\sqrt{2m(E+m)}}\begin{pmatrix}
+            m                   & p\cdot \sigma \\
+            p\cdot \bar{\sigma} & m
+          \end{pmatrix}
+          \sqrt{m}
+          \begin{pmatrix}
+            \xi \\
+            \xi
+          \end{pmatrix},
+        \end{equation}
+        于是
+        \begin{equation}
+          u(p) = \frac{\cancel{p}+m}{\sqrt{2m(E+m)}}u(p_0).
+        \end{equation}
+\end{enumerate}
+
+\subsection{P46 - (3.51)}
+
+记得把(3.50)代回到(3.45)后再做计算.
+
+\subsection{P47 - (3.54)}
+当粒子的动量方向沿着$3$-direction时, $h = \hat{p}_3\cdot S_3=\frac{1}{2}\sigma_3$, (3.52)和(3.53)自然是其本征态(它们都是考虑沿着$3$-direction的boost得到的具体表达).
+
+\mybox{
+  (\textit{评论})
+  \begin{enumerate}
+    \item 在(3.52)和(3.53)中的large boost意味着我们考虑了$m\rightarrow 0$的情况($E^2 = \mathbf{p}^2 + m^2$), 而无质量极限下的Dirac旋量场满足Weyl equations(书中(3.40)式).
+          此时我们发现, Dirac旋量的具体表示也“恰好”变成了Weyl旋量的形式, 即
+          \begin{equation}
+            \left\{\begin{array}{l}
+              \psi_L = \sqrt{2E}\ e^{-ip\cdot x} \bigl(\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}\bigr) \\
+              \psi_R = \sqrt{2E}\ e^{-ip\cdot x} \bigl(\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\bigr)
+            \end{array}\right.,
+          \end{equation}
+          并且它们有着定义良好的螺度本征值.
+    \item 其实我们从书中(3.40)式就可以发现Weyl旋量是螺度算符的本征态(以$\psi_L$为例):
+          \begin{equation}
+            i(\partial_0 - \bm{\sigma}\cdot \bm{\nabla})\psi_L = i\partial_0 u(p)e^{-ip\cdot x} + i(\bm{\sigma}\cdot \bm{\nabla}) u(p)e^{-ip\cdot x} = 0,
+          \end{equation}
+          即
+          \begin{equation}
+            (\bm{\sigma} \cdot \mathbf{p})\psi_L = -E\psi_L,
+          \end{equation}
+          化简后即为$(\hat{p}\cdot \bm{\sigma})\psi_L = -\psi_L$(注意$m\rightarrow 0$, 即$|\mathbf{p}|\rightarrow E$).
+          $\psi_R$同理.
+    \item 如果在书中(3.47)不加入$\sqrt{m}$这个系数, 无质量极限下旋量的具体表示会在分母上有个$\sqrt{m}$, 从而导致表达式发散.
+  \end{enumerate}
+}
+
+\section{Dirac Matrices and Dirac Field Bilinears}
+
+\subsection{P50 - (3.72)}
+
+这里可以自己验证一下$\bar{\psi} \gamma^5 \psi$在连续洛伦兹变换下是标量.
+
+\subsection{P51 - (3.76)}
+
+利用书中(3.72),
+\begin{equation}
+  \biggl( \frac{1 - \gamma^5}{2} \biggr) \psi = \begin{pmatrix}
+    1 & 0 \\
+    0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    \psi_L \\
+    \psi_R
+  \end{pmatrix} = \begin{pmatrix}
+    \psi_L \\
+    0
+  \end{pmatrix},
+\end{equation}
+而$\psi^\dagger \gamma^0 \gamma^\mu$中的两个$\gamma$相乘会得到对角形式的矩阵.
+因此整个表达式只与$\psi_L$有关, 为左手流.
+
+\subsection{P51 - (3.77)}
+
+建议对16个分量直接进行验证.
+
+\subsection{P51 - (3.78)}
+
+将矩阵的元素(即带有下标的形式, 例如$\epsilon_{\alpha \gamma}$)具体写出来后, 由于这些元素只是数字(\textit{c-number}), 所以可以随便挪动位置.
+(矩阵乘法的分量形式: $(AB)_{ab} = \sum_c A_{ac} B_{cb}$) 后面的计算中经常要用到这个技巧.
+
+恒等式的证明:
+\begin{equation}
+  \begin{aligned}
+    l.h.s. & = (\bar{u}_{1R})_\alpha (u_{2R})_\beta (\bar{u}_{3R})_\gamma (u_{4R})_\delta (\sigma^{\mu})_{\alpha\beta} (\sigma_{\mu})_{\gamma\delta}      \\
+           & = (\bar{u}_{1R})_\alpha (u_{2R})_\beta (\bar{u}_{3R})_\gamma (u_{4R})_\delta (2\epsilon_{\alpha\gamma} \epsilon_{\beta\delta})               \\
+           & = (\bar{u}_{1R})_\alpha (u_{2R})_\beta (\bar{u}_{3R})_\gamma (u_{4R})_\delta (-2\epsilon_{\alpha\gamma} \epsilon_{\delta\beta})              \\
+           & = (\bar{u}_{1R})_\alpha (u_{2R})_\beta (\bar{u}_{3R})_\gamma (u_{4R})_\delta (\sigma^{\mu})_{\alpha\delta} (\sigma_{\mu})_{\gamma\beta} (-1) \\
+           & = -(\bar{u}_{1R} \sigma^{\mu} u_{4R})(\bar{u}_{3R} \sigma_{\mu} u_{2R}),
+  \end{aligned}
+\end{equation}
+第三行中调换了$\beta$和$\delta$的位置.
+
+\section{Quantization of the Dirac Field}
+
+\subsection{{P52} - (3.84)}
+\begin{equation}
+  \begin{aligned}
+    \mathcal{H} & = i {\psi}^\dagger \dot{\psi} - \mathcal{L}                                                              \\
+                & = i {\psi}^\dagger \dot{\psi} - i \bar{\psi} \gamma^0 \dot{\psi} - i \bar{\psi} \gamma^i \partial_i \psi \\
+                & = {\psi}^\dagger (-i \gamma^i \partial_i + m) \psi.
+  \end{aligned}
+\end{equation}
+
+\mybox{
+  (\textit{评论})注意$\gamma^\mu \partial_\mu = \gamma^0 \partial_0 + \gamma^i \partial_i$. 不要习惯性地写成减号.
+}
+
+\subsection{P52 - (3.86)}
+为什么在标量场部分我们关心的是场和其正则动量的对易关系, 而在这里我们关心的是$\psi$和$\bar{\psi}$的对易关系呢?
+
+小提示: 尝试计算一下它们的正则动量! (Peskin你明说一下多好\ 〒\_〒)
+
+\subsection{P54 - (3.90)}
+
+利用$u^s(\mathbf{p})e^{i\mathbf{p} \cdot \mathbf{x}}$是$h_D$的本征函数的性质简化书中(3.84), 之后的计算很简单.
+
+\subsection{P59 - (3.110)附近}
+\begin{enumerate}
+  \item \textbf{}注意$p\cdot x = \Lambda p\cdot \Lambda x$(书中(3.4)式).
+  \item \textbf{}(3.110)上面一行里的那个关系在此笔记的 \ref{subsubsec: Boost_u_p} 中已经证明过了.
+\end{enumerate}
+
+\section{Discrete Symmetries of the Dirac Theory}
+
+\subsection{P67 - 中间没有序号的式子}
+
+这里是说$\psi(-t, \mathbf{x})|0\rangle$应该是正频项的和$e^{-iHt}\psi(\mathbf{x})|0\rangle$, 但用时间反演算符计算得到的结果却是负频项的和$e^{iHt}[T\psi(\mathbf{x})T]|0\rangle$.
+它们之间是矛盾的.
+
+\subsection{P68 - (3.134)}
+
+$\xi(\uparrow)$和$\xi(\downarrow)$是$\bm{\sigma}\cdot\mathbf{\hat{n}}$的本征态.
+参见\textit{Modern Quantum Mechanics - J.J.Sakurai}: \textbf{Problem 1.9}.
+
+\subsection{P68 - (3.136)}
+
+这里可以把$\eta^s$写为$\xi^{-s}$的原因在(3.112)上面的那一大段话中有讲.
+
+\subsection{P70 - (3.147)}
+
+关于这里第三步中出现的负号, 具体计算过程如下:
+\begin{equation*}
+  \begin{aligned}
+    -\gamma^0_{ab}\gamma^2_{bc}\psi_c\bar{\psi}_d\gamma^0_{de}\gamma^2_{ea} = & +\bar{\psi}_d \gamma^0_{de}\gamma^2_{ea}\gamma^0_{ab}\gamma^2_{bc}\psi_c - \bigl\{\psi_c,\psi_f^\dagger\bigr\}\gamma^0_{fd} \gamma^0_{ab}\gamma^2_{bc}\gamma^0_{de}\gamma^2_{ea}\ ,
+  \end{aligned}
+\end{equation*}
+其中第二项为(第三行用到了奇数个$\gamma^{\mu}$矩阵的迹为零的性质)
+\begin{equation*}
+  \begin{aligned}
+    \bigl\{\psi_c,\psi_f^\dagger\bigr\}\gamma^0_{fd} \gamma^0_{ab}\gamma^2_{bc}\gamma^0_{de}\gamma^2_{ea} = & \delta_{cf}\gamma^0_{fd}\gamma^0_{ab}\gamma^2_{bc}\gamma^0_{de}\gamma^2_{ea}\delta^{(3)}(\mathbf{x}-\mathbf{x}) \\
+    =                                                                                                       & \mathrm{Tr}\bigl(\gamma^0 \gamma^0 \gamma^2 \gamma^0 \gamma^2\bigr)\delta^{(3)}(0)                              \\
+    =                                                                                                       & 0 \delta^{(3)}(0)                                                                                               \\
+    =                                                                                                       & 0.
+  \end{aligned}
+\end{equation*}
+故
+\begin{equation*}
+  \begin{aligned}
+    -\gamma^0_{ab}\gamma^2_{bc}\psi_c\bar{\psi}_d\gamma^0_{de}\gamma^2_{ea} = & +\bar{\psi}_d \gamma^0_{de}\gamma^2_{ea}\gamma^0_{ab}\gamma^2_{bc}\psi_c.
+  \end{aligned}
+\end{equation*}
+
+\clearpage
+\nonumsec{Problems}
+\nonumssec{3.1 Lorentz group}
+\paragraph*{(1)定义:}
+\begin{itemize}
+  \item \textbf{Lorentz algebra}
+        \begin{equation}
+          [J^{\mu\nu}, J^{\rho\sigma}] = i(g^{\nu\rho}J^{\mu\sigma} - g^{\mu\rho}J^{\nu\sigma} - g^{\nu\sigma}J^{\mu\rho} + g^{\mu\sigma}J^{\nu\rho}).
+        \end{equation}
+  \item \textbf{Generators of rotations and boosts}
+        \begin{equation}
+          L^i = \tfrac{1}{2}\epsilon^{ijk}J^{jk},\qquad K^i = J^{0i}.
+        \end{equation}
+  \item \textbf{Lorentz transformation}
+
+        无穷小变换可以写为:
+        \begin{equation}
+          \Phi \rightarrow (1 - i\bm{\theta}\cdot\mathbf{L} - i\bm{\beta}\cdot\mathbf{K})\Phi.
+        \end{equation}
+
+        如果定义$\theta_i = \epsilon_{ijk}\omega_{jk}$, $\beta_i = \omega_{0i}$, 则Lorentz transformation可以简略地表示为
+        \begin{equation}
+          \Lambda = \exp(-\tfrac{i}{2}\omega_{\mu\nu}J^{\mu\nu}).
+        \end{equation}
+  \item \textbf{Decomposition of the group}
+        \begin{equation}
+          \mathbf{J}_+ = \tfrac{1}{2}(\mathbf{L}+i\mathbf{K})\ \ \ {\rm and}\ \ \ \mathbf{J}_- = \tfrac{1}{2}(\mathbf{L}-i\mathbf{K}).
+        \end{equation}
+\end{itemize}
+
+\paragraph*{(2)计算对易关系: }
+\begin{itemize}
+  \item $[L^i, L^j]$
+        \begin{equation}
+          \begin{aligned}
+            \relax[L^i, L^j] & = [\tfrac{1}{2}\epsilon^{ikl}J^{kl}, \tfrac{1}{2}\epsilon^{jmn}J^{mn}]                                \\
+                             & = \tfrac{i}{4}\epsilon^{ikl}\epsilon^{jmn}(g^{lm}J^{kn} - g^{km}J^{ln} - g^{ln}J^{km} + g^{kn}J^{lm}) \\
+                             & = i\epsilon^{ikl}\epsilon^{jmn}\delta^{km}J^{ln}                                                      \\
+                             & = i\epsilon^{kil}\epsilon^{kjn}J^{ln}                                                                 \\
+                             & = i(\delta^{ij}\delta^{ln}-\delta^{in}\delta^{lj})J^{ln}                                              \\
+                             & = i\delta^{ij}{\rm tr}(J) - iJ^{ji}                                                                   \\
+                             & = \tfrac{1}{2}i(J^{ij} - J^{ji})                                                                      \\
+                             & = \tfrac{1}{2}i(\delta^{im}\delta^{jn}-\delta^{in}\delta^{jm})J^{mn}                                  \\
+                             & = \tfrac{1}{2}i\epsilon^{kij}\epsilon^{kmn}J^{mn}                                                     \\
+                             & = i\epsilon^{ijk}L^k.
+          \end{aligned}
+        \end{equation}
+        \begin{itemize}
+          \item 行2 $\rightarrow$ 行3:
+
+                \quad ①\ 对每一项, 调整上标位置后重新标记上标字母;
+
+                \quad ②\ 由于$k, m = 1, 2, 3$, $g^{km} = -\delta^{km}$.
+          \item 行4 $\rightarrow$ 行5 \& 行8 $\rightarrow$ 行9:
+
+                \quad \ $\epsilon^{ijk}\epsilon^{imn} = \delta^{jm}\delta^{kn} - \delta^{jn}\delta^{km}$.
+          \item 行6 $\rightarrow$ 行7: $J$ 全反对称; ${\rm tr}(J)=0$.
+        \end{itemize}
+  \item $[K^i, K^j]$
+        \begin{equation}
+          \begin{aligned}
+            \relax[K^i, K^j] & = [J^{0i}, J^{0j}]                                             \\
+                             & = i(g^{i0}J^{0j} - g^{00}J^{ij} - g^{ij}J^{00} + g^{0j}J^{i0}) \\
+                             & = -iJ^{ij} = -i\epsilon^{ijk}L^k.
+          \end{aligned}
+        \end{equation}
+  \item $[L^i, K^j]$
+        \begin{equation}
+          \begin{aligned}
+            \relax[L^i, K^j] & = [\tfrac{1}{2}\epsilon^{ikl}J^{kl}, J^{0j}]                                            \\
+                             & = \tfrac{i}{2}\epsilon^{ikl}(g^{l0}J^{kj} - g^{k0}J^{lj} - g^{lj}J^{k0} + g^{kj}J^{l0}) \\
+                             & = \tfrac{i}{2}(\epsilon^{ikj}J^{k0} - \epsilon^{ijl}J^{j0})                             \\
+                             & = i\epsilon^{ijk}J^{0k} = i\epsilon^{ijk}K^{k}.
+          \end{aligned}
+        \end{equation}
+  \item $[\mathbf{J}_+, \mathbf{J}_-]$
+        \begin{equation}
+          \begin{aligned}
+            \relax[\mathbf{J}_+, \mathbf{J}_-] & = [\tfrac{1}{2}(\mathbf{L}+i\mathbf{K}), \tfrac{1}{2}(\mathbf{L}-i\mathbf{K})] \\
+                                               & = \tfrac{i}{4} (-[\mathbf{L}, \mathbf{K}] + [\mathbf{K}, \mathbf{L}])          \\
+                                               & = -\tfrac{i}{2} \sum\nolimits_i [L^i, K^i]                                     \\
+                                               & = \tfrac{1}{2}\sum\nolimits_i\epsilon^{iik}K^k = 0.
+          \end{aligned}
+        \end{equation}
+  \item $[J_+^i, J_+^j]$ and $[J_-^i, J_-^j]$
+        \begin{equation}
+          \begin{aligned}
+            \relax[J_+^i, J_+^j] & = [\tfrac{1}{2}(L^i+iK^i), \tfrac{1}{2}(L^j+iK^j)]                   \\
+                                 & = \tfrac{1}{4}([L^i, L^j]+i[L^i, K^j]-i[L^j, K^i]-[K^i, K^j])        \\
+                                 & = \tfrac{1}{4}i\epsilon^{ijk}(L^k + iK^k + iK^k + L^k)               \\
+                                 & = i\epsilon^{ijk}\cdot\tfrac{1}{2}(L^k+iK^k) = i\epsilon^{ijk}J_+^k.
+          \end{aligned}
+        \end{equation}
+
+        同理, $[J_-^i, J_-^j] = i\epsilon^{ijk}J_-^k$.
+  \item \textbf{总结}:
+        \begin{equation}
+          \left\{\begin{array}{l}
+            \relax[L^i, L^j] = i\epsilon^{ijk}L^k  \\
+            \relax[K^i, K^j] = -i\epsilon^{ijk}L^k \\
+            \relax[L^i, K^j] = i\epsilon^{ijk}K^k
+          \end{array} \right.
+        \end{equation}
+        \begin{equation}{\label{eq: subalgebra_Lorentz}}
+          \left\{\begin{array}{l}
+            \relax[J_+^i, J_+^j] = i\epsilon^{ijk}J_+^k \\
+            \relax[J_-^i, J_-^j] = i\epsilon^{ijk}J_-^k \\
+            \relax[\mathbf{J}_+, \mathbf{J}_-] = 0
+          \end{array} \right.
+        \end{equation}
+\end{itemize}
+
+\paragraph*{(3)Decompose Lorentz Algebra: }
+由上面的 \eqref{eq: subalgebra_Lorentz} 式可知, 洛伦兹代数可以被分解为两个${\rm su}(2)$子代数的直和, 即
+\begin{equation}
+  {\rm so}(1, 3) = {\rm su}(2) \bigoplus {\rm su}(2),
+\end{equation}
+而${\rm su}(2)$子代数的不可约表示是由一个角动量量子数$j$(取整数或半整数)来标记的, 故我们可以很方便地用一对整/半整数$(j_+, j_-)$来标记洛伦兹代数的所有不可约表示.
+
+\paragraph*{(4) $(\frac{1}{2}, 0)$及$(0, \frac{1}{2})$表示: }
+\begin{itemize}
+  \item $(\frac{1}{2}, 0)$:
+        \begin{equation}
+          \left\{\begin{array}{l}
+            \mathbf{J}_+ = \tfrac{1}{2}\bm{\sigma} \\
+            \mathbf{J}_- = 0
+          \end{array} \right.,
+        \end{equation}
+        则
+        \begin{equation}
+          \left\{\begin{array}{l}
+            \mathbf{L} = \mathbf{J}_+ + \mathbf{J}_- = \frac{1}{2}\bm{\sigma} \\
+            \mathbf{K} = -i(\mathbf{J}_+ - \mathbf{J}_-) = -\frac{i}{2}\bm{\sigma}
+          \end{array} \right..
+        \end{equation}
+        无穷小变换可以写为
+        \begin{equation}
+          \Phi \rightarrow (1 - i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} - \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2})\Phi,
+        \end{equation}
+        对应$\psi_L$(左手Weyl spinor).
+  \item $(0, \frac{1}{2})$:
+        \begin{equation}
+          \left\{\begin{array}{l}
+            \mathbf{J}_+ = 0 \\
+            \mathbf{J}_- = \tfrac{1}{2}\bm{\sigma}
+          \end{array} \right.,
+        \end{equation}
+        则
+        \begin{equation}
+          \left\{\begin{array}{l}
+            \mathbf{L} = \mathbf{J}_+ + \mathbf{J}_- = \frac{1}{2}\bm{\sigma} \\
+            \mathbf{K} = -i(\mathbf{J}_+ - \mathbf{J}_-) = \frac{i}{2}\bm{\sigma}
+          \end{array} \right..
+        \end{equation}
+        无穷小变换可以写为
+        \begin{equation}
+          \Phi \rightarrow (1 - i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2})\Phi,
+        \end{equation}
+        对应$\psi_R$(右手Weyl spinor).
+\end{itemize}
+
+\paragraph*{(5) 矢量表示: }
+构造场$\psi'=\psi^T_L \sigma^2$, 对其作无穷小洛伦兹变换有
+\begin{equation}
+  \psi' \rightarrow \psi'(1 + i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}).
+\end{equation}
+构造复合场$\Psi = \psi_R \psi'$, 则$\Psi$是一个满足洛伦兹群$(\frac{1}{2}, \frac{1}{2})$表示的$2\times 2$矩阵, 即
+\begin{equation}
+  \Psi \rightarrow (1 - i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}) \Psi (1 + i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}).
+\end{equation}
+将这个$2\times 2$矩阵参数化为$\Psi = \bar{\sigma}_{\mu}V^{\mu} = V^0 + \sigma^i V^i$, 即
+\begin{equation}
+  \Psi = \begin{pmatrix}
+    V^0+V^3  & V^1-iV^2 \\
+    V^1+iV^2 & V^0-V^3
+  \end{pmatrix},
+\end{equation}
+变换关系可以写为
+\begin{equation}
+  \begin{aligned}
+    \Psi & \rightarrow \begin{pmatrix}
+                         1 + \frac{1}{2}(-i\theta^3+\beta^3)                     & \frac{1}{2}(-i\theta^1 - \theta^2 + \beta^1 - i\beta^2) \\
+                         \frac{1}{2}(-i\theta^1 + \theta^2 + \beta^1 + i\beta^2) & 1 + \frac{1}{2}(i\theta^3-\beta^3)
+                       \end{pmatrix}             \\
+         & \quad\ \times \begin{pmatrix}
+                           V^0+V^3  & V^1-iV^2 \\
+                           V^1+iV^2 & V^0-V^3
+                         \end{pmatrix}
+    \begin{pmatrix}
+      1 + \frac{1}{2}(i\theta^3+\beta^3)                     & \frac{1}{2}(i\theta^1 + \theta^2 + \beta^1 - i\beta^2) \\
+      \frac{1}{2}(i\theta^1 - \theta^2 + \beta^1 + i\beta^2) & 1 - \frac{1}{2}(i\theta^3+\beta^3)
+    \end{pmatrix}                                  \\
+         & = \Psi + \begin{pmatrix}
+                      \begin{matrix}
+        \beta^3 V^0 + \beta^3 V^3 \\ + (- \theta^2 + \beta^1) V^1 + (\theta^1 + \beta^2) V^2
+      \end{matrix}
+                       &
+                      \begin{matrix}
+        (\beta^1 - i\beta^2) V^0 + (i\theta^1 + \theta^2) V^3 \\ -i\theta^3 V^1 - \theta^3 V^2
+      \end{matrix}
+                      \\ \mbox{} \\
+                      \begin{matrix}
+        (\beta^1 + i\beta^2) V^0 + (-i\theta^1 + \theta^2) V^3 \\ i\theta^3 V^1 - \theta^3 V^2
+      \end{matrix}
+                       &
+                      \begin{matrix}
+        -\beta^3 V^0 + \beta^3 V^3 \\ + (\theta^2 + \beta^1) V^1 + (-\theta^1 + \beta^2) V^2
+      \end{matrix}
+                    \end{pmatrix}                                                                                                        \\
+         & = \Psi + \mathbf{1} \cdot \beta^i V^i + \sigma_1 (\beta^1 V^0 + \theta^2 V^3 - \theta^3 V^2)                                              \\
+         & \qquad\ + \sigma_2 (\beta^2 V^0 -\theta^1 V^3 + \theta^3 V^1) + \sigma_3 (\beta^3 V^0 + \theta^1 V^2 - \theta^2 V^1)                      \\
+         & = \Psi + \mathbf{1} \cdot \omega^{0j} V^j - \sigma_1 (\omega^{10}V^0 + \omega^{13}V^3 + \omega^{12}V^2)                                   \\
+         & \qquad\ - \sigma_2 (\omega^{20} V^0 + \omega^{23} V^3 + \omega^{21} V^1) - \sigma_3 (\omega^{30} V^0 + \omega^{32} V^2 - \omega^{31} V^1) \\
+         & = \Psi + \mathbf{1} \cdot \omega^{0j} V^j + \sigma_i (-\omega^{i0}V^0 - \omega^{ij}V^j)                                                   \\
+         & = \Psi + \mathbf{1} \cdot \omega^{0}_{\phantom{0}\nu} V^{\nu} + \sigma_i \omega^{i}_{\phantom{0}\nu}V^{\nu}                               \\
+         & = \bar{\sigma}_{\mu} (1 + \omega^{\mu}_{\phantom{0}\nu}) V^{\nu} = \bar{\sigma}_{\mu} \Lambda^{\mu}_{\phantom{0}\nu} V^{\nu}.
+  \end{aligned}
+\end{equation}
+\begin{itemize}
+  \item 在倒数第3行到倒数第2行这一步中, 形如$\omega^{0j}, \omega^{ij},\dots$的记号标记$\omega$这一张量不同矩阵元中具体的数值(即$\beta^j, \epsilon^{ijk}\theta^k,\dots$); 而形如$\omega^{\mu}_{\phantom{0}\nu}$的记号标记的是抽象的矩阵元.
+        在考虑了度规对矩阵元的作用后, 这一步就很简单了. (可以用一个$g$对$\omega$作用一下试试! )
+  \item 最后一步可以通过展开书中(3.19)式得到
+\end{itemize}
+另解:
+\begin{equation}
+  \begin{aligned}
+    \Psi & \rightarrow (1 - i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}) (V^0 + \sigma^i V^i) (1 + i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}) \\
+         & \begin{aligned}
+             \ \ =\Psi & + V^0 (i\theta^j\tfrac{\sigma^j}{2} + \beta^j\tfrac{\sigma^j}{2}) + (-i\theta^j\tfrac{\sigma^j}{2} + \beta^j\tfrac{\sigma^j}{2}) V^0                   \\
+                       & + \sigma^i V^i (i\theta^j\tfrac{\sigma^j}{2} + \beta^j\tfrac{\sigma^j}{2}) + (-i\theta^j\tfrac{\sigma^j}{2} + \beta^j\tfrac{\sigma^j}{2}) \sigma^i V^i
+           \end{aligned}                                           \\
+         & \ = \Psi + \bm{\beta}\cdot\bm{\sigma}V^0 + \tfrac{i\theta^j}{2}[\sigma^i, \sigma^j]V^i +  \tfrac{\beta^j}{2}\{\sigma^i, \sigma^j\}V^i                                                                        \\
+         & \ = \Psi + \beta^j V^j + \sigma^i \beta^i V^0 - \sigma^i \epsilon^{ijk} \theta^k V^j                                                                                                                         \\
+         & \ = \cdots                                                                                                                                                                                                   \\
+         & \ = \bar{\sigma}_{\mu} \Lambda^{\mu}_{\phantom{0}\nu} V^{\nu}.
+  \end{aligned}
+\end{equation}
+因此, 洛伦兹群的$(\frac{1}{2}, \frac{1}{2})$表示等价于其矢量表示.
+两者相差一个相似变换$\bar{\sigma}$.
+
+\nonumssec{3.2 Gordon Identity}
+Derive the \textit{Gordon identity},
+\begin{equation}
+  \bar{u}(p')
+\end{equation}

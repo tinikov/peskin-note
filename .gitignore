@@ -277,4 +277,4 @@ TSWLatexianTemp*
 
 # custom
 .DS_Store
-*.code-workspace
+*/.DS_Store

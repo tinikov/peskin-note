@@ -47,9 +47,6 @@
 % 输入数组矩阵
 \usepackage{array}
 
-% 费曼图
-% \usepackage[compat=1.1.0]{tikz-feynman}
-
 % 输入正体希腊字母
 \usepackage{upgreek}
 
@@ -169,9 +166,9 @@
 
   \mbox{} \\[-0.3cm]
 
-  {\bfseries \fontsize{32pt}{1pt} \xeCJKsetup{CJKglue=\hskip 1.5pt}量子场论笔记} \\[0.2cm]
+  {\bfseries \fontsize{32pt}{1pt}\selectfont \xeCJKsetup{CJKglue=\hskip 1.5pt}Peskin QFT笔记} \\[0.2cm]
 
-  (\large based on Peskin \& Schroeder's book) \\[0.8cm]
+  {\large (based on Peskin \& Schroeder's book)} \\[0.8cm]
 
   \HRule \\[0.8cm]
 
@@ -191,7 +188,7 @@
 \include{src/preface.tex}
 \clearpage
 
-\phantomsection 
+\phantomsection
 \addcontentsline{toc}{chapter}{目录}
 \tableofcontents
 \clearpage

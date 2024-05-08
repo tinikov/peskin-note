@@ -1,8 +1,8 @@
 # Peskin-QFT-note
 
-Peskin &amp; Schroeder QFT 中文笔记
+Peskin &amp; Schroeder QFT 中文笔记（持续缓慢更新中）
 
-若无法编译，请下载导言区`设置字体`中的字体，或将导言区的`设置字体`项注释掉。
+若无法编译，请下载导言区`设置字体`中的字体，或将导言区的`设置字体`项注释掉。**思源黑体**可以在 Adobe Fonts 的[官方仓库][note:siyuan]中下载。
 
 ## 简介
 
@@ -10,7 +10,7 @@ Peskin &amp; Schroeder QFT 中文笔记
 
 本书主要对 Peskin 书中正文部分一些复杂(或不太复杂)的计算和难以理解(指我不理解)的段落作了注释，同时根据研究生课程内容对部分较为简略的段落添加了补充说明，希望对场论的初学者(比如说我)有一定的参考意义。由于解释说明较为困难，故此笔记以中文呈现。<del>若后有闲暇，可能翻译为英文。</del>
 
-本书参考了[这篇笔记][note1](谢谢你, 陌生人)。同时也感谢朋友 Starry 的增补及校对。如果学了一段时间场论以后感到一头雾水的话，不妨参考 Yuchen Wang (非常厉害的一个人！)的 [笔记][note2]。
+本书参考了[这篇笔记][note:peskinbysomeone](谢谢你, 陌生人)。同时也感谢朋友 Starry 的增补及校对。如果学了一段时间场论以后感到一头雾水的话，不妨参考 [Yuchen Wang][note:wycblog] (非常厉害的一个人！)的 [笔记][note:newqft]。
 
 如发现任何错误或遗漏，或希望与我讨论书中的内容，欢迎通过[邮件](mailto:tinikov137@gmail.com)与我联系。
 
@@ -37,5 +37,7 @@ Peskin &amp; Schroeder QFT 中文笔记
 - 在 tex 源文件中，每句话后换行。
 - 强调内容时，使用 `\textbf{}` 或 `\cemph{}`。
 
-[note1]: http://gamebm.shoutwiki.com/wiki/Lecture_Notes_of_An_Introduction_to_Quantum_Field_Theory_by_M._Peskin_and_D._Schroeder
-[note2]: https://zhuanlan.zhihu.com/p/391450897
+[note:siyuan]: https://github.com/adobe-fonts/source-han-sans
+[note:peskinbysomeone]: http://gamebm.shoutwiki.com/wiki/Lecture_Notes_of_An_Introduction_to_Quantum_Field_Theory_by_M._Peskin_and_D._Schroeder
+[note:newqft]: https://yuchenw.blog/qft-notes
+[note:wycblog]: https://yuchenw.blog

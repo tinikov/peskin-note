@@ -10,7 +10,7 @@
 
         得到书中(9.18)后, 具体计算其实不需要从“自由场”得到费曼传播子(也就是费曼规则中的内线), 再将“有相互作用的场”用传播子表示(因为路径积分不需要建立算符spectrum). 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果. 于是一切都完美对应上了(本来就可以证明是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
 
-        剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场的量子化). 至此量子场论的大框架就搭好了, 之后需要解决的就是各种各样理论中有趣的问题了.
+        剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场量子化). 至此量子场论的大框架就搭好了, 之后需要解决的就是各种各样理论中有趣的问题了.
 
         \clearpage
 
@@ -79,6 +79,7 @@
         \begin{equation*}
           \partial_\mu \langle j^\mu(x) \varphi(x_1)\cdots\varphi(x_n)\rangle = \sum_{i=1}^{n}\delta(x-x_i)\langle\varphi(x_1)\cdots\varphi(x_n)\rangle
         \end{equation*}
+  \item The Ward-Takahashi Identity
 
 \end{itemize}
 \pagestyle{general}
@@ -304,7 +305,8 @@
 \begin{itemize}
   \item 高斯积分
         \mybox{
-          (\textit{个人理解})在$\int d^4x\ \overline{\psi}(i\cancel{\partial}-m)\psi$中, $\psi$和$\overline{\psi}$是两个向量, $(i\cancel{\partial}-m)$是线性算子, $\int d^4x$是定义在此空间上的内积. 所以这个积分就是两个向量的内积, 可以用前面的高斯积分来计算.
+          (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积. 
+          所以这个积分在形式上是一个二次型, 可以用书中(9.69)的高斯积分来计算.
         }
 
   \item 算符的逆

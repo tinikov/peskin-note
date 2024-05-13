@@ -3,12 +3,12 @@
 \nonumsec{Summary}
 \begin{itemize}
   \item 关联函数、传播子以及费曼规则
+        \begin{enumerate}
+          \item 不管是用哪种方法来对场进行量子化, 我们最关心的总是关联函数(Correlation function)这个基本量. 由于关联函数是用算符定义的(或者说我们需要在路径积分的 formalism 中定义算符, 从而定义关联函数), 所以即使是在路径积分的formalism中, 要计算关联函数也还是绕不开算符 .
 
-        不管是用哪种方法来对场进行量子化, 我们最关心的总是关联函数(Correlation function)这个基本量. 由于关联函数是用算符定义的, 所以即使是在路径积分的formalism中, 要计算关联函数也还是绕不开算符.
-
-        在路径积分formalism中, 我们其实是通过书中(9.14)式(从右向左)定义了(含有算符的)哈密顿力学. Transition function (含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)是被某种相位(与\cemph{理论相应的作用量}有关)的和(位形空间中从一点到另一点的所有路径)定义的. 于是, 我们可以继续用书中(9.15)找到关联函数在路径积分formalism下的表示方法(其中薛定谔绘景下的算符也是定义出来的).
-
-        得到书中(9.18)后, 具体计算其实不需要从“自由场”得到费曼传播子(也就是费曼规则中的内线), 再将“有相互作用的场”用传播子表示(因为路径积分不需要建立算符spectrum). 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果. 于是一切都完美对应上了(本来就可以证明是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
+                在路径积分formalism中, 我们其实是通过书中(9.14)式(从右向左)定义了(含有算符的)哈密顿力学. Transition function (含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)是被某种相位(与\cemph{理论相应的作用量}有关)的和(位形空间中从一点到另一点的所有路径)定义的. 而接下来, 我们用书中(9.15)找到了关联函数在路径积分formalism下的表示方法(其中薛定谔绘景下的算符也是定义出来的).
+          \item 得到书中(9.18)后, 具体计算其实不需要从“自由场”得到费曼传播子(也就是费曼规则中的内线), 再将“有相互作用的场”用传播子表示(因为路径积分不需要建立算符spectrum). 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果. 于是一切都完美对应上了(本来就可以证明是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
+        \end{enumerate}
 
         剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场量子化). 至此量子场论的大框架就搭好了, 之后需要解决的就是各种各样理论中有趣的问题了.
 
@@ -172,13 +172,13 @@
 \subsection{P290最下方一式的推导}\label{subsec: P290-derivation}
 \begin{equation}
   \begin{aligned}
-    l.h.s & = \int d^4 x \biggl[\frac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
+    l.h.s & = \int d^4 x \biggl[\tfrac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
           & \qquad \times \Bigl(-\partial^2 - m^2 + i\epsilon\Bigr)\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                 \\
           & \qquad + J(x)\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)\biggr]                                                    \\
-          & = \int d^4 x \biggl[\frac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
+          & = \int d^4 x \biggl[\tfrac{1}{2}\Bigl(\phi'(x) + i\int d^4y\ D_F(x-y)J(y)\Bigr)                                         \\
           & \qquad \times \Bigl((-\partial^2 - m^2 + i\epsilon)\phi'(x) - J(x)\Bigr)                                               \\
           & \qquad + J(x)\phi'(x) + i\int d^4y\ J(x)D_F(x-y)J(y)\biggr]                                                            \\
-          & = \int d^4 x \biggl[\frac{1}{2}\phi'(x)(-\partial^2 - m^2 + i\epsilon)\phi'(x) - \frac{1}{2}J(x)\phi'(x)               \\
+          & = \int d^4 x \biggl[\tfrac{1}{2}\phi'(x)(-\partial^2 - m^2 + i\epsilon)\phi'(x) - \tfrac{1}{2}J(x)\phi'(x)               \\
           & \qquad - \frac{i}{2}\int d^4y D_F(x-y)J(y)(-\partial^2 - m^2 + i\epsilon)\phi'(x)                                      \\
           & \qquad - \frac{i}{2}\int d^4y J(x)D_F(x-y)J(y)                                                                         \\
           & \qquad + J(x)\phi'(x) + i\int d^4y\ J(x)D_F(x-y)J(y)\biggr]                                                            \\
@@ -207,7 +207,8 @@
   第二行展开就是第一行(凑了一下形式), 然后利用平移操作下测度不变(做变换$\phi \rightarrow \phi+JM^{-1}$后, $d\phi_1 \cdots d\phi_N$保持不变)就可以得到$Z_0$.
 
   \mbox{}
-
+}
+\mybox{
   \textit{算符的逆}
 
   \mbox{}
@@ -305,8 +306,10 @@
 \begin{itemize}
   \item 高斯积分
         \mybox{
-          (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积. 
+          (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积.
           所以这个积分在形式上是一个二次型, 可以用书中(9.69)的高斯积分来计算.
+
+          至于做完高斯积分后多出来的常数$\det[(-i)^d]$, 因为最后在计算 correlation function时会被约掉, 所以我们不关心它. 可参考 \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{About constants in fermionic path integral in Peskin and Schroeder}.
         }
 
   \item 算符的逆
@@ -335,6 +338,14 @@
     \overline{\psi}'(x) = \overline{\psi}(x) + i\int d^4y\ S_F(x-y) \overline{\eta}(y)
   \end{gathered}\quad,
 \end{equation}
+
+\subsection{P304 - Functional Determinants}
+
+P304 最下面找相互顶点后写出费曼图的思路和书中(9.30)附近讲的是一样的, 不过这里相当于只写出了关联函数的分母项, 所以没有外场和$A_\mu$做contraction($A_\mu$变成了费曼图里的$\bigotimes$), 并且无穷大常数$\det(i\cancel{\partial}-m)$也已经被提取出来了.
+
+另一种计算方法是用生成泛函来计算. 参考\href{https://physics.stackexchange.com/questions/699338/computation-of-functional-determinant-using-feynman-diagram}{Computation of functional determinant using Feynman diagram}, 把形如$\exp\bigl(i\int d^4x \frac{\delta}{\delta \eta}(-e\cancel{A})\frac{\delta}{\delta \overline{\eta}}\bigr)$的算符作用到书中(9.74)式上后($Z_0$即为$\det(i\cancel{\partial}-m)$)展开即可.
+
+书中(9.80)最后一步应该用到了trace的定义(将$\int d^4x$看作一种内积).
 
 \section{Symmetries in the Functional Formalism}
 

@@ -54,7 +54,12 @@
 \usepackage{cite}
 
 % 超链接
-\usepackage[colorlinks, linkcolor=black, urlcolor=cyan]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=red!80!black,
+  urlcolor=Cyan!60!black,
+}
 
 % 文字颜色
 \usepackage[dvipsnames]{xcolor}
@@ -90,27 +95,26 @@
   \fancyhead[LO]{}
 }
 
+% 漂亮的文本框
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
 % 命令
 % 长横线
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
 
-% 评论使用的框
-\newcommand{\mybox}[1]{ 
-  \begin{center}
-    \setlength{\fboxrule}{1pt}
-    \framebox[1.15\width][s]{
-      \parbox[t]{32em}{
-
-        \mbox{}
-
-        #1
-
-        \mbox{} \\[-0.8cm]
-
-      }
-    }
-  \end{center}
-}
+% 文本框
+\newtcolorbox{mybox}[2][]{
+  center,
+  width=0.98\linewidth,
+  breakable,
+  boxrule=1pt,
+  colbacktitle=black!5!white,
+  colback=white,
+  coltitle=black,
+  title={#2},
+  fonttitle=\itshape,
+  #1}
 
 % 着重号
 \usepackage{xeCJKfntef}
@@ -193,7 +197,10 @@
 
 \phantomsection
 \addcontentsline{toc}{chapter}{目录}
-\tableofcontents
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
 \clearpage
 
 \begin{spacing}{1.2}

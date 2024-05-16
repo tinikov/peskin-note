@@ -3,15 +3,15 @@
 \nonumsec{Summary}
 \begin{itemize}
   \item 整章内容都是基础, 需要掌握所有公式的推导
-  \item 几个理论的拉氏量:
+  \item 比较重要的的拉氏量:
         \begin{align*}
           \mathcal{L}_{\phi^4}        & = \mathcal{L}_{\text{Klein-Gordon}} + \mathcal{L}_{\text{int(}\phi^4\text{)}}                                                      \\
                                       & = \tfrac{1}{2}(\partial_\mu \phi)^2 - \tfrac{1}{2}m^2\phi^2 - \tfrac{\lambda}{4!}\phi^4                                            \\[0.2cm]
           \mathcal{L}_{\text{QED}}    & = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Maxwell}} + \mathcal{L}_{\text{int(QED)}}                                        \\
                                       & = \overline{\psi}(i\cancel{\partial}-m)\psi - \tfrac{1}{4}(F_{\mu\nu})^2 - e\overline{\psi}\gamma^{\mu}\psi A_{\mu}                \\
-                                      & = \overline{\psi}(i\cancel{D}-m)\psi - \tfrac{1}{4}(F_{\mu\nu})^2                                                                  \\[0.2cm]
-          \mathcal{L}_{\text{Yukawa}} & = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Klein-Gordon}} + \mathcal{L}_{\text{int(Yukawa)}}                                \\
-                                      & = \overline{\psi}(i\cancel{\partial}-m)\psi + \tfrac{1}{2}(\partial_\mu \phi)^2 - \tfrac{1}{2}m^2\phi^2 - g\overline{\psi}\psi\phi
+                                      & = \overline{\psi}(i\cancel{D}-m)\psi - \tfrac{1}{4}(F_{\mu\nu})^2                                                                  % \\[0.2cm]
+          % \mathcal{L}_{\text{Yukawa}} & = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Klein-Gordon}} + \mathcal{L}_{\text{int(Yukawa)}}                                \\
+          %                             & = \overline{\psi}(i\cancel{\partial}-m)\psi + \tfrac{1}{2}(\partial_\mu \phi)^2 - \tfrac{1}{2}m^2\phi^2 - g\overline{\psi}\psi\phi
         \end{align*}
   \item 利用自由理论的关联函数计算相互作用理论的关联函数:
         \begin{equation*}
@@ -46,9 +46,9 @@ Figure 4.1所表示的实际上是关于$T\{H_I(t_1) H_I(t_2)\}$的积分, 所�
 然后互换$t_1$, $t_2$, 由于编时记号的存在, 被积函数不变.
 由此, 上半三角和下半三角上的积分完全相等.
 
-\mybox{
-  (\textit{评论})也可以这么考虑: 由于编时记号的存在, 被积函数关于直线$t_1 = t_2$对称.
-}
+\begin{mybox}{个人理解}
+  也可以这么考虑: 由于编时记号的存在, 被积函数关于直线$t_1 = t_2$对称.
+\end{mybox}
 
 \subsection{P86 - (4.25)}
 
@@ -88,8 +88,8 @@ $(2\pi)^4 \delta(0)$可以理解为$\int d^4x\ e^{ip\cdot 0}$, 即$\int d^4x$, �
 
 \textit{The $1/n_i !$ is the symmetry factor coming from interchanging the $n_i$ copies of $V_i$.}
 
-\mybox{
-  (\textit{个人理解})这个对称系数来自于重复计算了“交换顶点”带来的系数, 即(4.45)下方的第一项所计算的\textit{interchange of vertices}.
+\begin{mybox}{个人理解}
+  这个对称系数来自于重复计算了“交换顶点”带来的系数, 即(4.45)下方的第一项所计算的\textit{interchange of vertices}.
 
   \mbox{}
 
@@ -100,7 +100,7 @@ $(2\pi)^4 \delta(0)$可以理解为$\int d^4x\ e^{ip\cdot 0}$, 即$\int d^4x$, �
   对于其他的泡泡, 只有交换部分顶点才是对称操作, 因此经过计算总会得到$1/n_i !$这个系数(可以试试算两个“糖葫芦形”的泡泡).
   不过这也是合理的, 因为忽略内部的顶点交换的话, “交换顶点”在某种程度上和“交换两个图”是一样的.
   因此最后效果就是书中所说的\textit{The $1/n_i !$ is the symmetry factor coming from interchanging the $n_i$ copies of $V_i$.}
-}
+\end{mybox}
 
 \subsection{P97 - (4.52)}
 
@@ -131,9 +131,9 @@ $(2\pi)^4 \delta(0)$可以理解为$\int d^4x\ e^{ip\cdot 0}$, 即$\int d^4x$, �
 
 \subsection{P102最下面的一大段话}
 
-\mybox{
-  (\textit{个人理解})中间的“Note that we use the Heisenberg picture:...”这一段是在说in state和out state是由含时算符的本征态建立的, 而这些算符本身会随着时间演化, 因此它们不共用同一组基, 所以它们之间会有nontrivial overlap.
-}
+\begin{mybox}{个人理解}
+  中间的“Note that we use the Heisenberg picture:...”这一段是在说in state和out state是由含时算符的本征态建立的, 而这些算符本身会随着时间演化, 因此它们不共用同一组基, 所以它们之间会有nontrivial overlap.
+\end{mybox}
 
 \subsection{P103 - (4.68)}
 
@@ -193,4 +193,6 @@ $e^{-iH(2t)}$可以写为$T(\exp[-i\int_{-T}^{T}dt\ H_I(t)])$的原因参考书�
 
 \subsection{P123 - (4.131)}
 
-得到$A_\mu(x)$的过程和与K-G场下的过程基本一致, 只是需要添加一个矢量场$\epsilon_\mu$. 光子不同的极化对应不同的$\epsilon_\mu$, 于是需要用一组极化矢量来表示, 即书中的$\epsilon^r$(这里省略了狄拉克下标). 书中给出的就是考虑这些要求后的算符展开式.
+得到$A_\mu(x)$的过程和与K-G场下的过程基本一致, 只是需要添加一个矢量场$\epsilon_\mu$.
+光子不同的极化对应不同的$\epsilon_\mu$, 于是需要用一组极化矢量来表示, 即书中的$\epsilon^r$(这里省略了狄拉克下标).
+书中给出的就是考虑这些要求后的算符展开式.

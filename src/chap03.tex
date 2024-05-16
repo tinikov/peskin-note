@@ -11,12 +11,11 @@
         \begin{equation*}
           \langle 0|T\psi(x)\overline{\psi}(y)|0 \rangle = S_F(x-y)\equiv \int \frac{d^4 p}{(2\pi)^4} \frac{i(\cancel{p} + m)}{p^2 - m^2 +i\epsilon} e^{-ip\cdot (x-y)}
         \end{equation*}
-        \mybox{
-          \textit{注}: 常常会看见这样的形式($i\epsilon$有时也会被省略)
+        \begin{mybox}{另一种常见的写法}
           \begin{equation*}
             \tilde{S}_F(p) = \frac{i}{\cancel{p} - m +i\epsilon}
           \end{equation*}
-        }
+        \end{mybox}
 \end{itemize}
 \pagestyle{general}
 
@@ -37,10 +36,10 @@ $J^3 = J^{12}$中, 3是(3.15)中的的上标, 12是中间没有序号的式子�
 它们所带有的信息是一样的, 只是形式上对称的量会更方便使用.
 而同时, 后面的参数也被全反对称化了, 也因此多了个$1/2$的系数.
 
-\mybox{
-  (\textit{评论})一开始学到这里的时候我很迷惑, 不过习惯了就好了.
+\begin{mybox}{关于张量的计算}
+  一开始学到这里的时候我很迷惑, 不过习惯了就好了.
   对这些含有张量的表达式或运算感到疑惑的时候, 把分量具体写出来算一遍总是个好办法.
-}
+\end{mybox}
 
 \subsection{P39 - (3.17)}
 
@@ -52,14 +51,14 @@ $J^3 = J^{12}$中, 3是(3.15)中的的上标, 12是中间没有序号的式子�
 这是洛伦兹群在矢量空间的具体表示, 相当重要, 后面也要用到.
 $\mu\nu$指标代表着6个洛伦兹变换(3个boost和3个rotation), $\alpha$和$\beta$代表矢量的4个分量.
 
-\mybox{
-  (\textit{评论})注意区分矢量空间和其他表示空间 (这一章基本是旋量空间) 的指标. 一般后者会被省略.
-}
+\begin{mybox}{区分空间指标}
+  注意区分矢量空间和其他空间 (这一章基本是旋量空间) 的指标. 一般后者会被省略.
+\end{mybox}
 
 关于它是怎么来的: 可以尝试在Minkowski时空中写出(3.16)的具体表示(把它作用到某个具体的时空$4$-vector上), 会得到一些和这个形式很像的东西! (正确的计算方法不是这样的, 但总之这个式子不完全是被\textit{pulled out of a hat} !)
 
-\mybox{
-  (\textit{个人理解}) 可以尝试计算
+\begin{mybox}{个人理解}
+  可以尝试计算
   \begin{equation}
     \begin{aligned}
       x_\alpha & \rightarrow i(x^\mu\partial^\nu-x^\nu\partial^\mu)x_\beta                                                                                         \\
@@ -67,7 +66,7 @@ $\mu\nu$指标代表着6个洛伦兹变换(3个boost和3个rotation), $\alpha$�
                & = i(\delta^\mu_{\phantom{\mu}\alpha} \delta^\nu_{\phantom{\nu}\beta} - \delta^\nu_{\phantom{\nu}\alpha} \delta^\mu_{\phantom{\mu}\beta})x^\alpha.
     \end{aligned}
   \end{equation}
-}
+\end{mybox}
 
 \subsection{P40 - (3.19)}
 
@@ -130,7 +129,7 @@ $\mu\nu$指标代表着6个洛伦兹变换(3个boost和3个rotation), $\alpha$�
     l.h.s & = \frac{i}{4}\bigl[\gamma^\mu, [\gamma^\rho, \gamma^\sigma]\bigr]                                                                                                                                  \\
           & = \frac{i}{4}[\gamma^\mu, \gamma^\rho \gamma^\sigma] - \frac{i}{4}[\gamma^\mu, \gamma^\sigma \gamma^\rho]                                                                                          \\
           & = \frac{i}{4}\Bigl(\{\gamma^\mu, \gamma^\rho\}\gamma^\sigma - \gamma^\rho\{\gamma^\mu, \gamma^\sigma\} - \{\gamma^\mu, \gamma^\sigma\}\gamma^\rho + \gamma^\sigma\{\gamma^\mu, \gamma^\rho\}\Bigr) \\
-          & = \frac{i}{4}\Bigl(2g^{\mu\rho}\gamma^\sigma - 2g^{\mu\sigma}\gamma^\rho - 2g^{\mu\sigma}\gamma^\rho + 2g^{\mu\rho}\gamma^\sigma \Bigr)                                                            \\
+          & = \frac{i}{4}\Bigl(2g^{\mu\rho}\gamma^\sigma - 2g^{\mu\sigma}\gamma^\rho - 2g^{\mu\sigma}\gamma^\rho + 2g^{\mu\rho}\gamma^\sigma                                                                   \\
           & = i(g^{\mu\rho}\gamma^\sigma - g^{\mu\sigma}\gamma^\rho),                                                                                                                                          \\
     \                                                                                                                                                                                                          \\
     r.h.s & = g^{\mu\lambda}(\mathcal{J}^{\rho\sigma})_{\lambda\nu} \gamma^\nu                                                                                                                                 \\
@@ -181,9 +180,7 @@ $l.h.s = r.h.s$, 即证.
         \end{equation}
   \item \textbf{}这里对$u(p_0)$进行boost后得到了$u(p)$, 完整形式实际上是$u'(\Lambda p_0) = \Lambda_{\frac{1}{2}}u(p_0)$ (boost后应有prime), 即$u'(p) = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p)$, 与书中(3.8)式形式一致.
         (在推导(3.110)时会用到)
-        \mybox{
-          \textit{注}:
-
+        \begin{mybox}{}
           书中(3.8)是坐标空间下的变换规则, 但按照书中(3.2)式的思想, 动量空间中的变换规则也应该是一致的.
           最直接的验证方法是将书中(3.46)式($u(p)$为满足此方程的解)写为$(\gamma^\mu(\Lambda p)_\mu - m)u(\Lambda p) = 0$, 利用书中(3.29)式得到含有$\Lambda_{1/2}$的形式后, 再和原式做比较.
 
@@ -203,7 +200,7 @@ $l.h.s = r.h.s$, 即证.
           \begin{equation}
             u(p) \rightarrow u'(p) = \Lambda_{\frac{1}{2}}u(\Lambda^{-1}p).
           \end{equation}
-        }
+        \end{mybox}
 \end{enumerate}
 
 \subsection{P46 - (3.50)}
@@ -273,8 +270,7 @@ $l.h.s = r.h.s$, 即证.
 \subsection{P47 - (3.54)}
 当粒子的动量方向沿着$3$-direction时, $h = \hat{p}_3\cdot S_3=\frac{1}{2}\sigma_3$, (3.52)和(3.53)自然是其本征态(它们都是考虑沿着$3$-direction的boost得到的具体表达).
 
-\mybox{
-  (\textit{评论})
+\begin{mybox}{评论}
   \begin{enumerate}
     \item 在(3.52)和(3.53)中的large boost意味着我们考虑了$m\rightarrow 0$的情况($E^2 = \mathbf{p}^2 + m^2$), 而无质量极限下的Dirac旋量场满足Weyl equations(书中(3.40)式).
           此时我们发现, Dirac旋量的具体表示也“恰好”变成了Weyl旋量的形式, 即
@@ -297,7 +293,7 @@ $l.h.s = r.h.s$, 即证.
           $\psi_R$同理.
     \item 如果在书中(3.47)不加入$\sqrt{m}$这个系数, 无质量极限下旋量的具体表示会在分母上有个$\sqrt{m}$, 从而导致表达式发散.
   \end{enumerate}
-}
+\end{mybox}
 
 \section{Dirac Matrices and Dirac Field Bilinears}
 
@@ -356,9 +352,9 @@ $l.h.s = r.h.s$, 即证.
   \end{aligned}
 \end{equation}
 
-\mybox{
-  (\textit{评论})注意$\gamma^\mu \partial_\mu = \gamma^0 \partial_0 + \gamma^i \partial_i$. 不要习惯性地写成减号.
-}
+\begin{mybox}{}
+  注意$\gamma^\mu \partial_\mu = \gamma^0 \partial_0 + \gamma^i \partial_i$. 不要习惯性地写成减号.
+\end{mybox}
 
 \subsection{P52 - (3.86)}
 为什么在标量场部分我们关心的是场和其正则动量的对易关系, 而在这里我们关心的是$\psi$和$\bar{\psi}$的对易关系呢?

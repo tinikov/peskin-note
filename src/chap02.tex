@@ -31,23 +31,19 @@
 同时还有一个原因是关于因果性的.
 紧随其后的计算就是经典理论中关于传播振幅$U(t)$的计算, 结果表明它们违背了因果律.
 
-\mybox{
-  \begin{enumerate}
-    \item 关于场的简单理解
-
-          \begin{itemize}
-            \item 一大堆小弹簧(?)(参考\textit{Goldstein}第13章).
-            \item 某种实体在时空中的分布, 它是时空坐标$x^\mu$的函数, 是一个基础的力学量. (更简单更好的理解! )
-          \end{itemize}
-
-    \item 常用的场
-          \begin{itemize}
-            \item $\phi(x)$: 标量场(比如希格斯场)
-            \item $A_\mu(x)$: 矢量场(电磁场)
-            \item $\psi(x)$: 旋量场
-          \end{itemize}
-  \end{enumerate}
-}
+\begin{mybox}{对于场的简单理解}
+  \begin{itemize}
+    \item 一大堆小弹簧(?)(参考\textit{Goldstein}第13章).
+    \item 某种实体在时空中的分布, 它是时空坐标$x^\mu$的函数, 是一个基础的力学量. (更简单更好的理解! )
+  \end{itemize}
+\end{mybox}
+\begin{mybox}{常用的场}
+  \begin{itemize}
+    \item $\phi(x)$: 标量场(比如希格斯场)
+    \item $A_\mu(x)$: 矢量场(电磁场)
+    \item $\psi(x)$: 旋量场
+  \end{itemize}
+\end{mybox}
 
 \subsection{P.14 - Eq-1}
 
@@ -66,12 +62,11 @@
 
 最后一步直接使用高斯积分公式.
 
-\mybox{
-  \textit{注}: \textit{一维高斯积分公式为}
+\begin{mybox}{一维高斯积分公式}
   \begin{equation}
     \int_{-\infty}^{\infty}dx\ e^{-cx^2}e^{\pm ibx} = \sqrt{\frac{\pi}{c}}e^{-b^2/4c}.
   \end{equation}
-}
+\end{mybox}
 
 \subsection{P.14 - Eq-2}
 
@@ -109,10 +104,10 @@
 注意这里在讨论初末状态时, 直接将时空坐标零分量$x^0$取为了定值.
 实际上在不同的空间点, 初末状态的$x^0$可以取不同的值, 只需要保证边界是类空超曲面即可.
 
-\mybox{
-  (\textit{个人理解})只有边界是类空超曲面时, 向空间的无穷远处积分才能到达时间上的边界.
+\begin{mybox}{个人理解}
+  只有边界是类空超曲面时, 向空间的无穷远处积分才能到达时间上的边界.
   可以画个图感受一下.
-}
+\end{mybox}
 
 \subsection{P15 - (2.2) (2.3)}
 
@@ -132,23 +127,21 @@
 这在利用薛定谔场的 Lagrangian 导出薛定谔方程的时候很有用.
 
 而关于这里的边界项$\partial_\mu \bigl(\frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)}\delta \phi \bigr)$, 注意要分别考虑时间和空间分量(书中也提到了).
-\mybox{
-  \textit{注}: \textit{薛定谔场的Lagrangian为}
+\begin{mybox}{薛定谔场的Lagrangian}
   \begin{equation}
     \mathcal{L}_{Schr\ddot{o}dinger} = i\hbar\psi^\dagger\frac{\partial \psi}{\partial t} - \frac{\hbar^2}{2m}\bm{\nabla}\psi^\dagger\bm{\nabla}\psi - V(\mathbf x)\psi^\dagger\psi.
   \end{equation}
-}
+\end{mybox}
 
 \subsection{P16 - Hamiltonian Field Theorem}
 
 这里关于哈密顿形式的场论并没有讲完(没有导出运动方程).
 导出运动方程要给出场变量和其共轭动量之间的对易/反对易关系, 再计算Heisenberg equation得到运动方程.
-\mybox{
-  \textit{注}: \textit{Heisenberg equation为}
+\begin{mybox}{Heisenberg equation}
   \begin{equation}
     i\frac{\partial}{\partial t}\mathcal{O} = [\mathcal{O}, H].
   \end{equation}
-}
+\end{mybox}
 
 
 Hamiltonian Field Theorem实际上是和Lagrangian Field Theorem不同的路径.
@@ -158,12 +151,14 @@ Hamiltonian Field Theorem实际上是和Lagrangian Field Theorem不同的路径.
 
 我此前的疑惑是: 由书中(2.11)推导, 任意一个对场的全局变换($\alpha$ 为常数)都会导致Lagrangian变化一个4-divergence, 这是不是意味着任意一个对场的全局变换都是对称变换呢?
 
-首先我们考虑书中(2.11)用Euler-Lagrange方程简化表达式的含义: 我们只考虑由最小作用量原理决定的那个\cemph{真实}的场分布(对应经典力学中由最小作用量原理决定的粒子运动轨道).
-根据Weinberg的说法, 此时任意一个对于\cemph{真实}的场分布的全局变换确实都会使书中(2.10)成立, 但\cemph{对称变换}的含义是使得(2.10)成立的对任意场分布的变换, 所以“任意的全局变换都是对称变换”肯定是错误的.
+首先我们考虑书中(2.11)用Euler-Lagrange方程简化表达式的含义.
+这一步简化意味着我们只考虑了由最小作用量原理决定的\cemph{物理}的场分布(对应经典力学中由最小作用量原理决定的粒子运动轨道).
+根据Weinberg的说法, 此时任意一个对于\cemph{物理}的场分布的全局变换确实都会使书中(2.10)成立, 但\cemph{对称变换}的含义是使得(2.10)成立的对\cemph{任意}场分布的变换, 所以“任意的全局变换都是对称变换”肯定是错误的.
 
 因此我对Noether's theorem的理解是这样的:
 \begin{enumerate}
-  \item 第一步是检查某变换是否为一个对称变换, 即检查该变换是否保证书中(2.10)成立. 大多数情况下, 直接将对于某个对场的变换(2.9)代入Lagrangian中即可.
+  \item 第一步是检查某变换是否为一个对称变换, 即检查该变换是否保证书中(2.10)成立.
+        大多数情况下, 直接将对于某个对场的变换(2.9)代入Lagrangian中即可.
 
         (\textit{评论})在实际计算时, 大多数我们所关心的对场的变换并不会影响Lagrangian的形式(没有$\mathcal{J}^{\mu}$这一项); 而对于会使Lagrangian变化一个4-divergence的变换, 我们在这一步中既检查了它是否为对称变换, 同时也得到了$\mathcal{J}^{\mu}$的形式.
         例如书中的第二个例子中, 时空平移不仅影响场, 也影响了同为洛伦兹标量Lagrangian本身, 即为上述第二种情况.
@@ -171,12 +166,13 @@ Hamiltonian Field Theorem实际上是和Lagrangian Field Theorem不同的路径.
         这样, 我们得到了考虑了最小作用量原理后的, 由我们对场的变换导致的$\Delta \mathcal{L}(\phi, \partial_\mu \phi)$的形式.
         而由于此项仍需满足书中(2.10), 我们令它等于前面的$\mathcal{J}^{\mu}$后即可得到守恒流.
 
-        (\textit{评论})这一步只是为了得到守恒流关于$\phi, \partial_\mu \phi$的函数表达式. 可以这样考虑: 如果Lagrangian的形式不变, 则有$\mathcal{L}'-\mathcal{L}=\mathcal{L}-\mathcal{L}=0$ (什么都得不到); 而考虑了最小作用量原理后, $\mathcal{L}'-\mathcal{L}=\mathcal{L}_{(\Delta)}+\mathcal{L}_{(\rm Euler)}-\mathcal{L}=\partial_{\mu}j^{\mu}=0$, $j^{\mu}$即为我们想得到的守恒流表达式.
+        (\textit{评论})这一步只是为了得到守恒流关于$\phi, \partial_\mu \phi$的函数表达式.
+        可以这样考虑: 如果Lagrangian的形式不变, 则有$\mathcal{L}'-\mathcal{L}=\mathcal{L}-\mathcal{L}=0$ (什么都得不到); 而考虑了最小作用量原理后, $\mathcal{L}'-\mathcal{L}=\mathcal{L}_{(\Delta)}+\mathcal{L}_{(\rm Euler)}-\mathcal{L}=\partial_{\mu}j^{\mu}=0$, $j^{\mu}$即为我们想得到的守恒流表达式.
 \end{enumerate}
 
-\mybox{
-  \textit{注}: 更好的导出守恒流的方式也许是考虑局域变换, 详见Weinberg书中讲解或Hagen Kleinert课件中 8.1.2 一节.
-}
+\begin{mybox}{}
+  更好的导出守恒流的方式也许是考虑局域变换, 详见Weinberg书中讲解或Hagen Kleinert课件中 8.1.2 一节.
+\end{mybox}
 
 \subsection{P18 - (2.13)}
 \begin{equation}
@@ -275,23 +271,23 @@ Hamiltonian Field Theorem实际上是和Lagrangian Field Theorem不同的路径.
 
 值得注意的是, 书中把$a(\mathbf{p})$写为了$a_\mathbf{p}$, 实际上理解为函数就可以了.
 
-\mybox{
-  (\textit{个人理解})量子化的步骤: 引入正则对易关系, 然后解对应的运动方程.
+\begin{mybox}{个人理解}
+  量子化的步骤: 引入正则对易关系, 然后解对应的运动方程.
 
   例如这里我们首先引入对易关系使得基础力学量$\phi(x),\pi(x)$成为了算符, 然后尝试解K-G方程.
   由于量子化后的方程形式和经典情形下的相同, 我们便可以从经典解出发进行尝试.
   而对于微分方程, 只要能试出正确的解并验证其完备性, 就可以将其作为通解.
-}
+\end{mybox}
 
 \subsection{P21 - (2.26)下面那一段}
 
 关于求$a_\mathbf{p}$和$a^{\dagger}_\mathbf{p}$的表达式: 将(2.25)和(2.26)系数凑合适, 加减消去其中一个后, 再同时对两端做积分$\int e^{-i\mathbf{p'\cdot x}} d^3 x$即可.
 
-\mybox{
+\begin{mybox}{}
   \begin{center}
     \large \bfseries 确实很easy, Peskin \& Schroeder没有骗你.
   \end{center}
-}
+\end{mybox}
 
 \subsection{P22 - (2.33)}
 
@@ -399,11 +395,11 @@ $\Delta(x; m)$可写为洛伦兹不变的形式(其中$\varepsilon(x)$为符号�
   [\phi(x), \phi(y)] = i\Delta(x-y; m).
 \end{equation}
 
-\mybox{
-  (\textit{个人理解})可以这样解释的原因是: 在量子力学中我们将两个态的内积的模的平方解释为该态可被观测到的概率, 是可观测量.
+\begin{mybox}{个人理解}
+  可以这样解释的原因是: 在量子力学中我们将两个态的内积的模的平方解释为该态可被观测到的概率, 是可观测量.
   而书中前面虽将$\phi(x) |0\rangle$类比为了$|x\rangle$, 但没有赋予其其他含义(可以理解为这个传播振幅无法与可观测量联系起来, 故无法传递信息).
   而算符$\phi(x), \phi(y)$的对易关系与量子力学中算符的对易关系的含义相同.
-}
+\end{mybox}
 
 \subsection{P30 - (2.54)}
 

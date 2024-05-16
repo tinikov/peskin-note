@@ -5,17 +5,17 @@
   \item 关联函数、传播子以及费曼规则
         \begin{enumerate}
           \item 在路径积分formalism中, 我们通过书中(9.14)式从右向左由Lagrangian dynamics(以路径积分原理为量子化的基础)定义了Hamiltonian dynamics(以算符的对易关系为量子化的基础).
-                具体来说, 是\ {\color{Maroon}{$\langle \phi_b(\mathbf{x})|e^{-i\hat{H}t}|\phi_a(\mathbf{x})\rangle$}} (即transition function, 含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)被\ {\color{Maroon}$\exp{\Bigl[i\int_0^T d^4 x \mathcal{L}}\Bigr]$} (某种相位, 与\cemph{理论相应的作用量}有关)的{\color{Maroon}某种和}(路径积分, 在位形空间中一点到另一点的所有路径上求和)定义.
+                具体来说, 是\ {\color{OliveGreen}{$\langle \phi_b(\mathbf{x})|e^{-i\hat{H}t}|\phi_a(\mathbf{x})\rangle$}} (即transition function, 含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)被\ {\color{OliveGreen}$\exp{\Bigl[i\int_0^T d^4 x \mathcal{L}}\Bigr]$} (某种相位, 与\cemph{理论相应的作用量}有关)的{\color{OliveGreen}某种和}(路径积分, 在位形空间中一点到另一点的所有路径上求和)定义.
 
-                不过, 不管是哪种formalism, 我们最关心的总是关联函数(correlation function)这个很抽象的东西.
-                Peskin \& Schroeder尝试用书中(9.15)找到关联函数在路径积分formalism下的表示方法, 但因为关联函数的定义依赖于算符, 所以需要定义薛定谔算符: $\hat{\phi}_S(\mathbf{x})|\phi\rangle = \phi(\mathbf{x})|\phi\rangle$, 而海森堡算符则表示为 $\hat{\phi}_H(x) = e^{i\hat{H}t}\hat{\phi}_S(\mathbf{x}) e^{-i\hat{H}t}$. 随后, 书中(9.18)给出了最后的结果.
+                  不过, 不管是哪种formalism, 我们最关心的总是关联函数(correlation function)这个很抽象的东西.
+                  Peskin \& Schroeder尝试用书中(9.15)找到关联函数在路径积分formalism下的表示方法, 但因为关联函数的定义依赖于算符, 所以需要定义薛定谔算符: $\hat{\phi}_S(\mathbf{x})|\phi\rangle = \phi(\mathbf{x})|\phi\rangle$, 而海森堡算符则表示为 $\hat{\phi}_H(x) = e^{i\hat{H}t}\hat{\phi}_S(\mathbf{x}) e^{-i\hat{H}t}$. 随后, 书中(9.18)给出了最后的结果.
 
           \item 得到书中(9.18)后, 其实不需要先计算“自由场中的费曼传播子”(也就是费曼规则中的内线), 再将“有相互作用的场”微扰地用传播子表示(因为路径积分不需要建立算符spectrum).
                 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果.
                 于是一切都完美对应上了(本来就是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
         \end{enumerate}
 
-        剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场量子化). 
+        剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场量子化).
         这个问题解决之后, 量子场论的大框架就搭好了, 之后需要解决的就是各种各样理论中有趣的问题了.
 
         \clearpage
@@ -91,30 +91,35 @@
 \pagestyle{general}
 
 \section{Path Integrals in Quantum Mechanics}
+本节内容建议参考Sakurai或者Srednicki书中相关的部分.
 
 这一节最重要的是书中的(9.2)式. 结合(9.3), 此式可以写为
 \begin{equation}\label{eq: path_nonfield}
-  U(x_a,x_b;T)=\langle x_b|e^{-iHT/\hbar}|x_a \rangle = \sum_{\rm all\ paths} e^{iS[x(t)]/\hbar} = \int \mathcal{D}x(t)e^{iS[x(t)]/\hbar},
+  U(\mathbf{x_a},\mathbf{x_b};T)=\langle \mathbf{x_b}|e^{-i\hat{H}T/\hbar}|\mathbf{x_a} \rangle = \sum_{\rm all\ paths} e^{iS[\mathbf{x}(t)]/\hbar} = \int \mathcal{D}\mathbf{x}(t)e^{iS[\mathbf{x}(t)]/\hbar},
 \end{equation}
-它给出了路径积分的核心思想: \textbf{从$x_a$到$x_b$的\cemph{每一条路径的传播振幅}都会对总的传播振幅有一个相因子的贡献}. 这一形式可以方便地推广到多自由度的情况, 此时的路径指\cemph{位形空间中的路径}.
+它给出了路径积分的核心思想: \textbf{从$x_a$到$x_b$的\cemph{每一条路径的传播振幅}都会对总的传播振幅有一个相因子的贡献}.
+这一形式可以推广到多自由度的情况, 此时的路径指\cemph{位形空间中的路径}.
 
-当我们考虑无限自由度, 并且将自由度下标写为连续变量$\mathbf{x}$时, 我们就得到了量子场论下的“路径积分”形式. 在量子场论中我们有: 系统从\textbf{$x^0=0$时刻的某一分布$\phi_a(\mathbf{x})$演化到$x^0=T$时刻的另一分布$\phi_b(\mathbf{x})$时, 可能出现的\cemph{每一种场分布}都会对传播振幅有一个相因子的贡献}, 即
-\begin{equation*}
-  U\bigl[\phi_a(\mathbf{x}),\phi_b(\mathbf{x});T\bigr]=\langle \phi_b(\mathbf{x})|e^{-iHT/\hbar}|\phi_a(\mathbf{x}) \rangle = \int \mathcal{D}\phi \exp\biggl[i\int_{0}^{T} d^4x\mathcal{L}\biggr]
-\end{equation*}
+\begin{mybox}{量子力学中的路径积分}
+  路径积分formalism的导出步骤如下:
+  \begin{enumerate}
+    \item 拆分传播振幅
 
-剩下的随便看看就行了, 可以去看Sakurai或者Srednicki相关的部分.
-下一节开始才是重要的部分.
+          考虑一个一维问题中的传播振幅$\langle x_{t_N}|e^{-iH(t_N-t_1)/\hbar}|x_{t_1} \rangle$.
+          首先把它从薛定谔绘景换到海森堡绘景, 即$\langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle$, 再把它拆分到$N$个分立的时间格点上:
+          \begin{equation*}
+            \langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle = \int dx_{t_{N-1}} \cdots \int dx_{t_2} \langle x_{t_N}, t_N|x_{t_{N-1}}, t_{N-1} \rangle \cdots \langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle
+          \end{equation*}
+          格点间的距离是$\Delta t = \frac{t_N-t_1}{N-1}$.
+    \item 猜传播振幅的形式
+    
+    $\langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle$相当于$\exp\Bigl[i\int_{t_1}^{t_2}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$
+  \end{enumerate}
+\end{mybox}
 
-\subsection{P276 - (9.2)}
-
-参考书中(9.1), $U(x_a, x_b; T)$实际上有着$e^{i \cdot (\text{phase})}$的形式.
-
-\subsection{P278 - (9.4)}
-
-\mybox{
-  (\textit{评论})简单的理解: 把一条路径看成有无限个自变量($x_n, n \rightarrow \infty$)的多元函数, 那么在这个由$x_n$张成的希尔伯特空间里积分的形式即为本式等号右边的形式.
-}
+\begin{mybox}{评论}
+  简单的理解: 把一条路径看成有无限个自变量($x_n, n \rightarrow \infty$)的多元函数, 那么在这个由$x_n$张成的希尔伯特空间里积分的形式即为本式等号右边的形式.
+\end{mybox}
 
 \subsection{P279 - (9.5)}
 
@@ -128,11 +133,14 @@
 
 \subsection{P282 - (9.14)}
 
-\mybox{
-  (\textit{个人理解})考虑离散形式(9.11)的话, 利用高斯积分积掉$\pi$的相关项就很自然了(不用考虑指数上那个对时间$t$的积分).
-
-  (\textit{评论})书的这一部分讲得有点复杂了, 这个形式实际上就是笔记中 \eqref{eq: path_nonfield} 式在场论情况下的推广.
-}
+\begin{mybox}{评论}
+  书的这一部分讲得有点复杂了, 这个形式实际上就是笔记中 \eqref{eq: path_nonfield} 式在场论情况下的推广.
+  考虑无限自由度的系统, 并且将自由度下标写为连续变量$\mathbf{x}$时, 我们就得到了量子场论下的“路径积分”形式.
+  在量子场论中我们有: 系统从\textbf{$x^0=0$时刻的某一构型$\phi_a(\mathbf{x})$演化到$x^0=T$时刻的另一构型$\phi_b(\mathbf{x})$时, 两种构型间的每一条路径都会对传播振幅有一个相因子的贡献}, 即
+  \begin{equation*}
+    U\bigl[\phi_a(\mathbf{x}),\phi_b(\mathbf{x});T\bigr]=\langle \phi_b(\mathbf{x})|e^{-iHT/\hbar}|\phi_a(\mathbf{x}) \rangle = \int \mathcal{D}\phi \exp\biggl[i\int_{0}^{T} d^4x\mathcal{L}\biggr]
+  \end{equation*}
+\end{mybox}
 
 \subsection{P285 - (9.21)及下面的一段话}
 
@@ -156,13 +164,13 @@
 
 \subsection{P287 - (9.26)}
 
-计算形如$\int dx x^2 \exp(-bx^2)$的积分时, 可以对高斯积分内指数项中的系数求导:
+计算形如$\int dx\ x^2 \exp(-bx^2)$的积分时, 可以对高斯积分内指数项中的系数求导:
 \begin{equation}
   \begin{aligned}
-    \int dx x^2 \exp(-bx^2) & = -\int dx \frac{d}{db}\exp(-bx^2)      \\
-                            & = -\frac{d}{db} \int dx \exp(-bx^2)     \\
-                            & = -\frac{d}{db} \sqrt{\frac{\pi}{b}}    \\
-                            & = \frac{\sqrt{\pi}}{2}b^{-\frac{3}{2}}.
+    \int dx\ x^2 \exp(-bx^2) & = -\int dx \frac{d}{db}\exp(-bx^2)      \\
+                             & = -\frac{d}{db} \int dx \exp(-bx^2)     \\
+                             & = -\frac{d}{db} \sqrt{\frac{\pi}{b}}    \\
+                             & = \frac{\sqrt{\pi}}{2}b^{-\frac{3}{2}}.
   \end{aligned}
 \end{equation}
 
@@ -195,11 +203,7 @@
 其中用到了$(\partial^2 + m^2)D_F(x-y) = -i\delta^4(x-y)$.
 对倒数第4行分部积分后可以将其简化为$-\frac{1}{2}J(x)\phi'(x)$.
 
-\mybox{
-  \textit{函数空间}
-
-  \mbox{}
-
+\begin{mybox}{函数空间}
   更好的方法是书中(9.37)的符号化方法. 为了便于理解, 可将路径积分离散化: 把$\phi(x)$中的连续下标$x$换为离散下标$i$; 将偏导看作函数空间上的一个算子, 则可将$(-\partial^2-m^2+i\epsilon)$表示为$M_{ij}$, 那么
   \begin{equation}
     \begin{aligned}
@@ -211,11 +215,8 @@
   \end{equation}
 
   第二行展开就是第一行(凑了一下形式), 然后利用平移操作下测度不变(做变换$\phi \rightarrow \phi+JM^{-1}$后, $d\phi_1 \cdots d\phi_N$保持不变)就可以得到$Z_0$.
-
-  \mbox{}
-}
-\mybox{
-  \textit{算符的逆}
+\end{mybox}
+\begin{mybox}{算符的逆}
 
   \mbox{}
 
@@ -247,7 +248,7 @@
   \begin{equation}
     -\tfrac{i}{2}J(-\partial^2-m^2+i\epsilon)^{-1}J = \int d^4x d^4y J(x)[-iD_F(x-y)] J(y).
   \end{equation}
-}
+\end{mybox}
 
 \setcounter{section}{3}
 
@@ -269,8 +270,7 @@
   \end{equation}
   然后利用多重积分的换元法, 将积分变量从$g(a)$换为$a$, 即可得到离散情况下的恒等式.
 
-  \mybox{
-    \textit{注: 二重积分的换元法}
+  \begin{mybox}{二重积分的换元法}
     \begin{equation}
       \int f(x, y)\ dxdy = \int f[x(u, v), y(u, v)]|J(u, v)|\ dudv,
     \end{equation}
@@ -281,7 +281,7 @@
         \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
       \end{vmatrix}.
     \end{equation}
-  }
+  \end{mybox}
 
   \subsection{P297 - (9.58)}
 
@@ -309,32 +309,28 @@
   因为只有$\theta_i \theta^*_i$项有贡献, 所以在第一个等号处取了$B_{ij}$的迹.
 
   \subsection{P302 - (9.72)}
-  \begin{itemize}
-    \item 高斯积分
-          \mybox{
-            (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积.
-            所以这个积分在形式上是一个二次型, 可以用书中(9.69)的高斯积分来计算.
+  \begin{mybox}{高斯积分}
+    (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积.
+    所以这个积分在形式上是一个二次型, 可以用书中(9.69)的高斯积分来计算.
 
-            至于做完高斯积分后多出来的常数$\det[(-i)^d]$, 因为最后在计算 correlation function时会被约掉, 所以我们不关心它. 可参考 \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{About constants in fermionic path integral in Peskin and Schroeder}.
-          }
+    至于做完高斯积分后多出来的常数$\det[(-i)^d]$, 因为最后在计算 correlation function时会被约掉, 所以我们不关心它. 可参考 \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{About constants in fermionic path integral in Peskin and Schroeder}.
+  \end{mybox}
 
-    \item 算符的逆
-          \mybox{
-            (\textit{参考网上别人讲的以后个人粗浅的理解})关于$-i(i\cancel{\partial}-m)$的逆, 考虑由于$[-i(i\cancel{\partial}-m)]S_F(x-y)=\delta^4(x-y)$, 费曼传播子$S_F(x-y)$就是$[-i(i\cancel{\partial}-m)]^{-1}$(但是需要在动量空间中计算).
+  \begin{mybox}{算符的逆}
+    (\textit{参考网上别人讲的以后个人粗浅的理解})关于$-i(i\cancel{\partial}-m)$的逆, 考虑由于$[-i(i\cancel{\partial}-m)]S_F(x-y)=\delta^4(x-y)$, 费曼传播子$S_F(x-y)$就是$[-i(i\cancel{\partial}-m)]^{-1}$(但是需要在动量空间中计算).
 
-            (\textit{补记})书中(9.37)式就已经有类似的写法了.
+    (\textit{补记})书中(9.37)式就已经有类似的写法了.
 
-            \mbox{}
+    \mbox{}
 
-            算符的逆问题可以参考:
+    算符的逆问题可以参考:
 
-            \href{https://physics.stackexchange.com/questions/737484/ps-qft-derivation-of-9-72-correlation-function-of-spinor}{P\&S QFT derivation of (9.72) (correlation function of spinor)}
+    \href{https://physics.stackexchange.com/questions/737484/ps-qft-derivation-of-9-72-correlation-function-of-spinor}{P\&S QFT derivation of (9.72) (correlation function of spinor)}
 
-            \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{In which sense is the linear operator the inverse of a Green function?}
+    \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{In which sense is the linear operator the inverse of a Green function?}
 
-            (页面均来自\href{https://physics.stackexchange.com/}{Physics Stack Exchange})
-          }
-  \end{itemize}
+    (页面均来自\href{https://physics.stackexchange.com/}{Physics Stack Exchange})
+  \end{mybox}
 
   \subsection{P302 - (9.74)}
   参考书中P290 - (9.36)下面的一段以及笔记中 \ref{subsec: P290-derivation} 一节的推导, 做如下平移:
@@ -366,11 +362,11 @@
 \end{equation}
 
 \subsection{P310最上面的式子}
-\mybox{
-  (\textit{个人理解})当我们考虑一个局域变换$\epsilon(x)$时, 所有不包括$\partial_\mu\epsilon(x)$的项都可以被视为全局变换而用前面的(9.94)来处理; 于是我们只需要关心正比于$\partial_\mu\epsilon(x)$的项.(这或许就是书中(9.91)式前面那段话的意思)
+\begin{mybox}{个人理解}
+  当我们考虑一个局域变换$\epsilon(x)$时, 所有不包括$\partial_\mu\epsilon(x)$的项都可以被视为全局变换而用前面的(9.94)来处理; 于是我们只需要关心正比于$\partial_\mu\epsilon(x)$的项.(这或许就是书中(9.91)式前面那段话的意思)
 
   \mbox{}
 
   具体计算的话, 参考书中(2.11)式第一行等号右边的第二项(把$\alpha$换成$\epsilon$), 计算$\bigl(\frac{\partial
       \mathcal{L}}{\partial(\partial_\mu\phi)}\bigr)\partial_\mu(\epsilon\Delta\phi)$的时候对$\epsilon$也求一下导, 很简单.
-}
+\end{mybox}

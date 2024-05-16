@@ -8,11 +8,13 @@
                 具体来说, 是\ {\color{OliveGreen}{$\langle \phi_b(\mathbf{x})|e^{-i\hat{H}t}|\phi_a(\mathbf{x})\rangle$}} (即transition function, 含有\cemph{哈密顿算符}以及\cemph{其本征态张成的希尔伯特空间}的信息)被\ {\color{OliveGreen}$\exp{\Bigl[i\int_0^T d^4 x \mathcal{L}}\Bigr]$} (某种相位, 与\cemph{理论相应的作用量}有关)的{\color{OliveGreen}某种和}(路径积分, 在位形空间中一点到另一点的所有路径上求和)定义.
 
                   不过, 不管是哪种formalism, 我们最关心的总是关联函数(correlation function)这个很抽象的东西.
-                  Peskin \& Schroeder尝试用书中(9.15)找到关联函数在路径积分formalism下的表示方法, 但因为关联函数的定义依赖于算符, 所以需要定义薛定谔算符: $\hat{\phi}_S(\mathbf{x})|\phi\rangle = \phi(\mathbf{x})|\phi\rangle$, 而海森堡算符则表示为 $\hat{\phi}_H(x) = e^{i\hat{H}t}\hat{\phi}_S(\mathbf{x}) e^{-i\hat{H}t}$. 随后, 书中(9.18)给出了最后的结果.
+                  Peskin \& Schroeder尝试用书中(9.15)找到关联函数在路径积分formalism下的表示方法, 但因为关联函数的定义依赖于算符, 所以需要定义薛定谔算符: $\hat{\phi}_S(\mathbf{x})|\phi\rangle = \phi(\mathbf{x})|\phi\rangle$, 而海森堡算符则表示为 $\hat{\phi}_H(x) = e^{i\hat{H}t}\hat{\phi}_S(\mathbf{x}) e^{-i\hat{H}t}$.
+                  随后, 书中(9.18)给出了最后的结果.
 
           \item 得到书中(9.18)后, 其实不需要先计算“自由场中的费曼传播子”(也就是费曼规则中的内线), 再将“有相互作用的场”微扰地用传播子表示(因为路径积分不需要建立算符spectrum).
                 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果.
-                于是一切都完美对应上了(本来就是等价的)! 那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
+                于是一切都完美对应上了(本来就是等价的)!
+                那么我们就可以开开心心地用已经学会了的费曼图来计算关联函数了.
         \end{enumerate}
 
         剩下的问题就只有怎么计算出所有的传播子了(这个也很重要! 因为我们在路径积分formalism下才能将规范场量子化).
@@ -40,7 +42,8 @@
         \begin{equation*}
           \langle \Omega|T\hat{\phi}(x_1)\hat{\phi}(x_2)|\Omega \rangle = \lim_{T\rightarrow \infty(1-i\epsilon)}\frac{\int \mathcal{D}\phi\ \phi(x_1)\phi(x_2)\exp\Bigl[i\int_{-T}^{T}d^4x\ \mathcal{L}\Bigr]}{\int \mathcal{D}\phi\ \exp\Bigl[i\int_{-T}^{T}d^4x\ \mathcal{L}\Bigr]}
         \end{equation*}
-        其中, $\hat{\phi}(x)$为Heisenberg绘景下的\cemph{场算符}, $\phi(x)$为普通的数. 它可由generating functional计算得到:
+        其中, $\hat{\phi}(x)$为Heisenberg绘景下的\cemph{场算符}, $\phi(x)$为普通的数.
+        它可由generating functional计算得到:
         \begin{equation*}
           \langle \Omega|T\hat{\phi}(x_1)\hat{\phi}(x_2)|\Omega \rangle = \frac{1}{Z_0}\biggl(-i\frac{\delta}{\delta J(x_1)}\biggr)(-i\frac{\delta}{\delta J(x_2)}\biggr)Z[J]\Bigl| _{J=0}
         \end{equation*}
@@ -93,7 +96,8 @@
 \section{Path Integrals in Quantum Mechanics}
 本节内容建议参考Sakurai或者Srednicki书中相关的部分.
 
-这一节最重要的是书中的(9.2)式. 结合(9.3), 此式可以写为
+这一节最重要的是书中的(9.2)式.
+结合(9.3), 此式可以写为
 \begin{equation}\label{eq: path_nonfield}
   U(\mathbf{x_a},\mathbf{x_b};T)=\langle \mathbf{x_b}|e^{-i\hat{H}T/\hbar}|\mathbf{x_a} \rangle = \sum_{\rm all\ paths} e^{iS[\mathbf{x}(t)]/\hbar} = \int \mathcal{D}\mathbf{x}(t)e^{iS[\mathbf{x}(t)]/\hbar},
 \end{equation}
@@ -177,7 +181,9 @@
 在对书中(9.26)积分时, 仅对$m=n$的一项使用此式.
 
 \subsection{P289最上面讲有相互作用的场}
-这一小段把路径积分方法中和之前的正则量子化方法中计算费曼图的方法对应起来了. 因为比较重要, 所以相关的评论我写在本章开头的总结里了. 针对这里的计算的话, 我们只需要对书中(9.18)式中的分子分母同时除以$\int \mathcal{D}\phi\ e^{iS_0}$(注意将$\mathcal{L}$展开):
+这一小段把路径积分方法中和之前的正则量子化方法中计算费曼图的方法对应起来了.
+因为比较重要, 所以相关的评论我写在本章开头的总结里了.
+针对这里的计算的话, 我们只需要对书中(9.18)式中的分子分母同时除以$\int \mathcal{D}\phi\ e^{iS_0}$(注意将$\mathcal{L}$展开):
 \begin{equation}
   \langle | \Omega T \hat{\phi}(x) \hat{\phi}(y) | \Omega \rangle = \frac{\frac{\int \mathcal{D}\phi\ e^{iS_0} \phi(x)\phi(y)}{\int \mathcal{D}\phi\ e^{iS_0}} - \frac{i\lambda}{4!}\int d^4x \frac{\int \mathcal{D}\phi\ e^{iS_0} \phi(x)\phi(y)\phi^4(z)}{\int \mathcal{D}\phi\ e^{iS_0}}+\cdots}{1 - \frac{i\lambda}{4!}\int d^4x \frac{\int \mathcal{D}\phi\ e^{iS_0} \phi^4(z)}{\int \mathcal{D}\phi\ e^{iS_0}}+\cdots}.
 \end{equation}
@@ -204,7 +210,8 @@
 对倒数第4行分部积分后可以将其简化为$-\frac{1}{2}J(x)\phi'(x)$.
 
 \begin{mybox}{函数空间}
-  更好的方法是书中(9.37)的符号化方法. 为了便于理解, 可将路径积分离散化: 把$\phi(x)$中的连续下标$x$换为离散下标$i$; 将偏导看作函数空间上的一个算子, 则可将$(-\partial^2-m^2+i\epsilon)$表示为$M_{ij}$, 那么
+  更好的方法是书中(9.37)的符号化方法.
+  为了便于理解, 可将路径积分离散化: 把$\phi(x)$中的连续下标$x$换为离散下标$i$; 将偏导看作函数空间上的一个算子, 则可将$(-\partial^2-m^2+i\epsilon)$表示为$M_{ij}$, 那么
   \begin{equation}
     \begin{aligned}
       Z[J] & = \int d\phi_1 \cdots d\phi_N \ \exp\Bigl[i \bigl[\tfrac{1}{2}\phi_i M_{ij}\phi_j + J_i\phi_i\bigr] \Bigr]                                                               \\
@@ -220,7 +227,8 @@
 
   \mbox{}
 
-  上式中还有一个需要计算的量: $(-\partial^2-m^2+i\epsilon)^{-1}$. 对于离散情况, 我们有
+  上式中还有一个需要计算的量: $(-\partial^2-m^2+i\epsilon)^{-1}$.
+  对于离散情况, 我们有
   \begin{equation}
     (-\partial^2-m^2+i\epsilon)^{-1}\phi \doteq M^{-1}_{ij}\phi_j,
   \end{equation}
@@ -244,7 +252,8 @@
   \begin{equation}
     (-\partial^2-m^2+i\epsilon)M^{-1}_{(x,y)} = \delta^{(4)} (x-y).
   \end{equation}
-  到这里结果应该很显然了, $M^{-1}_{(x,y)}$就是$-iD_F(x-y)$. 于是
+  到这里结果应该很显然了, $M^{-1}_{(x,y)}$就是$-iD_F(x-y)$.
+  于是
   \begin{equation}
     -\tfrac{i}{2}J(-\partial^2-m^2+i\epsilon)^{-1}J = \int d^4x d^4y J(x)[-iD_F(x-y)] J(y).
   \end{equation}
@@ -313,7 +322,8 @@
     (\textit{个人理解})在$-\int d^4x\ \overline{\psi}[-i(i\cancel{\partial}-m)]\psi$中, $[-i(i\cancel{\partial}-m)]$是线性算子, $\psi$和$\overline{\psi}$是两个向量, $\int d^4x$是定义在此空间上的内积.
     所以这个积分在形式上是一个二次型, 可以用书中(9.69)的高斯积分来计算.
 
-    至于做完高斯积分后多出来的常数$\det[(-i)^d]$, 因为最后在计算 correlation function时会被约掉, 所以我们不关心它. 可参考 \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{About constants in fermionic path integral in Peskin and Schroeder}.
+    至于做完高斯积分后多出来的常数$\det[(-i)^d]$, 因为最后在计算 correlation function时会被约掉, 所以我们不关心它.
+    可参考 \href{https://physics.stackexchange.com/questions/405876/in-which-sense-is-the-linear-operator-the-inverse-of-a-green-function}{About constants in fermionic path integral in Peskin and Schroeder}.
   \end{mybox}
 
   \begin{mybox}{算符的逆}
@@ -345,7 +355,8 @@
 
   P304 最下面找相互顶点后写出费曼图的思路和书中(9.30)附近讲的是一样的, 不过这里相当于只写出了关联函数的分母项, 所以没有外场和$A_\mu$做contraction($A_\mu$变成了费曼图里的$\bigotimes$), 并且无穷大常数$\det(i\cancel{\partial}-m)$也已经被提取出来了.
 
-  另一种计算方法是用生成泛函来计算. 参考\href{https://physics.stackexchange.com/questions/699338/computation-of-functional-determinant-using-feynman-diagram}{Computation of functional determinant using Feynman diagram}, 把形如$\exp\bigl(i\int d^4x \frac{\delta}{\delta \eta}(-e\cancel{A})\frac{\delta}{\delta \overline{\eta}}\bigr)$的算符作用到书中(9.74)式上后($Z_0$即为$\det(i\cancel{\partial}-m)$)展开即可.
+  另一种计算方法是用生成泛函来计算.
+  参考\href{https://physics.stackexchange.com/questions/699338/computation-of-functional-determinant-using-feynman-diagram}{Computation of functional determinant using Feynman diagram}, 把形如$\exp\bigl(i\int d^4x \frac{\delta}{\delta \eta}(-e\cancel{A})\frac{\delta}{\delta \overline{\eta}}\bigr)$的算符作用到书中(9.74)式上后($Z_0$即为$\det(i\cancel{\partial}-m)$)展开即可.
 
   书中(9.80)最后一步应该用到了trace的定义(将$\int d^4x$看作一种内积).
 

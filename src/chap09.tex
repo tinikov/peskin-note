@@ -107,17 +107,19 @@
 \begin{mybox}{量子力学中的路径积分}
   路径积分formalism的导出步骤如下:
   \begin{enumerate}
-    \item 拆分传播振幅
+    \item \textit{拆分传播振幅}
 
           考虑一个一维问题中的传播振幅$\langle x_{t_N}|e^{-iH(t_N-t_1)/\hbar}|x_{t_1} \rangle$.
           首先把它从薛定谔绘景换到海森堡绘景, 即$\langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle$, 再把它拆分到$N$个分立的时间格点上:
           \begin{equation*}
             \langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle = \int dx_{t_{N-1}} \cdots \int dx_{t_2} \langle x_{t_N}, t_N|x_{t_{N-1}}, t_{N-1} \rangle \cdots \langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle
           \end{equation*}
-          格点间的距离是$\Delta t = \frac{t_N-t_1}{N-1}$.
-    \item 猜传播振幅的形式
+          时间格点的间隔是$\Delta t = \frac{t_N-t_1}{N-1}$.
+    \item \textit{猜传播振幅的形式}
     
-    $\langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle$相当于$\exp\Bigl[i\int_{t_1}^{t_2}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$
+    $\langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle$相当于$\exp\Bigl[i\int_{t_1}^{t_2}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$.
+    
+    考虑
   \end{enumerate}
 \end{mybox}
 

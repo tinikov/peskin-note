@@ -117,7 +117,11 @@
           时间格点的间隔是$\Delta t = \frac{t_N-t_1}{N-1}$.
     \item \textit{猜传播振幅的形式}
     
-    $\langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle$相当于$\exp\Bigl[i\int_{t_1}^{t_2}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$.
+    $\langle x_{t_n}, t_n|x_{t_{n-1}}, t_{n-1} \rangle$相当于$\exp\Bigl[i\int_{t_{n-1}}^{t_n}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$.
+    引入一个新的简单一点的记号:
+    \begin{equation*}
+      S(n,n-1) \equiv \int_{t_{n-1}}^{t_n}dt L_\text{classical}(x, \dot{x}).
+    \end{equation*}
     
     考虑
   \end{enumerate}

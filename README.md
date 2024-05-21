@@ -2,7 +2,7 @@
 
 Peskin & Schroeder QFT 中文笔记（持续缓慢更新中）
 
-若无法编译，请下载导言区`设置字体`中的字体，或将导言区的`设置字体`项注释掉。**思源黑体**可以在 Adobe Fonts 的[官方仓库][note:siyuan]中下载。
+若无法编译，请下载导言区`设置字体`中的字体，或将导言区的`设置字体`项注释掉。思源系列字体可以在 Adobe Fonts 的[思源黑体仓库][note:siyuanheiti]以及[思源宋体仓库][note:siyuansongti]中下载。
 
 ## 简介
 
@@ -39,7 +39,8 @@ Peskin & Schroeder QFT 中文笔记（持续缓慢更新中）
 - 在 tex 源文件中，每句话后换行。
 - 强调内容时，使用 `\textbf{}` 或 `\cemph{}`。
 
-[note:siyuan]: https://github.com/adobe-fonts/source-han-sans
+[note:siyuanheiti]: https://github.com/adobe-fonts/source-han-sans
+[note:siyuansongti]: https://github.com/adobe-fonts/source-han-serif
 [note:peskinbysomeone]: http://gamebm.shoutwiki.com/wiki/Lecture_Notes_of_An_Introduction_to_Quantum_Field_Theory_by_M._Peskin_and_D._Schroeder
 [note:newqft]: https://yuchenw.blog/qft-notes
 [note:wycblog]: https://yuchenw.blog

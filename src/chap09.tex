@@ -9,7 +9,7 @@
 
                   不过, 不管是哪种formalism, 我们最关心的总是关联函数(correlation function)这个很抽象的东西.
                   Peskin \& Schroeder尝试用书中(9.15)找到关联函数在路径积分formalism下的表示方法, 但因为关联函数的定义依赖于算符, 所以需要定义薛定谔算符: $\hat{\phi}_S(\mathbf{x})|\phi\rangle = \phi(\mathbf{x})|\phi\rangle$, 而海森堡算符则表示为 $\hat{\phi}_H(x) = e^{i\hat{H}t}\hat{\phi}_S(\mathbf{x}) e^{-i\hat{H}t}$.
-                  随后, 书中(9.18)给出了最后的结果.
+                随后, 书中(9.18)给出了最后的结果.
 
           \item 得到书中(9.18)后, 其实不需要先计算“自由场中的费曼传播子”(也就是费曼规则中的内线), 再将“有相互作用的场”微扰地用传播子表示(因为路径积分不需要建立算符spectrum).
                 但在计算时, 我们发现书中(9.40)式“恰好”给出了费曼传播子, 书中(9.41)式“恰好”给出了正则formalism下Wick theorem得到的结论, 书中P289最上面的微扰展开又“恰好”给出了正则formalism下微扰展开的结果.
@@ -107,28 +107,59 @@
 \begin{mybox}{量子力学中的路径积分}
   路径积分formalism的导出步骤如下:
   \begin{enumerate}
-    \item \textit{拆分传播振幅}
+    \item \textit{将传播振幅用离散时间格点间的一系列小传播振幅表示}
 
-          考虑一个一维问题中的传播振幅$\langle x_{t_N}|e^{-iH(t_N-t_1)/\hbar}|x_{t_1} \rangle$.
-          首先把它从薛定谔绘景换到海森堡绘景, 即$\langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle$, 再把它拆分到$N$个分立的时间格点上:
-          \begin{equation*}
-            \langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle = \int dx_{t_{N-1}} \cdots \int dx_{t_2} \langle x_{t_N}, t_N|x_{t_{N-1}}, t_{N-1} \rangle \cdots \langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle
-          \end{equation*}
+          考虑一个一维问题中的传播振幅$\langle x_{t_N}|e^{-i\hat{H}(t_N-t_1)/\hbar}|x_{t_1} \rangle$.
+          首先将它在海森堡绘景下表示: $\langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle$, 再用完备关系
+          \begin{equation}\label{eq: complete_set_1d_QM}
+            \int dx_{t_n} |x_{t_n}, t_n\rangle\langle x_{t_n} t_n| = 1
+          \end{equation}
+          把它拆分成$N$个分立的时间格点间的传播振幅:
+          \begin{equation}\label{eq: QMcorr_on_tsites}
+            \langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle = \int dx_{t_{N-1}} \cdots \int dx_{t_2} \langle x_{t_N}, t_N|x_{t_{N-1}}, t_{N-1} \rangle \cdots \langle x_{t_2}, t_2|x_{t_1}, t_1 \rangle,
+          \end{equation}
           时间格点的间隔是$\Delta t = \frac{t_N-t_1}{N-1}$.
-    \item \textit{猜传播振幅的形式}
-    
-    $\langle x_{t_n}, t_n|x_{t_{n-1}}, t_{n-1} \rangle$相当于$\exp\Bigl[i\int_{t_{n-1}}^{t_n}dt (L_\text{classical}(x, \dot{x})/\hbar)\Bigr]$.
-    引入一个新的简单一点的记号:
-    \begin{equation*}
-      S(n,n-1) \equiv \int_{t_{n-1}}^{t_n}dt L_\text{classical}(x, \dot{x}).
-    \end{equation*}
-    
-    考虑
+    \item \textit{猜测传播振幅与作用量的关系}
+
+          记$S(n,n-1) \equiv \int_{t_{n-1}}^{t_n}dt\ L_\text{classical}(x, \dot{x})$, 猜测
+          \begin{equation}\label{eq: QMcorr_and_action}
+            \langle x_{t_n}, t_n|x_{t_{n-1}}, t_{n-1} \rangle = \biggl[\frac{1}{\omega(\Delta t)}\biggr]\exp\biggl[i\frac{S(n,n-1)}{\hbar}\biggr],
+          \end{equation}
+          其中系数$\omega(\Delta t)$是为了确保正确的量纲以及归一化.
+          (根据完备关系\eqref{eq: complete_set_1d_QM}, 传播振幅的量纲为$\frac{1}{\text{length}}$)
+    \item \textit{写成一个漂亮的形式}
+
+          将\eqref{eq: QMcorr_and_action}代入\eqref{eq: QMcorr_on_tsites}, 并且取$N\rightarrow \infty$极限, 有
+          \begin{equation}
+            \begin{aligned}
+              \langle x_{t_N}, t_N|x_{t_1}, t_1 \rangle & = \lim_{N\rightarrow \infty}\biggl[\frac{1}{\omega(\Delta t)}\biggr]^{N-1}                                               \\
+                                                        & \times \int dx_{t_{N-1}}\int dx_{t_{N-2}} \cdots \int dx_{t_2} \prod_{n=2}^{N}\exp\biggl[i\frac{S(n,n-1)}{\hbar}\biggr].
+            \end{aligned}
+          \end{equation}
+
+          记
+          \begin{equation}
+            \int\mathcal{D}[x(t)] = \lim_{N\rightarrow \infty}\biggl[\frac{1}{\omega(\Delta t)}\biggr]^{N-1}\int dx_{t_{N-1}}\int dx_{t_{N-2}} \cdots \int dx_{t_2},
+          \end{equation}
+          并且注意到
+          \begin{equation}
+            \begin{aligned}
+              \prod_{n=2}^{N}\exp\biggl[i\frac{S(n,n-1)}{\hbar}\biggr] &= \exp\biggl[\frac{i}{\hbar}\sum_{n=2}^{N}S(n,n-1)\biggr] \\
+              &= \exp\biggl[\frac{i}{\hbar}\sum_{n=2}^{N}\int_{t_{n-1}}^{t_n}dt\ L_\text{classical}(x, \dot{x})\biggr] \\
+              &= \exp\biggl[\frac{i}{\hbar}\int_{t_1}^{t_N}dt\ L_\text{classical}(x, \dot{x})\biggr],
+            \end{aligned}
+          \end{equation}
+          而后为了和本书中(9.3)式的形式保持一致, 将起点记为$x_a$, 终点记为$x_b$, 总的时间间隔记为$T$, 最后有:
+          \begin{equation}
+            \langle x_b|e^{-i\hat{H}T/\hbar}|x_a \rangle = \int\mathcal{D}[x(t)]e^{iS[x(t)]/\hbar}.
+          \end{equation}
+
   \end{enumerate}
 \end{mybox}
 
 \begin{mybox}{评论}
-  简单的理解: 把一条路径看成有无限个自变量($x_n, n \rightarrow \infty$)的多元函数, 那么在这个由$x_n$张成的希尔伯特空间里积分的形式即为本式等号右边的形式.
+  路径积分实际上是一个很形式化的定义(又是物理学家的数学).
+  具体计算时, 我们要么回到离散化的定义直接算出所有的积分, 要么想办法绕过这种计算(定义生成函数).
 \end{mybox}
 
 \subsection{P279 - (9.5)}
@@ -143,13 +174,18 @@
 
 \subsection{P282 - (9.14)}
 
-\begin{mybox}{评论}
-  书的这一部分讲得有点复杂了, 这个形式实际上就是笔记中 \eqref{eq: path_nonfield} 式在场论情况下的推广.
-  考虑无限自由度的系统, 并且将自由度下标写为连续变量$\mathbf{x}$时, 我们就得到了量子场论下的“路径积分”形式.
-  在量子场论中我们有: 系统从\textbf{$x^0=0$时刻的某一构型$\phi_a(\mathbf{x})$演化到$x^0=T$时刻的另一构型$\phi_b(\mathbf{x})$时, 两种构型间的每一条路径都会对传播振幅有一个相因子的贡献}, 即
+\begin{mybox}{从对广义坐标的路径积分到对场的路径积分}
+  我们考虑把K-G场放在$N_\text{space}^3\times N_\text{time}$的时空格点上, 此时场算符的对易关系就变成了$[\hat{\phi}(\mathbf{n}),\hat{\pi}(\mathbf{m})] = i\epsilon^{-3}\delta_{\mathbf{n}\mathbf{m}}$($\epsilon$为空间格点间的间隔).
+  于是, 我们可以把场理解为一组独立的广义坐标(共有$N_\text{space}^3$个), 再用书中(9.12)写出对每个广义坐标的路径积分后, 就可以自然地过渡到书中(9.14)式上面那个形式了.
+  在这种理解下回过头看看书中(9.11)式, 就会发现积分度规前面的乘积的意思其实就是遍历了时空格点($i$和空间格点相关, $k$和时间格点相关).
+\end{mybox}
+
+\begin{mybox}{量子场论中的路径积分原理}
+  \textbf{系统从$x^0=0$时刻的某一构型$\phi_a(\mathbf{x})$演化到$x^0=T$时刻的另一构型$\phi_b(\mathbf{x})$时, 两种构型间的每一条路径都会对传播振幅有一个相因子的贡献}, 即
   \begin{equation*}
-    U\bigl[\phi_a(\mathbf{x}),\phi_b(\mathbf{x});T\bigr]=\langle \phi_b(\mathbf{x})|e^{-iHT/\hbar}|\phi_a(\mathbf{x}) \rangle = \int \mathcal{D}\phi \exp\biggl[i\int_{0}^{T} d^4x\mathcal{L}\biggr]
+    U\bigl[\phi_a(\mathbf{x}),\phi_b(\mathbf{x});T\bigr]=\langle \phi_b(\mathbf{x})|e^{-iHT/\hbar}|\phi_a(\mathbf{x}) \rangle = \int \mathcal{D}\phi \exp\biggl[i\int_{0}^{T} d^4x\mathcal{L}\biggr].
   \end{equation*}
+  这里的路径理解为每个空间格点处场的值对时间的函数.
 \end{mybox}
 
 \subsection{P285 - (9.21)及下面的一段话}

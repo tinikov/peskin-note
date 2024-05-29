@@ -99,7 +99,7 @@
 这一节最重要的是书中的(9.2)式.
 结合(9.3), 此式可以写为
 \begin{equation}\label{eq: path_nonfield}
-  U(\mathbf{x_a},\mathbf{x_b};T)=\langle \mathbf{x_b}|e^{-i\hat{H}T/\hbar}|\mathbf{x_a} \rangle = \sum_{\rm all\ paths} e^{iS[\mathbf{x}(t)]/\hbar} = \int \mathcal{D}\mathbf{x}(t)e^{iS[\mathbf{x}(t)]/\hbar},
+  U(\mathbf{x_a},\mathbf{x_b};T)=\langle \mathbf{x_b}|e^{-i\hat{H}T/\hbar}|\mathbf{x_a} \rangle = \sum_{all\ paths} e^{iS[\mathbf{x}(t)]/\hbar} = \int \mathcal{D}\mathbf{x}(t)e^{iS[\mathbf{x}(t)]/\hbar},
 \end{equation}
 它给出了路径积分的核心思想: \textbf{从$x_a$到$x_b$的\cemph{每一条路径的传播振幅}都会对总的传播振幅有一个相因子的贡献}.
 这一形式可以推广到多自由度的情况, 此时的路径指\cemph{位形空间中的路径}.
@@ -205,7 +205,7 @@
 这里要求$|k^{\mu}| < \pi/\epsilon$的原因是在离散化的格点上函数的周期不能小于$2\epsilon$.
 (若周期为$\epsilon$, 则此函数在所有格点上取同一值, 与常数函数没有区别)
 
-令$\phi^*(k) = \phi(-k)$可以保证$Im\ \phi(-k_n) = -Im\ \phi(k_n)$, 这样在求和的时候虚部就会全部抵消.
+令$\phi^*(k) = \phi(-k)$可以保证$\text{Im}\ \phi(-k_n) = -\text{Im}\ \phi(k_n)$, 这样在求和的时候虚部就会全部抵消.
 ($k_n$求和范围: $[-\frac{\pi}{\epsilon}, -\frac{2\pi}{L}]\cup [\frac{2\pi}{L}, \frac{\pi}{\epsilon}]$)
 
 \subsection{P287 - (9.26)}

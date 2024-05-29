@@ -10,7 +10,7 @@
         \end{equation*}
   \item Noether守恒荷($j^\mu$为Noether守恒流):
         \begin{equation*}
-          Q \equiv \int j^0\ d^3x \quad (\int {\rm in\ all\ space})
+          Q \equiv \int j^0\ d^3x \quad (\int \text{in\ all\ space})
         \end{equation*}
   \item 能动量张量:
         \begin{equation*}
@@ -32,10 +32,7 @@
 紧随其后的计算就是经典理论中关于传播振幅$U(t)$的计算, 结果表明它们违背了因果律.
 
 \begin{mybox}{对于场的简单理解}
-  \begin{itemize}
-    \item 一大堆小弹簧(?)(参考\textit{Goldstein}第13章).
-    \item 某种实体在时空中的分布, 它是时空坐标$x^\mu$的函数, 是一个基础的力学量. (更简单更好的理解! )
-  \end{itemize}
+  某种实体在时空中的分布, 它是时空坐标$x^\mu$的函数, 是一个基础的力学量.
 \end{mybox}
 \begin{mybox}{常用的场}
   \begin{itemize}
@@ -75,7 +72,7 @@
   \begin{aligned}
     U(t) & = \mathinner{\langle \mathbf{x}|}e^{-it\sqrt{\mathbf{p}^2+m^2}}\mathinner{|\mathbf{x}_0\rangle}                                                                                            \\
          & = \frac{1}{(2\pi)^3} \int d^3p \ e^{-it\sqrt{\mathbf{p}^2+m^2}} e^{i\mathbf{p}\cdot(\mathbf{x}-\mathbf{x}_0)}                                                                              \\
-         & = \frac{1}{(2\pi)^3} \int p^2\sin\theta dp d\theta d\varphi \ e^{-it\sqrt{p^2+m^2}} e^{ip|\mathbf{x}-\mathbf{x}_0|\cos\theta}                                                              \\
+         & = \frac{1}{(2\pi)^3} \int p^2\sin\theta\ dp\ d\theta\ d\varphi \ e^{-it\sqrt{p^2+m^2}} e^{ip|\mathbf{x}-\mathbf{x}_0|\cos\theta}                                                              \\
          & = \frac{1}{(2\pi)^2} \int_0^\infty p^2 dp \ e^{-it\sqrt{p^2+m^2}} \int_0^\pi d\theta \sin\theta \ e^{ip|\mathbf{x}-\mathbf{x}_0|\cos\theta}                                                \\
          & = -\frac{i}{(2\pi)^2|\mathbf{x}-\mathbf{x}_0|} \int_0^\infty dp \ p\ e^{-it\sqrt{p^2+m^2}} \int_0^\pi d(ip|\mathbf{x}-\mathbf{x}_0|\cos\theta) \ e^{ip|\mathbf{x}-\mathbf{x}_0|\cos\theta} \\
          & = -\frac{i}{(2\pi)^2|\mathbf{x}-\mathbf{x}_0|} \int_0^\infty dp \ p\ e^{-it\sqrt{p^2+m^2}} (e^{-ip|\mathbf{x}-\mathbf{x}_0|}-e^{ip|\mathbf{x}-\mathbf{x}_0|})                              \\
@@ -129,7 +126,7 @@
 而关于这里的边界项$\partial_\mu \bigl(\frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)}\delta \phi \bigr)$, 注意要分别考虑时间和空间分量(书中也提到了).
 \begin{mybox}{薛定谔场的Lagrangian}
   \begin{equation}
-    \mathcal{L}_{Schr\ddot{o}dinger} = i\hbar\psi^\dagger\frac{\partial \psi}{\partial t} - \frac{\hbar^2}{2m}\bm{\nabla}\psi^\dagger\bm{\nabla}\psi - V(\mathbf x)\psi^\dagger\psi.
+    \mathcal{L}_\text{Schrödinger} = i\hbar\psi^\dagger\frac{\partial \psi}{\partial t} - \frac{\hbar^2}{2m}\bm{\nabla}\psi^\dagger\bm{\nabla}\psi - V(\mathbf x)\psi^\dagger\psi.
   \end{equation}
 \end{mybox}
 
@@ -167,7 +164,7 @@ Hamiltonian Field Theorem实际上是和Lagrangian Field Theorem不同的路径.
         而由于此项仍需满足书中(2.10), 我们令它等于前面的$\mathcal{J}^{\mu}$后即可得到守恒流.
 
         (\textit{评论})这一步只是为了得到守恒流关于$\phi, \partial_\mu \phi$的函数表达式.
-        可以这样考虑: 如果Lagrangian的形式不变, 则有$\mathcal{L}'-\mathcal{L}=\mathcal{L}-\mathcal{L}=0$ (什么都得不到); 而考虑了最小作用量原理后, $\mathcal{L}'-\mathcal{L}=\mathcal{L}_{(\Delta)}+\mathcal{L}_{(\rm Euler)}-\mathcal{L}=\partial_{\mu}j^{\mu}=0$, $j^{\mu}$即为我们想得到的守恒流表达式.
+        可以这样考虑: 如果Lagrangian的形式不变, 则有$\mathcal{L}'-\mathcal{L}=\mathcal{L}-\mathcal{L}=0$ (什么都得不到); 而考虑了最小作用量原理后, $\mathcal{L}'-\mathcal{L}=\mathcal{L}_{(\Delta)}+\mathcal{L}_{(\text{Euler})}-\mathcal{L}=\partial_{\mu}j^{\mu}=0$, $j^{\mu}$即为我们想得到的守恒流表达式.
 \end{enumerate}
 
 \begin{mybox}{}
@@ -396,10 +393,8 @@ $\Delta(x; m)$可写为洛伦兹不变的形式(其中$\varepsilon(x)$为符号�
   [\phi(x), \phi(y)] = i\Delta(x-y; m).
 \end{equation}
 
-\begin{mybox}{个人理解}
-  可以这样解释的原因是: 在量子力学中我们将两个态的内积的模的平方解释为该态可被观测到的概率, 是可观测量.
-  而书中前面虽将$\phi(x) |0\rangle$类比为了$|x\rangle$, 但没有赋予其其他含义(可以理解为这个传播振幅无法与可观测量联系起来, 故无法传递信息).
-  而算符$\phi(x), \phi(y)$的对易关系与量子力学中算符的对易关系的含义相同.
+\begin{mybox}{类空传播振幅不为零却不违反因果律}
+  传播振幅并非可观测量, 而我们真正关心的是: 在$\mathbf{x}$处产生一个粒子会对在$\mathbf{y}$处产生一个粒子有什么影响, 所以需要计算算符对易关系$[\phi(x), \phi(y)]$.
 \end{mybox}
 
 \subsection{P30 - (2.54)}

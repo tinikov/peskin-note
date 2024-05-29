@@ -453,7 +453,7 @@ $\xi(\uparrow)$和$\xi(\downarrow)$是$\bm{\sigma}\cdot\mathbf{\hat{n}}$的本�
                              & = i\epsilon^{ikl}\epsilon^{jmn}\delta^{km}J^{ln}                                                      \\
                              & = i\epsilon^{kil}\epsilon^{kjn}J^{ln}                                                                 \\
                              & = i(\delta^{ij}\delta^{ln}-\delta^{in}\delta^{lj})J^{ln}                                              \\
-                             & = i\delta^{ij}\Tr(J) - iJ^{ji}                                                                   \\
+                             & = i\delta^{ij}\Tr(J) - iJ^{ji}                                                                        \\
                              & = \tfrac{1}{2}i(J^{ij} - J^{ji})                                                                      \\
                              & = \tfrac{1}{2}i(\delta^{im}\delta^{jn}-\delta^{in}\delta^{jm})J^{mn}                                  \\
                              & = \tfrac{1}{2}i\epsilon^{kij}\epsilon^{kmn}J^{mn}                                                     \\
@@ -655,6 +655,40 @@ $\xi(\uparrow)$和$\xi(\downarrow)$是$\bm{\sigma}\cdot\mathbf{\hat{n}}$的本�
 
 \nonumssec{3.2 Gordon Identity}
 Derive the \textit{Gordon identity},
-\begin{equation}
-  \bar{u}(p')\gamma^\mu u(p)g
+\begin{equation}\label{eq: gordon_idt}
+  \bar{u}(p')\gamma^\mu u(p) = \bar{u}(p')\biggl[\frac{p'^\mu+p^\mu}{2m} + \frac{i\sigma^{\mu\nu}q_\mu}{2m}\biggr] u(p),
 \end{equation}
+where $q=(p'-p)$.
+
+\paragraph*{Solution} 根据狄拉克方程, 有
+\begin{equation*}
+  \left\{
+  \begin{array}{c}
+    (\gamma^\mu p_\mu - m)u(p) = 0 \\
+    \bar{u}(p)(\gamma^\mu p_\mu - m) = 0
+  \end{array}
+  \right.
+  \quad\Rightarrow\quad
+  \left\{
+  \begin{array}{c}
+    u(p) = \frac{\gamma^\mu p_\mu}{m}u(p) \\
+    \bar{u}(p) = \bar{u}(p)\frac{\gamma^\mu p_\mu}{m}
+  \end{array}
+  \right..
+\end{equation*}
+分别对\eqref{eq: gordon_idt}中的$u(p)$, $\bar{u}(p')$单独做代换:
+\begin{equation}\label{eq: gordon_u}
+  \begin{aligned}
+    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\gamma^\mu \frac{\gamma^\nu p_\nu}{m}u(p) \\
+                               & = \bar{u}(p')\cdot\frac{1}{2}\biggl([\gamma^\mu, \gamma^\nu] + \{\gamma^\mu, \gamma^\nu\}\biggr) \frac{p_\nu}{m}u(p) \\
+                               & = \bar{u}(p')\biggl(\frac{-i\sigma^{\mu\nu}p_\nu}{m} + \frac{p_\mu}{m}\biggr)u(p),
+  \end{aligned}
+\end{equation}
+\begin{equation}\label{eq: gordon_ubar}
+  \begin{aligned}
+    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\frac{\gamma^\nu p'_\nu}{m}\gamma^\mu u(p) \\
+                               & = \bar{u}(p') \frac{p'_\nu}{m}\cdot\frac{1}{2}\biggl([\gamma^\nu, \gamma^\mu] + \{\gamma^\nu, \gamma^\mu\}\biggr) u(p) \\
+                               & = \bar{u}(p')\biggl(\frac{i\sigma^{\mu\nu}p'_\nu}{m} + \frac{p'_\mu}{m}\biggr)u(p).
+  \end{aligned}
+\end{equation}
+最后将\eqref{eq: gordon_u}和\eqref{eq: gordon_ubar}相加即可得到Gordon identity.

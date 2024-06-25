@@ -525,7 +525,7 @@ $\xi(\uparrow)$和$\xi(\downarrow)$是$\bm{\sigma}\cdot\mathbf{\hat{n}}$的本�
         \end{equation}
 \end{itemize}
 
-\paragraph*{(3)Decompose Lorentz Algebra: }
+\paragraph*{(3) Decompose Lorentz Algebra:}
 由上面的 \eqref{eq: subalgebra_Lorentz} 式可知, 洛伦兹代数可以被分解为两个$\text{su}(2)$子代数的直和, 即
 \begin{equation}
   \text{so}(1, 3) = \text{su}(2) \bigoplus \text{su}(2),
@@ -574,7 +574,7 @@ $\xi(\uparrow)$和$\xi(\downarrow)$是$\bm{\sigma}\cdot\mathbf{\hat{n}}$的本�
         对应$\psi_R$(右手Weyl spinor).
 \end{itemize}
 
-\paragraph*{(5) 矢量表示: }
+\paragraph*{(5)矢量表示: }
 构造场$\psi'=\psi^T_L \sigma^2$, 对其作无穷小洛伦兹变换有
 \begin{equation}
   \psi' \rightarrow \psi'(1 + i\bm{\theta}\cdot\tfrac{\bm{\sigma}}{2} + \bm{\beta}\cdot\tfrac{\bm{\sigma}}{2}).
@@ -679,16 +679,101 @@ where $q=(p'-p)$.
 分别对\eqref{eq: gordon_idt}中的$u(p)$, $\bar{u}(p')$单独做代换:
 \begin{equation}\label{eq: gordon_u}
   \begin{aligned}
-    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\gamma^\mu \frac{\gamma^\nu p_\nu}{m}u(p) \\
+    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\gamma^\mu \frac{\gamma^\nu p_\nu}{m}u(p)                                                               \\
                                & = \bar{u}(p')\cdot\frac{1}{2}\biggl([\gamma^\mu, \gamma^\nu] + \{\gamma^\mu, \gamma^\nu\}\biggr) \frac{p_\nu}{m}u(p) \\
                                & = \bar{u}(p')\biggl(\frac{-i\sigma^{\mu\nu}p_\nu}{m} + \frac{p_\mu}{m}\biggr)u(p),
   \end{aligned}
 \end{equation}
 \begin{equation}\label{eq: gordon_ubar}
   \begin{aligned}
-    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\frac{\gamma^\nu p'_\nu}{m}\gamma^\mu u(p) \\
+    \bar{u}(p')\gamma^\mu u(p) & = \bar{u}(p')\frac{\gamma^\nu p'_\nu}{m}\gamma^\mu u(p)                                                                \\
                                & = \bar{u}(p') \frac{p'_\nu}{m}\cdot\frac{1}{2}\biggl([\gamma^\nu, \gamma^\mu] + \{\gamma^\nu, \gamma^\mu\}\biggr) u(p) \\
                                & = \bar{u}(p')\biggl(\frac{i\sigma^{\mu\nu}p'_\nu}{m} + \frac{p'_\mu}{m}\biggr)u(p).
   \end{aligned}
 \end{equation}
 最后将\eqref{eq: gordon_u}和\eqref{eq: gordon_ubar}相加即可得到Gordon identity.
+
+\nonumssec{3.6 Fierz transformation}
+
+\paragraph*{(1)}
+首先将$\Gamma$矩阵空间的完备基(共16个)归一化, 其条件为
+\begin{equation}
+  \tr[\Gamma^A \Gamma^B]= 4\delta^{AB},
+\end{equation}
+以下逐一考察.
+
+\begin{enumerate}
+  \item $\tr(\mathbf{1}\cdot\mathbf{1})$ = 4, 故$\mathbf{1}$为基矩阵;
+  \item $\tr(\gamma^\mu\gamma^\mu) = 4g^{\mu\mu}$, 故$\gamma^0$,$i\gamma^i$为基矩阵;
+  \item $\tr(\sigma^{\mu\nu}\sigma^{\mu\nu})$计算如下:
+        \begin{equation}
+          \begin{aligned}
+              & \tr\bigl(\tfrac{i}{2}[\gamma^\mu,\gamma^\nu]\cdot \tfrac{i}{2}[\gamma^\mu,\gamma^\nu]\bigr)                                                                                                 \\
+            = & -\tfrac{1}{4}\tr(\gamma^\mu\gamma^\nu\gamma^\mu\gamma^\nu - \gamma^\mu\gamma^\nu\gamma^\nu\gamma^\mu - \gamma^\nu\gamma^\mu\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu\gamma^\nu\gamma^\mu) \\
+            = & -\tfrac{1}{2}\tr(\gamma^\mu\gamma^\nu\gamma^\mu\gamma^\nu - \gamma^\mu(2g^{\mu\nu}-\gamma^\nu\gamma^\mu)\gamma^\nu)                                                                         \\
+            = & -\tr(\gamma^\mu\gamma^\nu\gamma^\mu\gamma^\nu) + g^{\mu\nu}\tr(\gamma^\mu\gamma^\nu)                                                                                                        \\
+            = & -4(g^{\mu\nu}g^{\mu\nu}-g^{\mu\mu}g^{\nu\nu}+g^{\mu\nu}g^{\nu\mu}-g^{\mu\nu}g^{\mu\nu})                                                                                                     \\
+            = & 4(g^{\mu\mu}g^{\nu\nu} - g^{\mu\nu}g^{\nu\mu}).
+          \end{aligned}
+        \end{equation}
+
+        故$i\sigma^{0i}$,$\sigma^{ij}$为基矩阵;
+  \item $\tr(\gamma^\mu\gamma^5\gamma^\mu\gamma^5) = -\tr(\gamma^\mu\gamma^\mu\gamma^5\gamma^5) = 4g^{\mu\mu}$, 故$i\gamma^0\gamma^5$,$\gamma^i\gamma^5$为基矩阵;
+  \item $\tr(\gamma^5\gamma^5)$ = 4, 故$\gamma^5$为基矩阵.
+\end{enumerate}
+
+全部16个基矩阵为
+\begin{equation}
+  \Gamma^A = \bigl\{\mathbf{1}, \gamma^0, i\gamma^i, i\sigma^{0i}, \sigma^{ij}, i\gamma^0\gamma^5, \gamma^i\gamma^5, \gamma^5\bigr\}.
+\end{equation}
+
+\paragraph*{(2)}
+证明Fierz identity的一般形式:
+\begin{equation}
+  (\bar{u}_1\Gamma^A u_2)(\bar{u}_3\Gamma^B u_4) = \sum_{C,D} \frac{1}{16} \tr[\Gamma^C \Gamma^A \Gamma^D \Gamma^B](\bar{u}_1\Gamma^C u_4)(\bar{u}_3\Gamma^D u_2).
+\end{equation}
+
+首先把分量具体写出来:
+\begin{equation}\label{eq: Fierz_indices}
+  \begin{aligned}
+    (\bar{u}_1\Gamma^A u_2)(\bar{u}_3\Gamma^B u_4) & = \bar{u}_{1a}\Gamma^A_{ab} u_{2b}\bar{u}_{3c}\Gamma^B_{cd} u_{4d}  \\
+                                                   & = \Gamma^A_{ab}\Gamma^B_{cd}\ \bar{u}_{1a}u_{2b}\bar{u}_{3c}u_{4d},
+  \end{aligned}
+\end{equation}
+其中$a,b$等为旋量指标.
+把$\Gamma^A_{ab}\Gamma^B_{cd}$看作一组$4\times 4$矩阵的分量$(\mathcal{M}_{bc})_{ad}$,利用完备基将其展开:
+\begin{equation}
+  \mathcal{M}_{bc} = \frac{1}{4} \sum_C\tr[\mathcal{M}_{bc}\Gamma^C]\Gamma^C,
+\end{equation}
+即
+\begin{equation}
+  \begin{aligned}
+    (\mathcal{M}_{bc})_{ad}    & = \frac{1}{4} \sum_C (\mathcal{M}_{bc})_{ef}\Gamma^C_{fe} \Gamma^C_{ad}    \\
+    \Gamma^A_{ab}\Gamma^B_{cd} & = \frac{1}{4} \sum_C \Gamma^A_{eb}\Gamma^B_{cf}\Gamma^C_{fe}\Gamma^C_{ad}.
+  \end{aligned}
+\end{equation}
+故技重施, 把$\Gamma^A_{eb}\Gamma^B_{cf}$看作一组$4\times 4$矩阵的分量$(\mathcal{M}_{ef})_{cb}$(注意下标的顺序),展开后得到
+\begin{equation}\label{eq: tmpMatrix_expand}
+  \begin{aligned}
+    \Gamma^A_{ab}\Gamma^B_{cd} & = \frac{1}{16} \sum_{C,D} \Gamma^A_{eh}\Gamma^B_{gf}\Gamma^D_{hg}\Gamma^D_{cb}\Gamma^C_{fe}\Gamma^C_{ad} \\
+                               & = \sum_{C,D} \frac{1}{16} \tr[\Gamma^C\Gamma^A\Gamma^D\Gamma^B]\ \Gamma^C_{ad}\Gamma^D_{cb}.
+  \end{aligned}
+\end{equation}
+最后将\eqref{eq: tmpMatrix_expand}式代入\eqref{eq: Fierz_indices}式即可.
+
+\paragraph*{(3)} 两个例子.
+\begin{enumerate}
+  \item $(\bar{u}_1 u_2)(\bar{u}_3 u_4)$
+        \begin{equation}
+          \begin{aligned}
+            (\bar{u}_1 u_2)(\bar{u}_3 u_4) & = \sum_{C,D} \frac{1}{16} \tr[\Gamma^C \Gamma^D](\bar{u}_1\Gamma^C u_4)(\bar{u}_3\Gamma^D u_2)                                                                                     \\
+                                           & = \sum_C \frac{1}{4}(\bar{u}_1\Gamma^C u_4)(\bar{u}_3\Gamma^C u_2)                                                                                                                 \\
+                                           & = \frac{1}{4}\biggl[(\bar{u}_1 u_4)(\bar{u}_3 u_2) + (\bar{u}_1\gamma^\mu u_4)(\bar{u}_3\gamma_\mu u_2) + \tfrac{1}{2}(\bar{u}_1\sigma^{\mu\nu} u_4)(\bar{u}_3\sigma_{\mu\nu} u_2) \\
+                                           & \qquad\ - (\bar{u}_1\gamma^5\gamma^\mu u_4)(\bar{u}_3\gamma^5\gamma_\mu u_2) +(\bar{u}_1\gamma^5 u_4)(\bar{u}_3\gamma^5 u_2) \biggr].
+          \end{aligned}
+        \end{equation}
+  \item $(\bar{u}_1\gamma^\mu u_2)(\bar{u}_3\gamma_\mu u_4)$
+        \begin{equation}
+          (\bar{u}_1\gamma^\mu u_2)(\bar{u}_3\gamma_\mu u_4) = \sum_{C,D} \frac{1}{16} \tr[\Gamma^C\gamma^\mu\Gamma^D\gamma_\mu](\bar{u}_1\Gamma^C u_4)(\bar{u}_3\Gamma^D u_2)
+        \end{equation}
+\end{enumerate}

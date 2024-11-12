@@ -12,9 +12,9 @@ Peskin & Schroeder QFT 中文笔记（持续缓慢更新中）
 
 一些推导和理解参考了[这篇笔记][note:peskinbysomeone]（谢谢你, 陌生人）以及 [Yuchen Wang][note:wycblog] (非常厉害的一个人！)的 [笔记][note:newqft]。同时感谢朋友 Starry 的增补及校对。
 
-如发现任何错误或遗漏，或希望与我讨论书中的内容，欢迎通过[邮件](mailto:tinikov137@gmail.com)与我联系。
+如发现任何错误或遗漏，或希望与我讨论书中的内容，欢迎通过邮件与我联系。
 
-我的邮箱: tinikov137@gmail.com
+我的邮箱: i[at]tinikov[dot]com
 
 ## 自定义命令
 
